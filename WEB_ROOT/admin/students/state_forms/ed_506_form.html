@@ -1,0 +1,520 @@
+<!--
+TemplateName:Admin Student Page
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>ED 506 Form</title>
+  <!-- required scripts -->
+  ~[wc:commonscripts]
+  <!-- Required style sheets: screen.css, and print.css -->
+  <link href="/images/css/screen.css" rel="stylesheet" media="screen">
+  <link href="/images/css/print.css" rel="stylesheet" media="print">
+  <style type="text/css">
+    @media print {
+
+      #pds-header,
+      #breadcrumbs {
+        display: none !important;
+      }
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      text-indent: 0;
+    }
+
+    html {
+      height: 100%;
+    }
+
+    body {
+      min-height: 100%;
+    }
+    /*p {*/
+    /*  border: 1px solid green;*/
+    /*}*/
+    h1 {
+      color: black;
+      font-family: "Times New Roman", serif;
+      font-style: normal;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 10pt;
+    }
+    h2 {
+      color: black;
+      font-family: "Times New Roman", serif;
+      font-style: normal;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 9pt;
+    }
+    p {
+      color: black;
+      font-family: "Times New Roman", serif;
+      font-style: normal;
+      font-weight: normal;
+      text-decoration: none;
+      font-size: 10pt;
+      margin: 0pt;
+    }
+    .p1 {
+      margin-left: 0;
+      margin-bottom: 0 !important;
+      padding-left : 0;
+      color: black;
+      font-family: Helvetica, sans-serif;
+      font-style: normal;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 10pt;
+      vertical-align: 3pt;
+    }
+    .p2 {
+      margin-bottom: 5px;
+      text-indent: 0pt;
+      text-align: left;
+    }
+    .p3 {
+      text-indent: 0pt;
+      text-align: left;
+      margin-bottom: 0 !important;
+    }
+    .p4 {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      padding-left: 73pt;
+      text-indent: 0pt;
+      line-height: 106%;
+      text-align: left;
+
+    }
+    .s1 {
+      color: black;
+      font-family: Arial, sans-serif;
+      font-style: normal;
+      font-weight: normal;
+      text-decoration: none;
+      font-size: 9pt;
+    }
+    .s2 {
+      color: black;
+      font-family: "Times New Roman", serif;
+      font-style: normal;
+      font-weight: normal;
+      text-decoration: none;
+      font-size: 9pt;
+    }
+    .s3 {
+      color: black;
+      font-family: Helvetica, sans-serif;
+      font-style: normal;
+      font-weight: normal;
+      text-decoration: none;
+      font-size: 11pt;
+      vertical-align: 3pt;
+    }
+    .s4 {
+      color: black;
+      font-family: Helvetica, sans-serif;
+      font-style: normal;
+      font-weight: normal;
+      text-decoration: none;
+      font-size: 11.5pt;
+      vertical-align: 3pt;
+    }
+    .s5 {
+      color: black;
+      font-family: Helvetica, sans-serif;
+      font-style: normal;
+      font-weight: normal;
+      text-decoration: none;
+      font-size: 8pt;
+      vertical-align: 3pt;
+    }
+    .s6 {
+      border: 1px solid red;
+      color: black;
+      font-family: Helvetica, sans-serif;
+      font-style: normal;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 10pt;
+      vertical-align: 3pt;
+    }
+    .s7 {
+      color: #ff5400;
+      font-family: "Times New Roman", serif;
+      font-style: normal;
+      font-weight: normal;
+      text-decoration: underline;
+      font-size: 10pt;
+    }
+    .s8 {
+      color: #ff5400;
+      font-family: "Times New Roman", serif;
+      font-style: normal;
+      font-weight: normal;
+      text-decoration: none;
+      font-size: 10pt;
+    }
+    .s9 {
+      color: black;
+      font-family: Helvetica, sans-serif;
+      font-style: normal;
+      font-weight: normal;
+      text-decoration: none;
+      font-size: 13pt;
+    }
+    .s10 {
+      color: black;
+      font-family: "Times New Roman", serif;
+      font-style: normal;
+      font-weight: normal;
+      text-decoration: none;
+      font-size: 10pt;
+      vertical-align: -5pt;
+    }
+    .s11 {
+      color: black;
+      font-family: Helvetica, sans-serif;
+      font-style: normal;
+      font-weight: normal;
+      text-decoration: none;
+      font-size: 7.5pt;
+    }
+    .s12 {
+      color: black;
+      font-family: Arial, sans-serif;
+      font-style: normal;
+      font-weight: normal;
+      text-decoration: none;
+      font-size: 10pt;
+    }
+    .s13 {
+      color: black;
+      font-family: "Courier New", serif;
+      font-style: normal;
+      font-weight: normal;
+      text-decoration: none;
+      font-size: 10pt;
+    }
+    .s14 {
+      color: black;
+      font-family: Helvetica, sans-serif;
+      font-style: normal;
+      font-weight: normal;
+      text-decoration: none;
+      font-size: 6.5pt;
+      vertical-align: 2pt;
+    }
+    .s15 {
+      color: black;
+      font-family: Helvetica, sans-serif;
+      font-style: normal;
+      font-weight: normal;
+      text-decoration: none;
+      font-size: 12.5pt !important;
+    }
+    .s16 {
+      color: black;
+      font-family: "Times New Roman", serif;
+      font-style: normal;
+      font-weight: normal;
+      text-decoration: none;
+      font-size: 10pt;
+      vertical-align: -2pt;
+    }
+    .span-input-long {
+      border-top: none;
+      border-right: none;
+      border-left: none;
+      border-bottom: 1px solid black;
+      text-align: center;
+      display: inline-block;
+      width: 300px;
+      /* Adjust width as needed */
+      font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+      /* Adjust font size as needed */
+    }
+    .span-input-mid {
+      border-top: none;
+      border-right: none;
+      border-left: none;
+      border-bottom: 1px solid black;
+      text-align: center;
+      display: inline-block;
+      width: 150px;
+      /* Adjust width as needed */
+      font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+      /* Adjust font size as needed */
+    }
+    .span-input-short {
+      border-top: none;
+      border-right: none;
+      border-left: none;
+      border-bottom: 1px solid black;
+      text-align: center;
+      display: inline-block;
+      width: 30px;
+      /* Adjust width as needed */
+      font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+      /* Adjust font size as needed */
+    }
+    em {
+      display: none;
+    }
+    pds-icon {
+      display: none;
+    }
+    .ws-1 {
+      white-space: pre;
+    }
+    .flex-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-left:10px;
+    }
+    .flex-item {
+      flex: 1;
+    }
+  </style>
+</head>
+
+<body>
+  ~[wc:admin_header_frame_css]
+  <!-- breadcrumb start -->
+  <a href="/admin/home.html" target="_top">Start Page</a> &gt; <a
+    href="/admin/students/home.html?selectstudent=nosearch" target="_top">Student Selection</a> &gt; ED 506 Form
+  <!-- breadcrumb end -->
+  ~[wc:admin_navigation_frame_css]
+  <!-- start of main menu and content -->
+  <form action="/~[self.page]?frn=~(studentfrn)&changesSaved=true" method="POST">
+    <!-- start of content area -->
+    ~[if.~(gpv.changesSaved)=true]<div class="feedback-confirm">~[text:psx.common.changes_recorded][/if]
+    <div class="box-round" style="margin-left: 75px; margin-right: 50px">
+        <p
+      class="s1"
+      style="
+        padding-top: 25pt;
+        padding-left: 283pt;
+        text-indent: 0pt;
+        text-align: right;
+      "
+    >
+      OMB Control No. 1810-0021 (Exp. 06/30/2026)
+    </p>
+    <p style=
+      "
+        padding-top: 25pt;
+        text-indent: 0pt;
+        text-align: center;
+        font-weight: bold;
+      "
+    >ED 506 Form
+    <br>
+      Indian Student Eligibility Certification Form for Title VI Indian
+      Education Formula Grant Program
+    </p>
+    <p class="p2">
+    <span style="font-weight: bold;">
+      Parent/Guardian:</span>
+        This form serves as the official record of the eligibility
+        determination for each individual child included in the student count
+        for the Title VI Indian Education Formula Grant Program. If you choose
+        to submit a form, your child could be counted for funding under the
+        program. The grantee receives the grant funds based on the number of
+        eligible forms counted during the established count period. You are not
+        required to complete or submit this form unless you wish for your
+        child(ren) to be included in the Indian student count. This form should
+        be kept on file with the grant applicant and will not need to be
+        completed every year. Where applicable, the information contained in
+        this form may be released with your prior written consent or the prior
+        written consent of an eligible student (aged 18 or over), or if
+        otherwise authorized by law, if doing so would be permissible under the
+        Family Educational Rights and Privacy Act, 20 U.S.C. § 1232g, and any
+        applicable state or local confidentiality requirements.</p
+      >
+    <p class="p1">
+      Student Information
+    </p>
+    <p class="p2">
+      Name of the Child <span class="s5 span-input-long">~([Students]First_Name) ~([Students]Middle_Name) ~([Students]Last_Name) </span> Date of Birth <span class="s5 span-input-mid">~([Students]DOB) </span>Grade Level <span class="s5 span-input-short">~([Students]Grade_Level)</span>
+    </p>
+    <p class="p2">
+      Name of School <span class="ws-1 s5 span-input-mid">~[schoolname]</span>
+      School District <span class="ws-1 s5 span-input-mid">~[displaypref:districtname]</span>
+    </p>
+    <p class="p1">
+      Tribal Membership
+    </p>
+    <p class="p2">
+      The individual with Tribal membership is the (select only one):
+      <input type="radio" name="radio" value="" />child
+      <input type="radio" name="radio" value="" /> child&#39;s parent
+      <input type="radio" name="radio" value="" /> child&#39;s grandparent
+    </p>
+    <p class="p2">
+      If the individual with Tribal membership is <b>not </b>the child listed
+      above, name the individual (parent/grandparent) with tribal membership: <span class="span-input-mid"> ~([U_TPS_Indian_Education]Tribal_Member_Name)</span>
+    </p>
+    <p class="p3">
+      Name <u>and</u> address of Tribe or Band that maintains updated and
+      accurate membership data for the individual listed above:
+    </p>
+    <p class="p2">
+      Name <span class="span-input-mid"><input type="text" class="" name="" value="" readonly /></span>
+      Address <span class="s11 span-input-mid"><input type="text" class="" name="" value="" readonly /></span>
+    </p>
+    <p class="p2">
+      City <span class="span-input-mid"><input type="text" class="" name="" value="" readonly /></span>
+      State <span class="span-input-short"><input type="text" class="" name="" value="" readonly /></span>
+      Zip Code <span class="span-input-short"><input type="text" class="" name="" value="" readonly /></span>
+    </p>
+
+    <p class="p3">
+      The Tribe or Band is (select only one):
+    </p>
+    <p class="p4">
+      <input type="radio" name="radio1" value="" /> Federally Recognized Tribe
+    <br>
+      <input type="radio" name="radio1" value="" /> State Recognized Tribe
+    <br>
+      <input type="radio" name="radio1" value="" /> Terminated Tribe
+    <br>
+      <input type="radio" name="radio1" value="" /> Alaska Native
+    <br>
+      <input type="radio" name="radio1" value="" /> Member of an organized Indian group that received a grant under the Indian
+      Education Act of 1988 as it was in effect October 19, 1994.
+    </p>
+    <p class="p3">
+      Proof of membership in Tribe or Band listed above, as defined by Tribe or
+      Band is:
+    </p>
+    <p class="p4">
+      <input type="radio" name="radio2" value="" /> Membership or enrollment number establishing membership (if
+      readily available) or
+      <br>
+      <input type="radio" name="radio2" value="" /> Other evidence establishing membership in the Tribe listed above (describe
+      and attach)
+    </p>
+    <p class="p2">
+      Membership or enrollment number establishing membership (if readily
+      available) or other evidence establishing membership in the Tribe listed
+      above (describe and attach). <span class="span-input-mid"><input type="text" name="" value="" readonly /></span>
+    </p>
+    <p class="p1">
+      Attestation Statement
+    </p>
+    <p class="p3">
+      I verify that the information provided above is true and correct to the
+      best of my knowledge and belief.
+    </p>
+    <p class="p3">
+      Printed Name of Parent/Guardian<span class="span-input-mid"><input type="text" name="" value="" readonly /></span>
+      Signature <span class="span-input-mid"></span><input type="text" name="" value="" readonly /></span>
+    </p>
+    <p class="p3">
+      Address <span class="span-input-mid"><input type="text" name="" value="" readonly /></span>
+      City <span class="span-input-mid"><input type="text" name="" value="" readonly /></span>
+      State <span class="span-input-mid"><input type="text" name="" value="" readonly /></span>
+      Zip Code <span class="span-input-mid"><input type="text" name="" value="" readonly /></span>
+    </p>
+    <p class="p3">
+      Phone Number <span class="span-input-mid"><input type="text" name="" value="" readonly /></span>
+      Email <span class="span-input-mid"><input type="text" name="" value="" readonly /></span>
+      Date <span class="span-input-mid"><input type="text" name="" value="" readonly /></span>
+    </p>
+    <p
+      class="s1"
+      style="
+        padding-top: 30pt;
+        padding-left: 283pt;
+        margin-bottom: 50px;
+        text-indent: 0pt;
+        text-align: left;
+      "
+    >
+      OMB Control No. 1810-0021 (Exp. 06/30/2026)</p
+    >
+    <p class="p1">
+      For Parent/Guardians:
+    </p>
+    <p class="p2">
+      Definitions: <br>
+      Indian means an individual who is (1) A member of an Indian Tribe or Band,
+      as membership is defined by the Indian Tribe or Band, including any Tribe
+      or Band terminated since 1940, and any Tribe or Band recognized by the
+      State in which the Tribe or Band resides; (2) A descendant of a parent or
+      grandparent who meets the requirements described in paragraph (1) of this
+      definition; (3) Considered by the Secretary of the Interior to be an
+      Indian for any purpose; (4) An Eskimo, Aleut, or other Alaska Native; or
+      (5) A member of an organized Indian group that received a grant under the
+      Indian Education Act of 1988 as it was in effect on October 19, 1994.
+    </p>
+    <p class="p1">
+      Student Information:
+    </p>
+    <p class="p2">
+      Write the name of the child, date of birth, grade level, name of school
+      and school district. Only name one child per form.
+    </p>
+    <p class="p1">
+      Tribal Membership:
+    </p>
+    <p class="p2">
+      Write the name of the individual with the tribal membership, if it is
+      not the child listed. Only one name is needed for this section, even
+      though multiple persons may have tribal membership. Select only one
+      identifier: the child, child’s parent or grandparent, for whom you can
+      provide membership information.
+    <br>
+      Write the name and address of the organization that maintains updated and
+      accurate membership data for such Tribe or Band of Indians. The name does
+      not need to be the official name as it appears exactly on the Department
+      of Interior’s list of federally recognized Tribes, but the name must be
+      recognizable and be of sufficient detail to permit verification of the
+      eligibility of the Tribe. Check only one box indicated whether it is a
+      Federally Recognized, State Recognized, Terminated Tribe or Organized
+      Indian Group. Write the enrollment number establishing the membership for
+      the child, parent or grandparent, if readily available, or other evidence
+      of membership.
+    </p>
+    <p class="p1">
+      Attestation Statement:
+    </p>
+    <p class="p2">
+      Provide the printed name of parent/guardian and signature, address,
+      phone number and email of the parent or guardian of the child. The
+      signature of the parent or guardian of the child verifies the accuracy
+      of the information supplied.</span
+    </p>
+    <p class="p1">
+      Paperwork Burden Statement:
+    </p>
+    <p class="p2">
+      According to the Paperwork Reduction Act of 1995, no persons are
+      required to respond to a collection of information unless such
+      collection displays a valid OMB control number. The valid OMB control
+      number for this information collection is 1810-0021. The time required
+      to complete this portion of the information collection per type of
+      respondent is estimated to average: 15 minutes per Indian student
+      certification (ED 506) form; including the time to review instructions,
+      search existing data resources, gather the data needed, and complete and
+      review the information collection. If you have any comments concerning
+      the accuracy of the time estimate(s) or suggestions for improving this
+      form, please write to: U.S. Department of Education, Washington, D.C.
+      20202-4651. If you have comments or concerns regarding the status of
+      your individual submission of this form, write directly to: Office of
+      Indian Education, U.S. Department of Education, 400 Maryland Avenue,
+      S.W., LBJ/Room 3W238, Washington, D.C. 20202-6335
+    </p>
+    </div>
+  </form>
+  <!-- end of content area -->
+  ~[wc:admin_footer_frame_css]
+</body>
+</html>

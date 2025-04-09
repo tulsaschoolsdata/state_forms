@@ -1,0 +1,742 @@
+
+<!--
+TemplateName:Admin Student Page
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Home Language Survey</title>
+  <!-- required scripts -->
+  ~[wc:commonscripts]
+  <script src="/scripts/tpscustom.js"></script>
+  <!-- Required style sheets: screen.css, and print.css -->
+  <link href="/images/css/screen.css" rel="stylesheet" media="screen">
+  <link href="/images/css/print.css" rel="stylesheet" media="print">
+  <style type="text/css">
+    @media print {
+      #student-detail-header,
+      #pds-header,
+      #breadcrumbs,
+      #legend {
+        display: none !important;
+      }
+      .box-round {
+        border: 2px solid #ff0000;
+        width: 608pt !important;
+        padding: 0;
+        margin: 0 auto;
+        overflow: hidden;
+      }
+
+      .box-round table {
+        width: 100% !important;
+        max-width: 608pt;
+        padding: 0;
+        margin: 0 auto;
+        border-spacing: 0;
+        border-collapse: collapse;
+      }
+    }
+    ol {
+      width: 508pt;
+      margin-bottom: 0;
+    }
+
+    ul ol  li {
+      line-height: 10pt;
+      padding-inline-start: 40pt;
+      text-align: match-parent;
+    }
+
+    ul li {
+        list-style: none;
+    }
+
+    table {
+      border-collapse: collapse;
+      margin: 0;
+      border: 2px solid black;
+    }
+
+    table,
+    tbody {
+      vertical-align: top;
+      overflow: visible;
+    }
+
+    .ws-1 {
+      display: inline-block;
+      white-space: pre;
+    }
+
+    input.u-input {
+      border-top: none !important;
+      border-right: none !important;
+      border-left: none !important;
+      border-bottom: 2px solid black !important;
+      margin-bottom: 5px !important;
+      text-align: center !important;
+    }
+
+    input.box-input {
+      border: 2px solid black !important;
+      margin-bottom: 5px !important;
+      text-align: center !important;
+    }
+
+    input.long-input {
+      width: 100pt !important;
+    }
+
+    input.mid-input {
+      width: 30pt !important;
+    }
+
+    input.short-input {
+      width: 15pt !important;
+    }
+
+    em {
+      display: none;
+    }
+    .s1 {
+      color: black;
+      font-family: Arial, sans-serif;
+      font-style: normal;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 14pt;
+      vertical-align: 1pt;
+    }
+
+    .s2 {
+      color: black;
+      font-family: "Times New Roman", serif;
+      font-style: normal;
+      font-weight: normal;
+      text-decoration: none;
+      font-size: 14pt;
+    }
+
+    .s3 {
+      color: black;
+      font-family: Arial, sans-serif;
+      font-style: normal;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 16pt;
+    }
+
+    .s4 {
+      color: #fff;
+      font-family: Arial, sans-serif;
+      font-style: normal;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 10pt;
+    }
+
+    .s5 {
+      color: black;
+      font-family: Arial, sans-serif;
+      font-style: normal;
+      font-weight: normal;
+      text-decoration: none;
+      font-size: 10pt;
+    }
+
+    .s7 {
+      color: black;
+      font-family: "Times New Roman", serif;
+      font-style: normal;
+      font-weight: normal;
+      text-decoration: none;
+      font-size: 10pt;
+    }
+
+    .s8 {
+      color: black;
+      font-family: "Times New Roman", serif;
+      font-style: normal;
+      font-weight: normal;
+      text-decoration: none;
+      font-size: 10pt;
+      vertical-align: -6pt;
+    }
+
+    .s9 {
+      color: black;
+      font-family: Arial, sans-serif;
+      font-style: normal;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 10pt;
+    }
+
+    .s10 {
+      color: black;
+      font-family: "Times New Roman", serif;
+      font-style: normal;
+      font-weight: normal;
+      text-decoration: none;
+      font-size: 10pt;
+    }
+
+    .s11 {
+      color: black;
+      font-family: Arial, sans-serif;
+      font-style: normal;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 10pt;
+    }
+
+    .s120 {
+      color: black;
+      font-family: "Times New Roman", serif;
+      font-style: normal;
+      font-weight: normal;
+      text-decoration: none;
+      font-size: 10pt;
+    }
+
+    .s13 {
+      color: black;
+      font-family: Arial, sans-serif;
+      font-style: normal;
+      font-weight: normal;
+      text-decoration: none;
+      font-size: 10pt;
+    }
+
+    .s14 {
+      color: black;
+      font-family: Arial, sans-serif;
+      font-style: normal;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 10pt;
+    }
+
+    .s15 {
+      color: black;
+      font-family: Arial, sans-serif;
+      font-style: normal;
+      font-weight: normal;
+      text-decoration: none;
+      font-size: 9.5pt;
+    }
+    .pg-1 {
+      padding-top: 8pt;
+      text-align: left;
+    }
+
+    .pt-2 {
+      padding-left: 88pt;
+      text-indent: -71pt;
+      line-height: 89%;
+      text-align: left;
+    }
+
+    .pg-3 {
+      padding-top: 0;
+      padding-left: 16pt;
+      text-indent: 0pt;
+      text-align: left;
+    }
+
+    .pg-4 {
+      padding-top: 4pt;
+      text-indent: 0pt;
+      text-align: left;
+    }
+
+    .pg-5 {
+      padding-left: 16pt;
+      text-indent: 0pt;
+      text-align: left;
+    }
+
+    .pg-6 {
+      padding-top: 5pt;
+      padding-left: 19pt;
+      text-indent: 0pt;
+      text-align: left;
+    }
+
+    .pg-7 {
+      padding-top: 3pt;
+      padding-left: 19pt;
+      text-indent: 0pt;
+      text-align: left;
+    }
+
+    .pg-8 {
+      padding-top: 9pt;
+      padding-left: 16pt;
+      padding-right: 23pt;
+      text-indent: 0pt;
+      line-height: 106%;
+      text-align: left;
+    }
+
+    .pg-9 {
+      padding-left: 9pt;
+      padding-right: 7pt;
+      text-indent: 0pt;
+      text-align: center;
+    }
+
+    .pg-10 {
+      padding-top: 3pt;
+      padding-left: 16pt;
+      padding-right: 23pt;
+      margin-bottom: 0 !important;
+      text-indent: 0pt;
+      line-height: 106%;
+      text-align: left;
+    }
+
+    .pg-11 {
+      padding-top: 4pt;
+      padding-left: 16pt;
+      margin-bottom: 0 !important;
+      text-indent: 0pt;
+      text-align: left;
+    }
+
+    .pg-10 {
+      padding-top: 7pt;
+      padding-left: 10pt;
+      margin-bottom 0pt !important;
+      text-indent: 0pt;
+      line-height: 106%;
+      text-align: left;
+    }
+
+    .pg-13 {
+      padding-left: 44pt;
+      padding-right: 23pt;
+      text-indent: 0pt;
+      line-height: 106%;
+      text-align: left;
+    }
+
+    .pg-14 {
+      padding-top: 5pt;
+      padding-left: 16pt;
+      padding-right: 23pt;
+      text-indent: 0pt;
+      line-height: 106%;
+      text-align: left;
+    }
+
+    .pg-15 {
+      padding-top: 3pt;
+      padding-left: 4pt;
+      text-indent: 0pt;
+      text-align: left;
+    }
+
+    .pg-16 {
+      padding-top: 3pt;
+      padding-left: 6pt;
+      text-indent: 0pt;
+      text-align: left;
+    }
+
+    .td-1 {
+      width: 800px;
+      border-top-style: solid;
+      border-top-width: 2pt;
+      border-left-style: solid;
+      border-left-width: 2pt;
+      border-bottom-style: solid;
+      border-bottom-width: 2pt;
+      border-right-style: solid;
+      border-right-width: 2pt;
+    }
+
+    .td-2 {
+      border-top-style: solid;
+      border-top-width: 2pt;
+      border-left-style: solid;
+      border-left-width: 2pt;
+      border-bottom-style: solid;
+      border-bottom-width: 2pt;
+      border-right-style: solid;
+      border-right-width: 2pt;
+    }
+
+    .span-input {
+      border-top: none;
+      border-right: none;
+      border-left: none;
+      border-bottom: 2px solid black;
+      margin-bottom: 5px;
+      padding-bottom: 3px;
+      text-align: center;
+      display: inline-block;
+      width: 200px;
+      /* Adjust width as needed */
+      font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+      font-size: 10pt;
+      /* Adjust font size as needed */
+    }
+
+    .sig-input {
+      border-top: none;
+      border-right: none;
+      border-left: none;
+      border-bottom: 2px solid black;
+      margin-bottom: 5px;
+      padding-bottom: 3px;
+      text-align: center;
+      display: inline-block;
+      width: 350px;
+      font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+      font-size: 10pt;
+
+    }
+
+    .ul-extra-long {
+      display: inline-block;
+      width: 150pt;
+      border-bottom: 2px solid black;
+      text-align: center;
+    }
+
+    .ul-long {
+      display: inline-block;
+      width: 125pt;
+      border-bottom: 2px solid black;
+      text-align: center;
+    }
+
+    .ul-mid {
+      display: inline-block;
+      width: 60pt;
+      border-bottom: 2px solid black;
+      text-align: center;
+    }
+
+    .ul-short {
+      display: inline-block;
+      width: 30px;
+      border-bottom: 2px solid black;
+      text-align: center;
+    }
+
+    .flex-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .flex-item {
+      flex: 1;
+    }
+
+    .input-right {
+      margin-left: auto;
+    }
+    .sig-right, .sig-left {
+      width: 50%;
+      margin: auto;
+    }
+    .left-text, .right-text {
+      width: 50%;
+      text-align: center;
+    }
+    .inline-container {
+      display: flex;
+      align-items: center;
+    }
+
+    .inline-container img {
+      margin-left: 25px;
+    }
+
+    .inline-container p {
+      margin: 0;
+    }
+
+    .cb {
+      vertical-align: middle;
+    }
+    #student_detail_header {
+      display: none;
+    }
+    #hls-table {
+      margin-top: 0;
+    }
+  </style>
+
+  <script src="/scripts/tpscustom.js"></script>
+
+  ~[wc:admin_header_frame_css]
+  <!-- breadcrumb start -->
+  <a href="/admin/home.html" target="_top">Start Page</a> &gt; <a
+    href="/admin/students/home.html?selectstudent=nosearch" target="_top">Student Selection</a> &gt; Home Language
+  Survey
+  <!-- breadcrumb end -->
+  ~[wc:admin_navigation_frame_css]
+  <!-- start of main menu and content -->
+    <!-- start of content area -->
+    ~[if.~(gpv.changesSaved)=true]<div class="feedback-confirm">~[text:psx.common.changes_recorded]</div>[/if]
+    <div class="box-round">
+      <table id="hls-table" cellspacing="0">
+        <tr style="height: 33pt">
+          <td colspan="8" class="td-1">
+            <p style="text-indent: 0pt; text-align: left">
+              <span>
+                <img width="96" height="35" alt="image" src="/images/oksde_logo.png" />
+              </span>
+            </p>
+            <p class="s1" style="
+              padding-top: 6pt;
+              padding-left: 11pt;
+              text-indent: 0pt;
+              text-align: left;
+            ">
+              SCHOOL YEAR:
+              <span class="s2">~(*evaluate
+                right("~([Students.U_StudentsUserFields]TPS_ELL_First_Identified_Ent01)",4))</span>
+              <span class="s3"> HOME LANGUAGE SURVEY</span>
+            </p>
+          </td>
+        </tr>
+        <tr style="
+          height: 19pt
+          "
+        >
+          <td colspan="8" class="td-1" bgcolor="#2D74B5">
+            <p class="s4 pg-9">
+              STUDENT INFORMATION
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="8">
+              <!-- ws-1 class applies natural whitespace pre tag to row -->
+              <span class="ws-1">Student Name: <span class="ul-long">~([Students]First_Name)</span>  <span class="ul-long">~([Students]Middle_Name)</span>  <span class="ul-long">~([Students]Last_Name)</span>  Grade: <span class="ul-short">~([Students]Grade_Level)
+              </span>
+                                        First Name          Middle Name             Last Name</span>
+              <span class="ws-1">Date of Birth: <span class="ul-mid">~([Students]DOB)</span> School: <span class="ul-extra-long">~([Schools]Abbreviation)</span>  Student ID#:  <span class="ul-mid">~([Students]Student_Number)</span> Gender: Male <img id="cb-male" class="cb" width="24" height="24" alt="image" src="/images/hls_checkbox.png" /> Female <img id="cb-female" class="cb"
+                  width="24" height="24" alt="image" src="/images/hls_checkbox.png" />
+                            MM/DD/YYYY</span>
+            <p class="s9 pg-3">
+              <span class="s5">Is the student of Hispanic or Latino culture or origin? </span>YES
+              <span><img id="cb" width="24" height="24" alt="image" src="/images/hls_checkbox.png" /></span><span
+                class="s7"> </span>NO
+              <span><img id="cb" width="24" height="24" alt="image" src="/images/hls_checkbox.png" /></span>
+            </p>
+            <p class="s5 pg-5">
+              Please select one or more of the following races:
+            </p>
+            <p class="s5 pg-6">
+              <span><img id="cb" width="24" height="24" alt="image" src="/images/hls_checkbox.png" /></span><span
+                class="s10"> </span>African American/Black
+              <span><img id="cb" width="24" height="24" alt="image" src="/images/hls_checkbox.png" /></span><span
+                class="s7"> </span>American Indian/Alaskan Native
+              <span><img id="cb" width="24" height="24" alt="image" src="/images/hls_checkbox.png" /></span><span
+                class="s7"> </span>Asian
+            </p>
+            <p class="s5 pg-7">
+              <span><img id="cb" width="24" height="24" alt="image" src="/images/hls_checkbox.png" /></span><span
+                class="s10"> </span>Native Hawaiian/Pacific Islander
+              <span><img id="cb" width="24" height="24" alt="image" src="/images/hls_checkbox.png" /></span><span
+                class="s7"> </span>Caucasian/White
+            </p>
+            <p class="s11 pg-8">
+              The purpose of the following questions is to help determine if a
+              student’s exposure to a language other<br> than English may make them
+              eligible to receive additional English Learner (EL) supports.
+            </p>
+            <ol id="l1">
+              <li> <!-- ol 1 -->
+                <div class="flex-container">
+                  <p class="s5 flex-item pg-1">
+                    What is the dominant language most often spoken by the student?
+                  </p>
+                  <span class="ul-long input-right">
+                    ~([Students.S_OK_STU_X]Language1)
+                  </span>
+                </div>
+              </li>
+              <li> <!-- ol 2 -->
+                <div class="flex-container">
+                  <p class="s5 flex-item pg-1">
+                    What is the language routinely spoken in the home, regardless of the language spoken by the student?
+                  </p>
+                  <span class="ul-long">
+                    ~([Students.S_OK_STU_X]Language2)
+                  </span>
+                </div>
+              </li>
+              <li> <!-- ol 3 -->
+                <div class="flex-container">
+                  <p class="s5 flex-item pg-1">
+                    What language was first learned by the student?
+                  </p>
+                  <span class="ul-long">
+                    ~([Students.S_OK_STU_X]Language3)
+                  </span>
+                </div>
+              </li>
+              <li> <!-- ol 4 -->
+                <p class="s5 pg-15">
+                  Does the parent/guardian need
+                </p>
+                <ul style="margin-inline-end:0;">
+                  <li>
+                    <div class="flex-container">
+                      <span class="s5 flex-item">interpretation services? </span><span class="input-right">YES
+                        <span><img id="cb" width="24" height="24" alt="image"
+                            src="/images/hls_checkbox.png" /></span><span class="s7"> </span>NO <span><img id="cb"
+                            width="24" height="24" alt="image" src="/images/hls_checkbox.png" /></span><span class="s7">
+                        </span><span class="s5">If YES, in what language? </span><span class="ul-long">
+                          ~([Students.U_StudentsUserFields]TPS_ELL_HLS_Interpreter2)</span></span>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+              <li> <!-- ol 5 -->
+                <p class="s5 pg-15">
+                  Does the parent/guardian need
+                </p>
+                <ul style="margin-inline-end:0;">
+                  <li>
+                    <div class="flex-container">
+                      <span class="s5 flex-item">translation services? </span><span class="input-right">YES <span><img
+                            id="cb" width="24" height="24" alt="image" src="/images/hls_checkbox.png" /></span><span
+                          class="s7"> </span>NO <span><img id="cb" width="24" height="24" alt="image"
+                            src="/images/hls_checkbox.png" /></span><span class="s7"> </span><span class="s5">If YES, in
+                        what language? </span><span class="ul-long">
+                        ~([Students.U_StudentsUserFields]TPS_ELL_HLS_Translated_Mater02)</span></span>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+              <li> <!-- ol 6 -->
+                <div class="flex-container">
+                  <p class="s5 flex-item pg-1">
+                    What was the date the student first enrolled in a school in the United States?
+                  </p>
+                  <span class="input-right ul-long">~([Students.U_StudentsUserFields]TPS_ELL_First_Year_US_School)
+                  </span>
+                </div>
+              </li>
+            </ol>
+            <div class="flex-container">
+              <div class="left-text"><input type="text" class="sig-input" name="" value="" /></div>
+              <div class="right-text"><input type="text" class="sig-input" name="" value="" /></div>
+            </div>
+            <div class="flex-container">
+              <p class="s5 left-text">Date (MM/DD/YYYY)</p>
+              <p class="s5 right-text">Parent or Guardian Signature</p>
+            </div>
+          </td>
+        </tr>
+        <tr style="height: 17pt">
+          <td colspan="6" class="td-1"
+            bgcolor="#2D74B5">
+            <p class="s4 pg-9">
+              SCHOOL USE ONLY
+            </p>
+          </td>
+        </tr>
+        <tr style="height: 100pt">
+          <td colspan="6" class="td-1">
+            <p class="s13 pg-10">
+              The response of a language other than English to any or all of
+              questions #1, #2, and #3 above should prompt local review of the
+              student’s potential EL identification and assessment history in the
+              state Accountability Reporting application. If no previous EL
+              history is present, the student must be administered a
+              state-approved screening tool to determine their EL status.
+            </p>
+            <p class="s14 pg-11">
+              If this HLS will be used for the purposes of Non-EL Bilingual
+              qualification, please indicate one of the following:
+            </p>
+            <div class="inline-container">
+              <img width="23" height="24" alt="image" src="/images/hls_checkbox.png" />
+              <p class="s13 pg-10">
+                A language other than English is indicated
+                <b>TWO OR MORE TIMES </b>in questions #1, #2, and #3 above. The
+                student is considered “<b>more often</b>” and has previously
+                demonstrated English language proficiency on the PKST* or WIDA
+                assessment :
+              </p>
+            </div>
+        </tr>
+        <tr style="height: 12pt">
+          <td class="td-2" style="
+            width: 98pt;
+            " bgcolor="#BEBEBE">
+            <p class="s9 pg-15">
+              Assessment Name:
+            </p>
+          </td>
+          <td class="td-2" style="
+            width: 145pt;
+          ">
+            <p style="text-indent: 0pt; text-align: left"><br /></p>
+          </td>
+          <td class="td-2" style="
+            width: 80pt;
+          " bgcolor="#BEBEBE">
+            <p class="s9 pg-15">
+              Year Assessed:
+            </p>
+          </td>
+          <td class="td-2" style="
+            width: 78pt;
+          ">
+            <p></p>
+          </td>
+          <td class="td-2" style="
+            width: 40pt;
+          " bgcolor="#BEBEBE">
+            <p class="s9 pg-16">
+              Score:
+            </p>
+          </td>
+          <td class="td-2" style="
+            width: 97pt;
+          ">
+            <p style="text-indent: 0pt; text-align: left"><br /></p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="6">
+            <div class="inline-container">
+              <span><img width="24" height="24" alt="image" src="/images/hls_checkbox.png" /></span>
+                <p class="s13 pg-10">
+                  A language other than English is indicated <b>ONE TIME </b>in
+                  questions #1, #2, and #3 above. The student is considered “<b>less often</b>” and has demonstrated English
+                  language proficiency on the PKST* or
+                  WIDA assessment. The student’s PKST* or WIDA assessment score and
+                  additional qualifying score is noted on the attached “Less Often”
+                  Non-EL Bilingual Qualification Form.
+                </p>
+            </div>
+            <p class="s15 pg-14">
+              *A PKST score is valid only for a student&#39;s pre-K year(s).
+              Regardless of the PKST score earned, a student administered the PKST
+              must be administered the WIDA K Screener at the outset of
+              kindergarten. To qualify a student as Non-EL Bilingual beyond their
+              pre-K year, a student must either demonstrate initial proficiency on
+              the WIDA K Screener or subsequently on the K ACCESS or ACCESS
+              assessment.
+            </p>
+          </td>
+        </tr>
+      </table>
+    </div>
+  <!-- end of content area -->
+  ~[wc:admin_footer_frame_css]
+</body>
+</html>
