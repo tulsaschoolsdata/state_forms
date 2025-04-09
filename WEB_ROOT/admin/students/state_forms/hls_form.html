@@ -23,19 +23,19 @@ TemplateName:Admin Student Page
       }
       .box-round {
         border: 2px solid #ff0000;
-        width: 608pt !important;
-        padding: 0;
+        width: 608pt !important; /* Ensure the container width is fixed */
+        padding: 0; /* Ensure no extra padding inside the container */
         margin: 0 auto;
-        overflow: hidden;
+        overflow: hidden; /* Prevent content overflow */
       }
 
       .box-round table {
-        width: 100% !important;
-        max-width: 608pt;
-        padding: 0;
-        margin: 0 auto;
-        border-spacing: 0;
-        border-collapse: collapse;
+        width: 100% !important; /* Make the table fill the container */
+        max-width: 608pt; /* Prevent the table from exceeding the container */
+        padding: 0; /* Ensure no padding inside the table */
+        margin: 0 auto; /* Center the table within the container */
+        border-spacing: 0; /* Remove extra spacing between table cells */
+        border-collapse: collapse; /* Ensure proper table rendering */
       }
     }
     ol {
@@ -227,6 +227,10 @@ TemplateName:Admin Student Page
       text-decoration: none;
       font-size: 9.5pt;
     }
+    
+    .s16 {
+      padding-top: 3pt;
+    }
     .pg-1 {
       padding-top: 8pt;
       text-align: left;
@@ -348,17 +352,10 @@ TemplateName:Admin Student Page
 
     .td-1 {
       width: 800px;
-      border-top-style: solid;
-      border-top-width: 2pt;
-      border-left-style: solid;
-      border-left-width: 2pt;
-      border-bottom-style: solid;
-      border-bottom-width: 2pt;
-      border-right-style: solid;
-      border-right-width: 2pt;
+
     }
 
-    .td-2 {
+    .td1, .td-2 {
       border-top-style: solid;
       border-top-width: 2pt;
       border-left-style: solid;
@@ -397,7 +394,7 @@ TemplateName:Admin Student Page
       width: 350px;
       font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
       font-size: 10pt;
-
+      /* Adjust font size as needed */
     }
 
     .ul-extra-long {
@@ -520,34 +517,19 @@ TemplateName:Admin Student Page
         <tr>
           <td colspan="8">
               <!-- ws-1 class applies natural whitespace pre tag to row -->
-              <span class="ws-1">Student Name: <span class="ul-long">~([Students]First_Name)</span>  <span class="ul-long">~([Students]Middle_Name)</span>  <span class="ul-long">~([Students]Last_Name)</span>  Grade: <span class="ul-short">~([Students]Grade_Level)
-              </span>
+              <span class="ws-1">    Student Name: <span class="ul-long">~([Students]First_Name)</span>  <span class="ul-long">~([Students]Middle_Name)</span>  <span class="ul-long">~([Students]Last_Name)</span>  Grade: <span class="ul-short">~([Students]Grade_Level)</span>
                                         First Name          Middle Name             Last Name</span>
-              <span class="ws-1">Date of Birth: <span class="ul-mid">~([Students]DOB)</span> School: <span class="ul-extra-long">~([Schools]Abbreviation)</span>  Student ID#:  <span class="ul-mid">~([Students]Student_Number)</span> Gender: Male <img id="cb-male" class="cb" width="24" height="24" alt="image" src="/images/hls_checkbox.png" /> Female <img id="cb-female" class="cb"
-                  width="24" height="24" alt="image" src="/images/hls_checkbox.png" />
+              <span class="ws-1">    Date of Birth: <span class="ul-mid">~([Students]DOB)</span> School: <span class="ul-extra-long">~([Schools]Abbreviation)</span>  Student ID#:  <span class="ul-mid">~([Students]Student_Number)</span> Gender: Male <input type="checkbox" name="[Students]Gender" value="" /> Female <input type="checkbox" name="[Students]Gender" value="" />
                             MM/DD/YYYY</span>
             <p class="s9 pg-3">
               <span class="s5">Is the student of Hispanic or Latino culture or origin? </span>YES
-              <span><img id="cb" width="24" height="24" alt="image" src="/images/hls_checkbox.png" /></span><span
+              <span><input type="radio" name="[Students]FedEthnicity" value="" /></span><span
                 class="s7"> </span>NO
-              <span><img id="cb" width="24" height="24" alt="image" src="/images/hls_checkbox.png" /></span>
+              <span><input type="radio" name="[Students]FedEthnicity" /></span>
             </p>
             <p class="s5 pg-5">
               Please select one or more of the following races:
-            </p>
-            <p class="s5 pg-6">
-              <span><img id="cb" width="24" height="24" alt="image" src="/images/hls_checkbox.png" /></span><span
-                class="s10"> </span>African American/Black
-              <span><img id="cb" width="24" height="24" alt="image" src="/images/hls_checkbox.png" /></span><span
-                class="s7"> </span>American Indian/Alaskan Native
-              <span><img id="cb" width="24" height="24" alt="image" src="/images/hls_checkbox.png" /></span><span
-                class="s7"> </span>Asian
-            </p>
-            <p class="s5 pg-7">
-              <span><img id="cb" width="24" height="24" alt="image" src="/images/hls_checkbox.png" /></span><span
-                class="s10"> </span>Native Hawaiian/Pacific Islander
-              <span><img id="cb" width="24" height="24" alt="image" src="/images/hls_checkbox.png" /></span><span
-                class="s7"> </span>Caucasian/White
+                 ~[brij_renderform:federalrace;:GetStudentRaceSelectionBlock]
             </p>
             <p class="s11 pg-8">
               The purpose of the following questions is to help determine if a
@@ -555,7 +537,7 @@ TemplateName:Admin Student Page
               eligible to receive additional English Learner (EL) supports.
             </p>
             <ol id="l1">
-              <li> <!-- ol 1 -->
+              <li> <!-- ol li 1 -->
                 <div class="flex-container">
                   <p class="s5 flex-item pg-1">
                     What is the dominant language most often spoken by the student?
@@ -565,7 +547,7 @@ TemplateName:Admin Student Page
                   </span>
                 </div>
               </li>
-              <li> <!-- ol 2 -->
+              <li> <!-- ol li 2 -->
                 <div class="flex-container">
                   <p class="s5 flex-item pg-1">
                     What is the language routinely spoken in the home, regardless of the language spoken by the student?
@@ -575,7 +557,7 @@ TemplateName:Admin Student Page
                   </span>
                 </div>
               </li>
-              <li> <!-- ol 3 -->
+              <li> <!-- ol li 3 -->
                 <div class="flex-container">
                   <p class="s5 flex-item pg-1">
                     What language was first learned by the student?
@@ -585,41 +567,65 @@ TemplateName:Admin Student Page
                   </span>
                 </div>
               </li>
-              <li> <!-- ol 4 -->
+              <li> <!-- ol li 4 -->
                 <p class="s5 pg-15">
                   Does the parent/guardian need
                 </p>
                 <ul style="margin-inline-end:0;">
                   <li>
                     <div class="flex-container">
-                      <span class="s5 flex-item">interpretation services? </span><span class="input-right">YES
-                        <span><img id="cb" width="24" height="24" alt="image"
-                            src="/images/hls_checkbox.png" /></span><span class="s7"> </span>NO <span><img id="cb"
-                            width="24" height="24" alt="image" src="/images/hls_checkbox.png" /></span><span class="s7">
-                        </span><span class="s5">If YES, in what language? </span><span class="ul-long">
+                      <span class="s5 flex-item">interpretation services? </span><span class="input-right">
+                                        ~[if#mod.security.canmodifyfield=U_StudentsUserFields.TPS_ELL_HLS_Interpreter]
+                <div
+                  style="
+                    display: flex;
+                    justify-content: left;
+                    font-weight: bold;
+                    padding-left: 10px;
+                  "
+                >
+                  <label>Yes</label><input
+                      id="interpreter-y"
+                      type="radio"
+                      value="Yes"
+                      name="[Students.U_StudentsUserFields]TPS_ELL_HLS_Interpreter"
+                    /><label>No</label><input
+                      id="interpreter-n"
+                      type="radio"
+                      value="No"
+                      name="[Students.U_StudentsUserFields]TPS_ELL_HLS_Interpreter"
+                    /></span>
+                </div>
+                [else#mod]
+                ~[if#view.security.canviewfield=U_StudentsUserFields.TPS_ELL_HLS_Interpreter]
+                <b
+                  >~(decode;~([Students.U_StudentsUserFields]TPS_ELL_HLS_Interpreter);V8;Yes
+                  ;V9;No
+                  ;~([Students.U_StudentsUserFields]TPS_ELL_HLS_Interpreter))
+                </b>
+                [else#view]
+                <label><i>no access</i></label>
+                [/if#view] [/if#mod]<span class="s5">If YES, in what language? </span><span class="ul-long">
                           ~([Students.U_StudentsUserFields]TPS_ELL_HLS_Interpreter2)</span></span>
                     </div>
                   </li>
                 </ul>
               </li>
-              <li> <!-- ol 5 -->
+              <li> <!-- ol li 5 -->
                 <p class="s5 pg-15">
                   Does the parent/guardian need
                 </p>
                 <ul style="margin-inline-end:0;">
                   <li>
                     <div class="flex-container">
-                      <span class="s5 flex-item">translation services? </span><span class="input-right">YES <span><img
-                            id="cb" width="24" height="24" alt="image" src="/images/hls_checkbox.png" /></span><span
-                          class="s7"> </span>NO <span><img id="cb" width="24" height="24" alt="image"
-                            src="/images/hls_checkbox.png" /></span><span class="s7"> </span><span class="s5">If YES, in
+                      <span class="s5 flex-item">translation services? </span><span class="input-right">YES <input type="radio" name="[Students.U_StudentsUserFields]TPS_ELL_HLS_Translated_Mater01" value="" />NO <input type="radio" name="[Students.U_StudentsUserFields]TPS_ELL_HLS_Translated_Mater01" value="" /><span class="s5">If YES, in
                         what language? </span><span class="ul-long">
                         ~([Students.U_StudentsUserFields]TPS_ELL_HLS_Translated_Mater02)</span></span>
                     </div>
                   </li>
                 </ul>
               </li>
-              <li> <!-- ol 6 -->
+              <li> <!-- ol li 6 -->
                 <div class="flex-container">
                   <p class="s5 flex-item pg-1">
                     What was the date the student first enrolled in a school in the United States?
@@ -662,7 +668,7 @@ TemplateName:Admin Student Page
               qualification, please indicate one of the following:
             </p>
             <div class="inline-container">
-              <img width="23" height="24" alt="image" src="/images/hls_checkbox.png" />
+              <img width="23" height="24" alt="image" src="/images/checkbox.png" />
               <p class="s13 pg-10">
                 A language other than English is indicated
                 <b>TWO OR MORE TIMES </b>in questions #1, #2, and #3 above. The
@@ -713,7 +719,7 @@ TemplateName:Admin Student Page
         <tr>
           <td colspan="6">
             <div class="inline-container">
-              <span><img width="24" height="24" alt="image" src="/images/hls_checkbox.png" /></span>
+              <span><img width="24" height="24" alt="image" src="/images/checkbox.png" /></span>
                 <p class="s13 pg-10">
                   A language other than English is indicated <b>ONE TIME </b>in
                   questions #1, #2, and #3 above. The student is considered “<b>less often</b>” and has demonstrated English

@@ -1,0 +1,36 @@
+{
+  "pages": [
+      {
+          "htmlID": "state_forms_nav",
+          "parentHTMLID": "navStudentComplianceSection",
+          "title": "OK State Forms",
+          "sortOrder": 700,
+          "pageURL": null,
+          "districtLevelContext": 2,
+          "contextType": "student",
+          "version": "0.1.0.0",
+          "children": [
+            {
+              "htmlID": "state_forms_hls",
+              "title": "Home Language Survey",
+              "sortOrder": 755,
+              "pageURL": "/admin/students/state_forms/hls_form.html",
+              "districtLevelContext": 2,
+              "contextType": "student",
+              "version": "0.1.0.0"
+            },
+            {
+              "htmlID": "state_reporting_forms",
+              "title": "Ed 506 Form",
+              "sortOrder": 760,
+              "pageURL": "/admin/students/state_forms/506_form.html",
+              "districtLevelContext": 2,
+              "contextType": "student",
+              "version": "0.1.0.0"
+            }
+          ]
+      }    
+  ]
+}
+
+
