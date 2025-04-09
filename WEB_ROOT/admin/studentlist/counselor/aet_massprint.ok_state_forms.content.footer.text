@@ -1,9 +1,0 @@
-~[if.~(studentscreenaccess;quicklookup.html)=1]
-<script>
-  $j(document).ready(function() {
-    	$j("select[name$='studpage']").append( "<option>-------------------------</option>" );
-	$j("select[name$='studpage']").append("<option value='/admin/students/tps_forms/hls_form.html?plc=hldr'>HLS Form</a>");
-
-  });
-</script>
-[/if]
