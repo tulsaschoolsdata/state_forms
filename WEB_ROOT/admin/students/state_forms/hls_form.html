@@ -1,18 +1,16 @@
-
 <!--
 TemplateName:Admin Student Page
 -->
 <!DOCTYPE html>
 <html>
-
 <head>
-  <title>Home Language Survey</title>
-  <!-- required scripts -->
-  ~[wc:commonscripts]
-  <!-- Required style sheets: screen.css, and print.css -->
-  <link href="/images/css/screen.css" rel="stylesheet" media="screen">
-  <link href="/images/css/print.css" rel="stylesheet" media="print">
-  <style type="text/css">
+	<title>tps_test</title>
+<!-- required scripts -->
+	~[wc:commonscripts] 
+<!-- Required style sheets: screen.css, and print.css -->
+	<link href="/images/css/screen.css" rel="stylesheet" media="screen">
+	<link href="/images/css/print.css" rel="stylesheet" media="print">
+	  <style type="text/css">
     @media print {
       #student-detail-header,
       #pds-header,
@@ -98,6 +96,10 @@ TemplateName:Admin Student Page
 
     em {
       display: none;
+    }
+    .hls-table {
+      margin-top: 0 !important;
+      margin-bottom: 0 !important;
     }
     .s1 {
       color: black;
@@ -423,7 +425,6 @@ TemplateName:Admin Student Page
       border-bottom: 2px solid black;
       text-align: center;
     }
-
     .flex-container {
       display: flex;
       justify-content: space-between;
@@ -464,23 +465,21 @@ TemplateName:Admin Student Page
     #student_detail_header {
       display: none;
     }
-    #hls-table {
+    .hls-table {
       margin-top: 0;
     }
   </style>
-
-  ~[wc:admin_header_frame_css]
-  <!-- breadcrumb start -->
-  <a href="/admin/home.html" target="_top">Start Page</a> &gt; <a
-    href="/admin/students/home.html?selectstudent=nosearch" target="_top">Student Selection</a> &gt; Home Language
-  Survey
-  <!-- breadcrumb end -->
-  ~[wc:admin_navigation_frame_css]
-  <!-- start of main menu and content -->
-    <!-- start of content area -->
-    ~[if.~(gpv.changesSaved)=true]<div class="feedback-confirm">~[text:psx.common.changes_recorded]</div>[/if]
-    <div class="box-round">
-      <table id="hls-table" cellspacing="0">
+</head> 
+<body> 
+	~[wc:admin_header_frame_css]
+	<!-- breadcrumb start -->
+		<a href="/admin/home.html" target="_top">Start Page</a> &gt; <a href="/admin/students/home.html?selectstudent=nosearch" target="_top">Student Selection</a> &gt; tps_test
+	<!-- breadcrumb end -->
+~[wc:admin_navigation_frame_css]
+<!-- start of main menu and content -->
+<!-- start of content area -->
+	<div class="box-round">      
+	  <table class="hls-table" cellspacing="0">
         <tr style="height: 33pt">
           <td colspan="8" class="td-1">
             <p style="text-indent: 0pt; text-align: left">
@@ -510,20 +509,21 @@ TemplateName:Admin Student Page
               STUDENT INFORMATION
             </p>
           </td>
+
         </tr>
-        <tr>
-          <td colspan="8">
+      </table>
+      <table class="hls-table" cellspacing="0">
+          <tr>
+              <td colspan="6">
               <!-- ws-1 class applies natural whitespace pre tag to row -->
-              <span class="ws-1">    Student Name: <span class="ul-long">~([Students]First_Name)</span>  <span class="ul-long">~([Students]Middle_Name)</span>  <span class="ul-long">~([Students]Last_Name)</span>  Grade: <span class="ul-short">~([Students]Grade_Level)</span>
+              <span class="ws-1">        Student Name: <span class="ul-long">~([Students]First_Name)</span>  <span class="ul-long">~([Students]Middle_Name)</span>  <span class="ul-long">~([Students]Last_Name)</span>  Grade: <span class="ul-short">~(Grade_Level)</span>
                                         First Name          Middle Name             Last Name</span>
-              <span class="ws-1">    Date of Birth: <span class="ul-mid">~([Students]DOB)</span> School: <span class="ul-extra-long">~([Schools]Abbreviation)</span>  Student ID#:  <span class="ul-mid">~([Students]Student_Number)</span> Gender: Male <input type="checkbox" name="[Students]Gender" value="" /> Female <input type="checkbox" name="[Students]Gender" value="" />
-                            MM/DD/YYYY</span>
+              <span class="ws-1">        Date of Birth: <span class="ul-long">~(DOB)</span> School: <span class="ul-extra-long">~([Schools]Abbreviation)</span>  Student ID#:  <span class="ul-mid">~(student_number)</span> Gender: Male <input type="checkbox" name="[Students]Gender" value="" /> Female <input type="checkbox" name="[Students]Gender" value="" />
+                                MM/DD/YYYY</span>
             <p class="s9 pg-3">
-              <span class="s5">Is the student of Hispanic or Latino culture or origin? </span>YES
-              <span><input type="radio" name="[Students]FedEthnicity" value="" /></span><span
-                class="s7"> </span>NO
-              <span><input type="radio" name="[Students]FedEthnicity" /></span>
+              <span class="s5">Is the student of Hispanic or Latino culture or origin? </span>YES <div class="choicefloat"><input type="radio" name="[01]FedEthnicity" value="1">YES</div><div class="choicefloat"><input type="radio" name="[01]FedEthnicity" value="0">NO</div>
             </p>
+            
             <p class="s5 pg-5">
               Please select one or more of the following races:
                  ~[brij_renderform:federalrace;:GetStudentRaceSelectionBlock]
@@ -571,39 +571,17 @@ TemplateName:Admin Student Page
                 <ul style="margin-inline-end:0;">
                   <li>
                     <div class="flex-container">
-                      <span class="s5 flex-item">interpretation services? </span><span class="input-right">
-                                        ~[if#mod.security.canmodifyfield=U_StudentsUserFields.TPS_ELL_HLS_Interpreter]
-                <div
-                  style="
-                    display: flex;
-                    justify-content: left;
-                    font-weight: bold;
-                    padding-left: 10px;
-                  "
-                >
-                  <label>Yes</label><input
-                      id="interpreter-y"
+                      <span class="s5 flex-item">interpretation services? </span><span class="input-right"> YES<input
                       type="radio"
-                      value="Yes"
                       name="[Students.U_StudentsUserFields]TPS_ELL_HLS_Interpreter"
-                    /><label>No</label><input
-                      id="interpreter-n"
+                      value=""
+                    />NO<input
                       type="radio"
-                      value="No"
                       name="[Students.U_StudentsUserFields]TPS_ELL_HLS_Interpreter"
-                    /></span>
-                </div>
-                [else#mod]
-                ~[if#view.security.canviewfield=U_StudentsUserFields.TPS_ELL_HLS_Interpreter]
-                <b
-                  >~(decode;~([Students.U_StudentsUserFields]TPS_ELL_HLS_Interpreter);V8;Yes
-                  ;V9;No
-                  ;~([Students.U_StudentsUserFields]TPS_ELL_HLS_Interpreter))
-                </b>
-                [else#view]
-                <label><i>no access</i></label>
-                [/if#view] [/if#mod]<span class="s5">If YES, in what language? </span><span class="ul-long">
-                          ~([Students.U_StudentsUserFields]TPS_ELL_HLS_Interpreter2)</span></span>
+                      value=""
+                    /><span class="s5">If YES, in
+                        what language? </span><span class="ul-long">
+                        ~([Students.U_StudentsUserFields]TPS_ELL_HLS_Interpreter2)</span></span>
                     </div>
                   </li>
                 </ul>
@@ -615,7 +593,7 @@ TemplateName:Admin Student Page
                 <ul style="margin-inline-end:0;">
                   <li>
                     <div class="flex-container">
-                      <span class="s5 flex-item">translation services? </span><span class="input-right">YES <input type="radio" name="[Students.U_StudentsUserFields]TPS_ELL_HLS_Translated_Mater01" value="" />NO <input type="radio" name="[Students.U_StudentsUserFields]TPS_ELL_HLS_Translated_Mater01" value="" /><span class="s5">If YES, in
+                      <span class="s5 flex-item">translation services? </span><span class="input-right"> YES<input type="radio" name="[Students.U_StudentsUserFields]TPS_ELL_HLS_Translated_Mater01" value="" />NO<input type="radio" name="[Students.U_StudentsUserFields]TPS_ELL_HLS_Translated_Mater01" value="" /><span class="s5">If YES, in
                         what language? </span><span class="ul-long">
                         ~([Students.U_StudentsUserFields]TPS_ELL_HLS_Translated_Mater02)</span></span>
                     </div>
@@ -640,8 +618,9 @@ TemplateName:Admin Student Page
               <p class="s5 left-text">Date (MM/DD/YYYY)</p>
               <p class="s5 right-text">Parent or Guardian Signature</p>
             </div>
-          </td>
-        </tr>
+                  
+              </td>
+          </tr>
         <tr style="height: 17pt">
           <td colspan="6" class="td-1"
             bgcolor="#2D74B5">
@@ -738,8 +717,8 @@ TemplateName:Admin Student Page
           </td>
         </tr>
       </table>
-    </div>
-  <!-- end of content area -->
-  ~[wc:admin_footer_frame_css]
-</body>
+	</div>
+<!-- end of content area -->
+	~[wc:admin_footer_frame_css]
+</body> 
 </html>
