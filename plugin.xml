@@ -1,5 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?><plugin xmlns="http://plugin.powerschool.pearson.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" description="OK State Reporting Forms" name="OK State Forms" version="1.0" xsi:schemaLocation="http://plugin.powerschool.pearson.com plugin.xsd">
-<publisher name="J. Zuvanich">
-<contact email="devteam@tulsaschools.org"/>
-</publisher>
+<?xml version="1.1" encoding="UTF-8"?>
+<plugin xmlns="http://plugin.powerschool.pearson.com"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://plugin.powerschool.pearson.com plugin.xsd"
+	name="OK State Forms"
+	version="0.1.0.0"
+	description="Oklahoma State Reporting Forms">
+
+	<publisher name="Joseph Zuvanich">
+		<contact email="devteam@tulsaschools.org"/>
+	</publisher>
 </plugin>
