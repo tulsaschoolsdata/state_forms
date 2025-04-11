@@ -314,7 +314,7 @@ TemplateName:Admin Student Page
     .pg-10 {
       padding-top: 7pt;
       padding-left: 10pt;
-      margin-bottom 0pt !important;
+      margin-bottom: 0pt !important;
       text-indent: 0pt;
       line-height: 106%;
       text-align: left;
@@ -519,11 +519,10 @@ TemplateName:Admin Student Page
               <span class="ws-1">        Student Name: <span class="ul-long">~([Students]First_Name)</span>  <span class="ul-long">~([Students]Middle_Name)</span>  <span class="ul-long">~([Students]Last_Name)</span>  Grade: <span class="ul-short">~(Grade_Level)</span>
                                         First Name          Middle Name             Last Name</span>
               <span class="ws-1">        Date of Birth: <span class="ul-long">~(DOB)</span> School: <span class="ul-extra-long">~([Schools]Abbreviation)</span>  Student ID#:  <span class="ul-mid">~(student_number)</span> Gender: Male <input type="checkbox" name="[Students]Gender" value="" /> Female <input type="checkbox" name="[Students]Gender" value="" />
-                                MM/DD/YYYY</span>
-            <p class="s9 pg-3">
-              <span class="s5">Is the student of Hispanic or Latino culture or origin? </span>YES <div class="choicefloat"><input type="radio" name="[01]FedEthnicity" value="1">YES</div><div class="choicefloat"><input type="radio" name="[01]FedEthnicity" value="0">NO</div>
+                                        MM/DD/YYYY</span>
+            <p class="s5 pg-5">
+              Is the student Hispanic or Latino culture or origin? YES <input type="radio" name="[Students]FedEthnicity" value="" />NO <input type="radio" name="[Students.]FedEthnicity" value="" />
             </p>
-            
             <p class="s5 pg-5">
               Please select one or more of the following races:
                  ~[brij_renderform:federalrace;:GetStudentRaceSelectionBlock]
