@@ -11,19 +11,28 @@
           "version": "0.1.0.0",
           "children": [
             {
-              "htmlID": "state_forms_hls",
+              "htmlID": "state-forms-hls",
               "title": "Home Language Survey",
               "sortOrder": 755,
-              "pageURL": "/admin/students/state_forms/hls_form.html",
+              "pageURL": "/admin/students/ok_state_forms/hls_form.html",
               "districtLevelContext": 2,
               "contextType": "student",
               "version": "0.1.0.0"
             },
             {
-              "htmlID": "state_reporting_forms",
-              "title": "Ed 506 Form",
+              "htmlID": "state-forms-less-often",
+              "title": "HLS Less Often Form",
               "sortOrder": 760,
-              "pageURL": "/admin/students/state_forms/506_form.html",
+              "pageURL": "/admin/students/ok_state_forms/hls_less_form.html",
+              "districtLevelContext": 2,
+              "contextType": "student",
+              "version": "0.1.0.0"
+            },
+            {
+              "htmlID": "state-forms-506",
+              "title": "Ed 506 Form",
+              "sortOrder": 765,
+              "pageURL": "/admin/students/ok_state_forms/506_form.html",
               "districtLevelContext": 2,
               "contextType": "student",
               "version": "0.1.0.0"
