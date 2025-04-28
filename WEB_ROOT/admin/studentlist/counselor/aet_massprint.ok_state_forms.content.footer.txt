@@ -2,8 +2,9 @@
 <script>
   var $select_option = $j('select[name="studpage"] option:contains("State/Province - OK")')
   $j(function(){
-	$select_option.after("<option value='/admin/students/state_forms/hls_form.html?plc=hldr'>HLS Form</a>");
-	$select_option.after("<option value='/admin/students/state_forms/ed_506_form.html?plc=hldr'>Ed 506 Form</a>");
+	$select_option.after("<option value='/admin/students/ok_state_forms/hls_form.html?plc=hldr'>HLS Form</a>");
+	$select_option.after("<option value='/admin/students/ok_state_forms/hls_less_form.html?plc=hldr'>HLS Less OftenForm</a>");
+	$select_option.after("<option value='/admin/students/ok_state_forms/ed_506_form.html?plc=hldr'>Ed 506 Form</a>");
 
   });
 </script>
