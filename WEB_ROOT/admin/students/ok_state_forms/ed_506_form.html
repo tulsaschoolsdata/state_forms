@@ -13,28 +13,32 @@ TemplateName:Admin Student Page
   <link href="/images/css/print.css" rel="stylesheet" media="print">
   <style type="text/css">
     @media print {
-
+    
+      a,
+      #student_detail_header,
       #pds-header,
-      #breadcrumbs {
+      #breadcrumbs,
+      #legend {
         display: none !important;
       }
+       .box-round {
+        margin: 0 !important;  
+        width: 100% !important;
+        max-width: 7.5in;
+        max-height: 10.5in !important;
+      }
     }
-    * {
-      margin: 0;
-      padding: 0;
-      text-indent: 0;
-    }
-
-    html {
-      height: 100%;
-    }
-
-    body {
-      min-height: 100%;
-    }
+      
     /*p {*/
     /*  border: 1px solid green;*/
     /*}*/
+    page .box-round {
+        margin: 0 !important;
+        width: 100% !important;
+        max-width: 7.5 in;
+        max-height: 10.5in;
+        
+    }
     h1 {
       color: black;
       font-family: "Times New Roman", serif;
@@ -68,26 +72,21 @@ TemplateName:Admin Student Page
       font-family: Helvetica, sans-serif;
       font-style: normal;
       font-weight: bold;
-      text-decoration: none;
       font-size: 10pt;
       vertical-align: 3pt;
     }
     .p2 {
-      margin-bottom: 5px;
-      text-indent: 0pt;
+      margin-bottom: 0px;
       text-align: left;
     }
     .p3 {
-      text-indent: 0pt;
       text-align: left;
-      margin-bottom: 0 !important;
+      margin-bottom: 5pt 0 5pt 0 !important;
     }
     .p4 {
       margin-bottom: 0;
       padding-bottom: 0;
       padding-left: 73pt;
-      text-indent: 0pt;
-      line-height: 106%;
       text-align: left;
 
     }
@@ -130,9 +129,8 @@ TemplateName:Admin Student Page
       font-family: Helvetica, sans-serif;
       font-style: normal;
       font-weight: normal;
-      text-decoration: none;
       font-size: 8pt;
-      vertical-align: 3pt;
+      vertical-align: -3pt;
     }
     .s6 {
       border: 1px solid red;
@@ -227,41 +225,33 @@ TemplateName:Admin Student Page
       font-size: 10pt;
       vertical-align: -2pt;
     }
-    .span-input-long {
-      border-top: none;
-      border-right: none;
-      border-left: none;
-      border-bottom: 1px solid black;
-      text-align: center;
+    .ul-extra-long {
       display: inline-block;
-      width: 300px;
-      /* Adjust width as needed */
-      font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
-      /* Adjust font size as needed */
-    }
-    .span-input-mid {
-      border-top: none;
-      border-right: none;
-      border-left: none;
-      border-bottom: 1px solid black;
+      width: 200pt;
+      border-bottom: 2px solid black;
+      vertical-align: bottom;
       text-align: center;
+    }
+    .ul-long {
       display: inline-block;
-      width: 150px;
-      /* Adjust width as needed */
-      font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
-      /* Adjust font size as needed */
-    }
-    .span-input-short {
-      border-top: none;
-      border-right: none;
-      border-left: none;
-      border-bottom: 1px solid black;
+      width: 125pt;
+      border-bottom: 2px solid black;
+      vertical-align: bottom;
       text-align: center;
+    }
+    .ul-mid {
+      display: inline-block;
+      width: 60pt;
+      border-bottom: 2px solid black;
+      vertical-align: bottom;
+      text-align: center;
+    }
+    .ul-short {
       display: inline-block;
       width: 30px;
-      /* Adjust width as needed */
-      font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
-      /* Adjust font size as needed */
+      border-bottom: 2px solid black;
+      vertical-align: bottom;
+      text-align: center;
     }
     em {
       display: none;
@@ -299,9 +289,8 @@ TemplateName:Admin Student Page
         <p
       class="s1"
       style="
-        padding-top: 25pt;
+        padding-top: 0pt;
         padding-left: 283pt;
-        text-indent: 0pt;
         text-align: right;
       "
     >
@@ -309,7 +298,7 @@ TemplateName:Admin Student Page
     </p>
     <p style=
       "
-        padding-top: 25pt;
+        padding-top: 0pt;
         text-indent: 0pt;
         text-align: center;
         font-weight: bold;
@@ -342,11 +331,11 @@ TemplateName:Admin Student Page
       Student Information
     </p>
     <p class="p2">
-      Name of the Child <span class="s5 span-input-long">~([Students]First_Name) ~([Students]Middle_Name) ~([Students]Last_Name) </span> Date of Birth <span class="s5 span-input-mid">~([Students]DOB) </span>Grade Level <span class="s5 span-input-short">~([Students]Grade_Level)</span>
+      Name of the Child <span class="ul-extra-long"><span class="s5">~([Students]First_Name) ~([Students]Middle_Name) ~([Students]Last_Name)</span></span> Date of Birth <span class="s5 ul-mid">~([Students]DOB) </span>Grade Level <span class="ul-short"><span class="s5">~(Grade_Level)</span></span>
     </p>
     <p class="p2">
-      Name of School <span class="ws-1 s5 span-input-mid">~[schoolname]</span>
-      School District <span class="ws-1 s5 span-input-mid">~[displaypref:districtname]</span>
+      Name of School <span class="s5 ul-extra-long">~(schoolname)</span>
+      School District <span class="s5 ul-extra-long">~[displaypref:districtname]</span>
     </p>
     <p class="p1">
       Tribal Membership
@@ -359,20 +348,20 @@ TemplateName:Admin Student Page
     </p>
     <p class="p2">
       If the individual with Tribal membership is <b>not </b>the child listed
-      above, name the individual (parent/grandparent) with tribal membership: <span class="span-input-mid"> ~([U_TPS_Indian_Education]Tribal_Member_Name)</span>
+      above, name the individual (parent/grandparent) with tribal membership: <span class="ul-extra-long"> ~([U_TPS_Indian_Education]Tribal_Member_Name)</span>
     </p>
     <p class="p3">
       Name <u>and</u> address of Tribe or Band that maintains updated and
       accurate membership data for the individual listed above:
     </p>
     <p class="p2">
-      Name <span class="span-input-mid"><input type="text" class="" name="" value="" readonly /></span>
-      Address <span class="s11 span-input-mid"><input type="text" class="" name="" value="" readonly /></span>
+      Name <span class="ul-extra-long"></span>
+      Address <span class="s11 ul-extra-long"></span>
     </p>
     <p class="p2">
-      City <span class="span-input-mid"><input type="text" class="" name="" value="" readonly /></span>
-      State <span class="span-input-short"><input type="text" class="" name="" value="" readonly /></span>
-      Zip Code <span class="span-input-short"><input type="text" class="" name="" value="" readonly /></span>
+      City <span class="ul-extra-long"></span>
+      State <span class="ul-short"></span>
+      Zip Code <span class="ul-mid"></span>
     </p>
 
     <p class="p3">
@@ -404,7 +393,7 @@ TemplateName:Admin Student Page
     <p class="p2">
       Membership or enrollment number establishing membership (if readily
       available) or other evidence establishing membership in the Tribe listed
-      above (describe and attach). <span class="span-input-mid"><input type="text" name="" value="" readonly /></span>
+      above (describe and attach). <span class="ul-mid"></span>
     </p>
     <p class="p1">
       Attestation Statement
@@ -414,24 +403,24 @@ TemplateName:Admin Student Page
       best of my knowledge and belief.
     </p>
     <p class="p3">
-      Printed Name of Parent/Guardian<span class="span-input-mid"><input type="text" name="" value="" readonly /></span>
-      Signature <span class="span-input-mid"></span><input type="text" name="" value="" readonly /></span>
+      Printed Name of Parent/Guardian<span class="ul-extra-long"></span>
+      Signature <span class="ul-extra-long"></span>
     </p>
     <p class="p3">
-      Address <span class="span-input-mid"><input type="text" name="" value="" readonly /></span>
-      City <span class="span-input-mid"><input type="text" name="" value="" readonly /></span>
-      State <span class="span-input-mid"><input type="text" name="" value="" readonly /></span>
-      Zip Code <span class="span-input-mid"><input type="text" name="" value="" readonly /></span>
+      Address <span class="ul-mid"></span>
+      City <span class="ul-long"></span>
+      State <span class="ul-mid"></span>
+      Zip Code <span class="ul-mid"></span>
     </p>
     <p class="p3">
-      Phone Number <span class="span-input-mid"><input type="text" name="" value="" readonly /></span>
-      Email <span class="span-input-mid"><input type="text" name="" value="" readonly /></span>
-      Date <span class="span-input-mid"><input type="text" name="" value="" readonly /></span>
+      Phone Number <span class="ul-mid"></span>
+      Email <span class="ul-extra-long"></span>
+      Date <span class="u-mid"></span>
     </p>
     <p
       class="s1"
       style="
-        padding-top: 30pt;
+        padding-top: 2pt;
         padding-left: 283pt;
         margin-bottom: 50px;
         text-indent: 0pt;
