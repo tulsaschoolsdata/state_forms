@@ -23,7 +23,7 @@ TemplateName:Admin Student Page
         margin: 0 !important;  
         width: 100% !important;
         max-width: 7.5in;
-        max-height 10.5 !important;
+        max-height: 10.5pt !important;
       }
     
       body {
@@ -63,7 +63,7 @@ TemplateName:Admin Student Page
       height: 11in; 
       margin: 0 auto !important; 
       overflow: hidden;
-    }*
+    }
     
     .box-round {
       width: 100%; 
@@ -101,12 +101,6 @@ TemplateName:Admin Student Page
       overflow: visible;
     }
 
-    .ws-1 {
-      display: inline-block;
-      white-space: pre;
-    }
-
-
     input.long-input {
       width: 100pt !important;
     }
@@ -121,12 +115,29 @@ TemplateName:Admin Student Page
     input[type="text"].psDateWidget {
       border: none !important;
     }
-    .ui-datepicker-trigger {
-      display: none !important;
-    }
 
     em {
       display: none;
+    }
+    input[type="radio"] {
+      margin-left: 10pt !important;
+    }
+    .radio-label {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .radio-label b {
+      display: inline-block;
+      text-align: left;
+      line-hegiht: 1.4;
+    }
+    .ui-datepicker-trigger {
+      display: none !important;
+    }
+    .ws-1 {
+      display: inline-block;
+      white-space: pre;
     }
     .s1 {
       color: black;
@@ -262,14 +273,12 @@ TemplateName:Admin Student Page
     .pg-7 {
       padding-top: 8pt;
       padding-left: 19pt;
-      text-indent: 0pt;
       text-align: left;
     }
     .pg-8 {
       padding-top: 9pt;
       padding-left: 16pt;
       padding-right: 23pt;
-      text-indent: 0pt;
       line-height: 106%;
       text-align: left;
     }
@@ -277,7 +286,6 @@ TemplateName:Admin Student Page
       padding-left: 9pt;
       padding-right: 7pt;
       padding-top: 6pt;
-      text-indent: 0pt;
       text-align: center;
     }
     .pg-10 {
@@ -285,7 +293,6 @@ TemplateName:Admin Student Page
       padding-left: 16pt;
       padding-right: 23pt;
       margin-bottom: 0 !important;
-      text-indent: 0pt;
       line-height: 106%;
       text-align: left;
     }
@@ -293,21 +300,18 @@ TemplateName:Admin Student Page
       padding-top: 4pt;
       padding-left: 16pt;
       margin-bottom: 0 !important;
-      text-indent: 0pt;
       text-align: left;
     }
     .pg-10 {
       padding-top: 7pt;
       padding-left: 10pt;
       margin-bottom: 0pt !important;
-      text-indent: 0pt;
       line-height: 106%;
       text-align: left;
     }
     .pg-13 {
       padding-left: 44pt;
       padding-right: 23pt;
-      text-indent: 0pt;
       line-height: 106%;
       text-align: left;
     }
@@ -315,27 +319,27 @@ TemplateName:Admin Student Page
       padding-top: 5pt;
       padding-left: 16pt;
       padding-right: 23pt;
-      text-indent: 0pt;
       line-height: 106%;
       text-align: left;
     }
     .pg-15 {
       padding-top: 3pt;
       padding-left: 4pt;
-      text-indent: 0pt;
       text-align: left;
     }
     .pg-16 {
       padding-top: 3pt;
       padding-left: 6pt;
-      text-indent: 0pt;
       text-align: left;
     }
-    .td-1 {
-      width: 800px;
+    .tr-1 {
+      height: 8pt;
 
     }
-    .td1, .td-2 {
+    .tr-3 {
+      height: 10pt;
+    }
+    .td-2 {
       border-top-style: solid;
       border-top-width: 2pt;
       border-left-style: solid;
@@ -439,17 +443,17 @@ TemplateName:Admin Student Page
 	<div class="box-round">      
 	  <table class="hls-table" cellspacing="0">
         <tr style="height: 33pt">
-          <td colspan="6" class="td-1">
+          <td colspan="6" class="td-2">
             <div style="display: flex; justify-content: space-between; align-items: center;">
               <!-- Left-aligned content -->
               <span style="text-align: left;">
-                SCHOOL YEAR:
-                <span class="s2">~(*evaluate right("~([Students.U_OK_State_Forms]HLS_First_Identified_Date)",4))</span>
+                STUDENTS CURRENT GRADE:
+                <span class="s2">~(grade_level)</span>
               </span>
         
               <!-- Center-aligned content -->
               <span class="s3" style="text-align: center;">
-                HOME LANGUAGE SURVEY
+                HOME LANGUAGE SURVEY SUPPLEMENT
               </span>
         
               <!-- Right-aligned content -->
@@ -463,215 +467,186 @@ TemplateName:Admin Student Page
           height: 19pt
           "
         >
-          <td colspan="6" class="td-1 bgc-1">
+          <td colspan="6" class="td-2 bgc-1">
             <p class="s4 pg-9">
-              STUDENT INFORMATION
+              "LESS OFTEN" NON-EL BILINGUAL QUALIFICATION FORM
             </p>
           </td>
 
         </tr>
         <tr style="margin: 5pt;">
-              <td colspan="6">
-              <!-- ws-1 class applies natural whitespace pre tag to row -->
-              <span class="ws-1 pg-1">        Student Name: <span class="ul-long">~([Students]First_Name)</span>  <span class="ul-long">~([Students]Middle_Name)</span>  <span class="ul-long">~([Students]Last_Name)</span>  Grade: <span class="ul-short">~(Grade_Level)</span>
-                                                First Name                                  Middle Name                                 Last Name</span>
-              <span class="ws-1">        Date of Birth: <span class="ul-mid"><input type="text" name="[Students]dob" value="" readonly /></span> School: <span class="ul-long">	
-~(studschoolabbr;usestudschool)</span>  Student ID#:  <span class="ul-mid">~(student_number)</span> Gender: Male <input type="radio" name="[Students]Gender" value="M" /> Female <input type="radio" name="[Students]Gender" value="F" />
-                                MM/DD/YYYY</span>
-            <p>
-              <span class="s5 pg-5">Is the student of Hispanic or Latino culture or origin? YES <input type="radio" name="[01]FedEthnicity" value="1">NO <input type="radio" name="[01]FedEthnicity" value="0"></span>
-            </p>
-    
-            
-            <span class="s5 pg-5">
-              Please select one or more of the following races:
-                 ~[brij_renderform:federalrace;:GetStudentRaceSelectionBlock]
-            </span>
-            <p class="s11 pg-8">
-              The purpose of the following questions is to help determine if a
-              student’s exposure to a language other<br> than English may make them
-              eligible to receive additional English Learner (EL) supports.
-            </p>
-            <ol id="l1">
-              <li> <!-- ol li 1 -->
-                <div class="flex-container">
-                  <p class="s5 flex-item pg-1">
-                    What is the dominant language most often spoken by the student?
-                  </p>
-                  <span class="ul-long input-right">
-                    ~([Students.S_OK_STU_X]Language1)
-                  </span>
-                </div>
-              </li>
-              <li> <!-- ol li 2 -->
-                <div class="flex-container">
-                  <p class="s5 flex-item pg-1">
-                    What is the language routinely spoken in the home, regardless of the language spoken by the student?
-                  </p>
-                  <span class="ul-long">
-                    ~([Students.S_OK_STU_X]Language2)
-                  </span>
-                </div>
-              </li>
-              <li> <!-- ol li 3 -->
-                <div class="flex-container">
-                  <p class="s5 flex-item pg-1">
-                    What language was first learned by the student?
-                  </p>
-                  <span class="ul-long">
-                    ~([Students.S_OK_STU_X]Language3)
-                  </span>
-                </div>
-              </li>
-              <li> <!-- ol li 4 -->
-                <p class="s5 pg-15">
-                  Does the parent/guardian need
-                </p>
-                <ul style="margin-inline-end:0;">
-                  <li>
-                    <div class="flex-container">
-                      <span class="s5 flex-item">interpretation services? </span><span class="input-right"> YES<input
-                      type="radio"
-                      name="[Students.U_OK_State_Forms]HLS_Interpreter_Need"
-                      value="Yes"
-                    />NO<input
-                      type="radio"
-                      name="[Students.U_OK_State_Forms]HLS_Interpreter_Need"
-                      value="No"
-                    /><span class="s5">If YES, in
-                        what language? </span><span class="ul-long">
-                        ~([Students.U_OK_State_Forms]HLS_Interpreter_Lang)</span></span>
-                    </div>
-                  </li>
-                </ul>
-              </li>
-              <li> <!-- ol li 5 -->
-                <p class="s5 pg-15">
-                  Does the parent/guardian need
-                </p>
-                <ul style="margin-inline-end:0;">
-                  <li>
-                    <div class="flex-container">
-                      <span class="s5 flex-item">translation services? </span><span class="input-right"> YES<input type="radio" name="[Students.U_OK_State_Forms]HLS_Translated_Material_Need" value="Yes" />NO<input type="radio" name="[Students.U_OK_State_Forms]HLS_Translated_Material_Need" value="No" /><span class="s5">If YES, in
-                        what language? </span><span class="ul-long">
-                        ~([Students.U_OK_State_Forms]HLS_Translated_Material_Lang)</span></span>
-                    </div>
-                  </li>
-                </ul>
-              </li>
-              <li> <!-- ol li 6 -->
-                <div class="flex-container">
-                  <p class="s5 flex-item pg-1">
-                    What was the date the student first enrolled in a school in the United States?
-                  </p>
-                  <span class="input-right ul-long">~([Students.U_OK_State_Forms]HLS_First_Year_US_School)
-                  </span>
-                </div>
-              </li>
-            </ol>
-            <div class="flex-container">
-              <div class="left-text"><span class="ul-extra-long">~([Students.U_OK_State_Forms]HLS_Application_Date)</span></div>
-              <div class="right-text"><span class="ul-extra-long">~([Students.U_OK_State_Forms]HLS_Guardian_Signature)</span></div>
-            </div>
-            <div class="flex-container">
-              <p class="s5 left-text">Date (MM/DD/YYYY)</p>
-              <p class="s5 right-text">Parent or Guardian Signature</p>
-            </div>
-              </td>
-          </tr>
-        <tr style="height: 17pt">
-          <td colspan="6" class="td-1 bgc-1">
-            <p class="s4 pg-9">
-              SCHOOL USE ONLY
-            </p>
+          <td colspan="6">
+            <!-- ws-1 class applies natural whitespace pre tag to row -->
+            <span class="ws-1 pg-1">        Student: <span class="ul-long">~([Students]First_Name)</span>  <span class="ul-long">~([Students]Middle_Name)</span>  <span class="ul-long">~([Students]Last_Name)</span>
+                                First Name                                  Middle Name                                 Last Name</span>
           </td>
         </tr>
-        <tr style="height: 100pt">
-          <td colspan="6" class="td-1">
-            <p class="s13 pg-7">
-              The response of a language other than English to any or all of
-              questions #1, #2, and #3 above should prompt local review of the
-              student’s potential EL identification and assessment history in the
-              state Accountability Reporting application. If no previous EL
-              history is present, the student must be administered a
-              state-approved screening tool to determine their EL status.
-            </p>
-            <p class="s14 pg-11">
-              If this HLS will be used for the purposes of Non-EL Bilingual
-              qualification, please indicate one of the following:
-            </p>
-            <div class="inline-container">
-              <span class="pg-7"><input type="checkbox" name="[Students.U_OK_STATE_FORMS]HLS_Other_lang_2_Plus_Times" /></span>
-              <p class="s13 pg-10">
-                A language other than English is indicated
-                <b>TWO OR MORE TIMES </b>in questions #1, #2, and #3 above. The
-                student is considered “<b>more often</b>” and has previously
-                demonstrated English language proficiency on the PKST* or WIDA
-                assessment :
-              </p>
-            </div>
+        <tr>
+            <td colspan="6">
+              <span class="ws-1 pg-1">      Please indicate the langage code currently assigned to the student</span>    
+            </td>
         </tr>
-        <tr style="height: 8pt">
+        <tr>
+            <td colspan="3">
+              <label class="radio-label">
+                <input type="radio" name="[Students.S_OK_STU_X]Ell" value="1634" readonly /> <b>1634/Fluent English Speaker</b>
+              </label>
+            </td>
+            <td colspan="3">
+              <label class="radio-label">
+              ~[if#other1.~([Students.S_OK_STU_X]EnglishProfOther)=01]
+                 <input type="radio" name="[Students.S_OK_STU_X]Ell" value="1636" readonly /><b>1636/Re-designated as Fluent English Proficient: Other Code 01(First Year Proficient)</b>
+              [else#other1]
+                 <input type="radio" name="[Students.S_OK_STU_X]Ell" value="" readonly /><b>1636/Re-designated as Fluent English Proficient: Other Code 01(First Year Proficient)</b>
+              [/if#other1]
+              </label>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+              <label class="radio-label">
+              ~[if#other2.~([Students.S_OK_STU_X]EnglishProfOther)=02]
+                 <input type="radio" name="[Students.Students.S_OK_STU_X]Ell" value="1636" readonly /><b>1636/Re-designated as Fluent English Proficient: Other Code 02(Second Year Proficient)</b>
+              [else#other2]
+                 <input type="radio" name="[Students.S_OK_STU_X]Ell" value="" readonly /><b>1636/Re-designated as Fluent English Proficient: Other Code 02(Second Year Proficient)</b>
+              [/if#other2]
+              </label>
+            </td>
+            <td colspan="3">
+              <label class="radio-label">
+              ~[if#other3.~([Students.S_OK_STU_X]EnglishProfOther)=03]
+                 <input type="radio" name="[Students.S_OK_STU_X]Ell" value="1636" readonly /><b>1636/Re-designated as Fluent English Proficient: Other Code 03(Three or More Years Proficient)</b>
+              [else#other3]
+                 <input type="radio" name="[Students.S_OK_STU_X]Ell" value="" readonly /><b>1636/Re-designated as Fluent English Proficient: Other Code 03(Three or More Years Proficient)</b>
+              [/if#other3]
+              </label>
+            </td>
+            <tr>
+              <td colspan="6">
+                <span class="ws-1 pg-1">      1.    A student assigned one of the four codes above must have successfully demonstrated English language proficiency on the PKST
+                (if currently enrolled at the pre-K level) or on a WIDA assessment:</span>
+              </td>
+            </tr>
+        </tr>        
+        <tr style="height: 4pt">
+          <td style="width: 5pt"></td>
           <td class="td-2 bgc-2" style="
-            width: 98pt;">
+            width: 115pt;">
             <p class="s9 pg-15">
-              Assessment Name:
+              Current School Year
+            </p>
+          </td>
+          <td colspan="3" class="td-2" style="
+            width: 200pt;
+          ">
+            <p class="s9 pg-15">Qualifying Assessment</p>
+          </td>
+          <td class="td-2 bgc-2" style="
+            width: 115pt;">
+            <p class="s9 pg-15">
+              Year Assessed
             </p>
           </td>
           <td class="td-2" style="
-            width: 145pt;
+            width: 90pt;
           ">
-            <p class="s9 pg-15"><input type="text" name="[Students.U_OK_State_Forms]HLS_Assessment_Name" value="" readonly /></p>
+            <p class="s9 pg-15">Score</p>
+          </td>
+          <td style="width: 5pt"></td>
+        </tr>
+        
+        <tr style="td-1">
+          <td style="width: 5pt"></td>
+          <td class="td-2" style="
+            width: 115pt;">
+            <p class="s9 pg-15">
+              
+            </p>
           </td>
           <td class="td-2 bgc-2" style="
-            width: 80pt;">
+            width: 50pt;
+          ">
+            <p class="s9 pg-15">
+                <input type="radio" name="" value="" readonly /> PKST
+            </p>
+          </td>
+          <td class="td-2 bgc-2" style="
+            width: 75pt;
+          ">
+            <p class="s9 pg-15"><input type="radio" name="" value="" readonly /> K Screener /Screener</p>
+          </td>
+          <td class="td-2" style="
+            width: 75pt;
+          ">
+            <p class="s9 pg-15"><input type="radio" name="" value="" readonly /> ACESSS / Alt.ACCESS</p>
+          </td>
+          <td class="td-2 bgc-2" style="
+            width: 115pt;">
+            <p class="s9 pg-15">
+             
+            </p>
+          </td>
+          <td class="td-2" style="
+            width: 90pt;
+          ">
+            <p class="s9 pg-15">
+                
+            </p>
+          </td>
+          <td style="width: 5pt"></td>
+        </tr>
+        
+        <tr style="height: 4pt">
+          <td style="width: 5pt"></td>
+          <td class="td-2 bgc-2" style="
+            width: 50pt;">
+            <p class="s9 pg-15">
+              <input type="checkbox" name="" value="" />
+            </p>
+          </td>
+          <td colspan="5" class="td-2" style="
+            width: 480pt;
+          ">
+            <p class="s9 pg-15"><b>Student has demonstrated English language proficiency in another state (documentation attached). For
+            assistance in determining the applicability of out-of-state scores in EL identification process, please
+            contact the OSDE Office of Language Proficiency at (405) 522-5073 or by email at <a oelp@sde.ok.gov</b></p>
+          </td>
+          <td style="width: 5pt"></td>
+        </tr>
+        <tr>
+            <td colspan="8">
+              <p class="s3 pg-9">AND</p>
+              <span class="ws-1 pg-1">      2.  The student has achieved a previous-year OSTP ELA score of Basic orBelow Basic or a CCRA (SAT/ACT) Reading subscore at
+       or below the 35th percentile.</span>
+            </td>
+        </tr>
+        <tr style="height: 4pt">
+          <td style="width: 5pt"></td>
+          <td class="td-2 bgc-2" style="
+            width: 75pt;">
+            <p class="s9 pg-15">
+              Assessment
+            </p>
+          </td>
+          <td colspan="3" class="td-2" style="
+            width: 100pt;
+          ">
+            <p class="s9 pg-15">Current School Year</p>
+          </td>
+          <td class="td-2 bgc-2" style="
+            width: 75pt;">
             <p class="s9 pg-15">
               Year Assessed:
             </p>
           </td>
           <td class="td-2" style="
-            width: 78pt;
+            width: 278pt;
           ">
-            <p class="s9 pg-15"><input type="text" name="[Students.U_OK_State_Forms]HLS_Assessment_Year" value="" readonly /></p>
+            <p class="s9 pg-15">ELA / Reading Score</p>
           </td>
-          <td class="td-2 bgc-2" style="
-            width: 40pt;">
-            <p class="s9 pg-15">
-              Score:
-            </p>
-          </td>
-          <td class="td-2" style="
-            width: 97pt;
-          ">
-            <p class="s9 pg-15">
-              <input type="text" name="[Students.U_OK_STATE_FORMS]HLS_Assessment_Score" value="" readonly />
-            </p>
-          </td>
+          <td style="width: 5pt"></td>
         </tr>
-        <tr>
-          <td colspan="6">
-            <div class="inline-container">
-              <span class="pg-7"><input type="checkbox" name="[Students.U_OK_STATE_FORMS]HLS_Other_lang_1_Time" /></span>
-                <p class="s13 pg-10">
-                  A language other than English is indicated <b>ONE TIME </b>in
-                  questions #1, #2, and #3 above. The student is considered “<b>less often</b>” and has demonstrated English
-                  language proficiency on the PKST* or
-                  WIDA assessment. The student’s PKST* or WIDA assessment score and
-                  additional qualifying score is noted on the attached “Less Often”
-                  Non-EL Bilingual Qualification Form.
-                </p>
-            </div>
-            <p class="s15 pg-7">
-              *A PKST score is valid only for a student&#39;s pre-K year(s).
-              Regardless of the PKST score earned, a student administered the PKST
-              must be administered the WIDA K Screener at the outset of
-              kindergarten. To qualify a student as Non-EL Bilingual beyond their
-              pre-K year, a student must either demonstrate initial proficiency on
-              the WIDA K Screener or subsequently on the K ACCESS or ACCESS
-              assessment.
-            </p>
-          </td>
-        </tr>
+
       </table>
 	</div>
 <!-- end of content area -->
