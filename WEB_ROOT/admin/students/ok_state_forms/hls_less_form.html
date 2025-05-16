@@ -58,30 +58,6 @@ TemplateName:Admin Student Page
     ul li {
         list-style: none;
     }
-    /*body {
-      width: 7.5in; 
-      height: 11in; 
-      margin: 0 auto !important; 
-      overflow: hidden;
-    }
-    
-    .box-round {
-      width: 100%; 
-      max-width: 7.5in; 
-      margin: 0 auto; 
-      padding: 0; 
-    }
-    
-    table.hls-table {
-      width: 100%; 
-      max-width: 7.5in; 
-      table-layout: fixed; 
-      word-wrap: break-word; 
-      border-collapse: collapse;
-      margin: 0;
-      padding: 0
-      border: 2px solid black;
-    }*/
     
     td, th {
       word-wrap: break-word; 
@@ -99,18 +75,6 @@ TemplateName:Admin Student Page
     tbody {
       vertical-align: top;
       overflow: visible;
-    }
-
-    input.long-input {
-      width: 100pt !important;
-    }
-
-    input.mid-input {
-      width: 30pt !important;
-    }
-
-    input.short-input {
-      width: 15pt !important;
     }
     input[type="text"].psDateWidget {
       border: none !important;
@@ -138,15 +102,6 @@ TemplateName:Admin Student Page
     .ws-1 {
       display: inline-block;
       white-space: pre;
-    }
-    .s1 {
-      color: black;
-      font-family: Arial, sans-serif;
-      font-style: normal;
-      font-weight: bold;
-      text-decoration: none;
-      font-size: 14pt;
-      vertical-align: 1pt;
     }
     .s2 {
       color: black;
@@ -208,7 +163,7 @@ TemplateName:Admin Student Page
       font-style: normal;
       font-weight: bold;
       text-decoration: none;
-      font-size: 11pt;
+      font-size: 10pt;
     }
     .s10 {
       color: black;
@@ -288,48 +243,9 @@ TemplateName:Admin Student Page
       padding-top: 6pt;
       text-align: center;
     }
-    .pg-10 {
-      padding-top: 3pt;
-      padding-left: 16pt;
-      padding-right: 23pt;
-      margin-bottom: 0 !important;
-      line-height: 106%;
-      text-align: left;
-    }
-    .pg-11 {
-      padding-top: 4pt;
-      padding-left: 16pt;
-      margin-bottom: 0 !important;
-      text-align: left;
-    }
-    .pg-10 {
-      padding-top: 7pt;
-      padding-left: 10pt;
-      margin-bottom: 0pt !important;
-      line-height: 106%;
-      text-align: left;
-    }
-    .pg-13 {
-      padding-left: 44pt;
-      padding-right: 23pt;
-      line-height: 106%;
-      text-align: left;
-    }
-    .pg-14 {
-      padding-top: 5pt;
-      padding-left: 16pt;
-      padding-right: 23pt;
-      line-height: 106%;
-      text-align: left;
-    }
     .pg-15 {
       padding-top: 3pt;
       padding-left: 4pt;
-      text-align: left;
-    }
-    .pg-16 {
-      padding-top: 3pt;
-      padding-left: 6pt;
       text-align: left;
     }
     .tr-1 {
@@ -443,7 +359,7 @@ TemplateName:Admin Student Page
 	<div class="box-round">      
 	  <table class="hls-table" cellspacing="0">
         <tr style="height: 33pt">
-          <td colspan="6" class="td-2">
+          <td colspan="9" class="td-2">
             <div style="display: flex; justify-content: space-between; align-items: center;">
               <!-- Left-aligned content -->
               <span style="text-align: left;">
@@ -467,7 +383,7 @@ TemplateName:Admin Student Page
           height: 19pt
           "
         >
-          <td colspan="6" class="td-2 bgc-1">
+          <td colspan="9" class="td-2 bgc-1">
             <p class="s4 pg-9">
               "LESS OFTEN" NON-EL BILINGUAL QUALIFICATION FORM
             </p>
@@ -488,12 +404,12 @@ TemplateName:Admin Student Page
         </tr>
         <tr>
             <td colspan="3">
-              <label class="radio-label">
+              <label class="radio-label" style="margin-left:10pt !important">
                 <input type="radio" name="[Students.S_OK_STU_X]Ell" value="1634" readonly /> <b>1634/Fluent English Speaker</b>
               </label>
             </td>
             <td colspan="3">
-              <label class="radio-label">
+              <label>
               ~[if#other1.~([Students.S_OK_STU_X]EnglishProfOther)=01]
                  <input type="radio" name="[Students.S_OK_STU_X]Ell" value="1636" readonly /><b>1636/Re-designated as Fluent English Proficient: Other Code 01(First Year Proficient)</b>
               [else#other1]
@@ -504,7 +420,7 @@ TemplateName:Admin Student Page
         </tr>
         <tr>
             <td colspan="3">
-              <label class="radio-label">
+              <label class="radio-label" style="margin-left:10pt !important">
               ~[if#other2.~([Students.S_OK_STU_X]EnglishProfOther)=02]
                  <input type="radio" name="[Students.Students.S_OK_STU_X]Ell" value="1636" readonly /><b>1636/Re-designated as Fluent English Proficient: Other Code 02(Second Year Proficient)</b>
               [else#other2]
@@ -521,13 +437,13 @@ TemplateName:Admin Student Page
               [/if#other3]
               </label>
             </td>
-            <tr>
-              <td colspan="6">
-                <span class="ws-1 pg-1">      1.    A student assigned one of the four codes above must have successfully demonstrated English language proficiency on the PKST
-                (if currently enrolled at the pre-K level) or on a WIDA assessment:</span>
-              </td>
-            </tr>
-        </tr>        
+        </tr>
+        <tr>
+          <td colspan="6">
+            <span class="ws-1 pg-1">      1.    A student assigned one of the four codes above must have successfully demonstrated English language proficiency on the PKST
+            (if currently enrolled at the pre-K level) or on a WIDA assessment:</span>
+          </td>
+        </tr>
         <tr style="height: 4pt">
           <td style="width: 5pt"></td>
           <td class="td-2 bgc-2" style="
@@ -555,7 +471,7 @@ TemplateName:Admin Student Page
           <td style="width: 5pt"></td>
         </tr>
         
-        <tr style="td-1">
+        <tr>
           <td style="width: 5pt"></td>
           <td class="td-2" style="
             width: 115pt;">
@@ -566,19 +482,23 @@ TemplateName:Admin Student Page
           <td class="td-2 bgc-2" style="
             width: 50pt;
           ">
-            <p class="s9 pg-15">
+            <p class="s9 pg-15 radio-label">
                 <input type="radio" name="" value="" readonly /> PKST
             </p>
           </td>
           <td class="td-2 bgc-2" style="
             width: 75pt;
           ">
-            <p class="s9 pg-15"><input type="radio" name="" value="" readonly /> K Screener /Screener</p>
+            <p class="s9 pg-15 radio-label">
+                  <input type="radio" name="" value="" readonly /> <b>K Screener /Screener</b>
+            </p>
           </td>
-          <td class="td-2" style="
+          <td class="td-2 bgc-2" style="
             width: 75pt;
           ">
-            <p class="s9 pg-15"><input type="radio" name="" value="" readonly /> ACESSS / Alt.ACCESS</p>
+            <p class="s9 pg-15 radio-label">
+              <input type="radio" name="" value="" readonly /> ACESSS / Alt.ACCESS
+            </p>
           </td>
           <td class="td-2 bgc-2" style="
             width: 115pt;">
@@ -623,13 +543,13 @@ TemplateName:Admin Student Page
         <tr style="height: 4pt">
           <td style="width: 5pt"></td>
           <td class="td-2 bgc-2" style="
-            width: 75pt;">
+            width: 65pt;">
             <p class="s9 pg-15">
               Assessment
             </p>
           </td>
-          <td colspan="3" class="td-2" style="
-            width: 100pt;
+          <td class="td-2" style="
+            width: 110pt;
           ">
             <p class="s9 pg-15">Current School Year</p>
           </td>
@@ -639,12 +559,34 @@ TemplateName:Admin Student Page
               Year Assessed:
             </p>
           </td>
-          <td class="td-2" style="
+          <td colspan="3" class="td-2" style="
             width: 278pt;
           ">
             <p class="s9 pg-15">ELA / Reading Score</p>
           </td>
           <td style="width: 5pt"></td>
+        </tr>
+        <tr style="height: 7pt">
+          <td style="width: 5pt"></td>
+          <td class="td-2" style="width: 50pt">place</td>
+          <td class="td-2" style="width: 50pt">place</td>
+          <td class="td-2 bgc-2" style="width: 50pt">plate</td>
+          <td class="td-2 bgc-2" style="width: 50pt">plate</td>
+          <td class="td-2 bgc-2" style="width: 50pt">plate</td>
+          <td class="td-2 bgc-2" style="width: 50pt">plate</td>
+          <td class="td-2 bgc-2" style="width: 50pt">plate</td>
+          <td width="5pt"></td>
+        </tr>
+        <tr style="height: 7pt">
+          <td style width=5pt></td>
+          <td class="td-2 bgc-2" style="width: 50pt">plate</td>
+          <td class="" style="width: 50pt">plate</td>
+          <td class="" style="width: 50pt">plate</td>
+          <td class="bgc-2" style="width: 50pt">plate</td>
+          <td class="bgc-2" style="width: 50pt">plate</td>
+          <td class="bgc-2" style="width: 50pt">plate</td>
+          <td style="width: 50pt">plate</td>
+          <td width=5pt></td>
         </tr>
 
       </table>
