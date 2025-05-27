@@ -44,3 +44,8 @@ plugin: src/web_root/
 	@ echo zip: '$(plugin_name_version).zip'
 	@ cd ./dist && zip -r '../$(plugin_name_version).zip' *
 	@ rm -rf dist
+	@ rm -f dist/$(plugin_name_version).zip
+	@ (cd src && zip -r ../$(plugin_name_version).zip web_root plugin.xml)
+	@ mv ${plugin_name_version}.zip dist/
+	@ echo "Plugin created: dist/$(plugin_name_version).zip"
+	
