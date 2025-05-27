@@ -23,26 +23,33 @@ TemplateName:Admin Student Page
         margin: 0 !important;  
         width: 100% !important;
         max-width: 7.5in;
-        max-height: 10.5pt !important;
+        max-height: 10.in !important;
       }
     
       body {
-        width: 7.5 !important;
-        height: 10.5 !important;
+        width: 7.5in !important;
         margin: 0 !important;  
       }
       .box-round {
         border: none !important;
         margin: 0 !important; 
         padding: 0 !important;
+        height: 10.9in !important;
         width: auto;  
       }
 
       table {
         width: 100%;  
         max-width: 100%;
+        height: 10.5in !important;
         margin: 0 !important;
       }
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      width: 7.5in;
+      height: 10.5in;
     }
     ol {
       width: 508pt;
@@ -63,12 +70,15 @@ TemplateName:Admin Student Page
       word-wrap: break-word; 
       overflow: hidden; 
       text-align: left; 
+      box-sizing: border-box;
     }
 
     table {
+      width: 100%;
       border-collapse: collapse;
       margin: 0;
       border: 2px solid black;
+      height: 10.5in !important;
     }
 
     table,
@@ -86,15 +96,32 @@ TemplateName:Admin Student Page
     input[type="radio"] {
       margin-left: 10pt !important;
     }
+      table.hls-table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+      box-sizing: border-box;
+    }
+    #content-main {
+      width: 8in !important;
+      height: 11in !important;
+    }
     .radio-label {
       display: flex;
       align-items: flex-start;
       gap: 8px;
     }
+  .box-round {
+    width: 7.5in important;
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+  }
     .radio-label b {
       display: inline-block;
       text-align: left;
-      line-hegiht: 1.4;
+      line-height: 1.4;
+      font-size: 9pt !important;
     }
     .ui-datepicker-trigger {
       display: none !important;
@@ -117,7 +144,7 @@ TemplateName:Admin Student Page
       font-style: normal;
       font-weight: bold;
       text-decoration: none;
-      font-size: 16pt;
+      font-size: 14pt;
     }
     .s4 {
       color: #fff;
@@ -125,37 +152,7 @@ TemplateName:Admin Student Page
       font-style: normal;
       font-weight: bold;
       text-decoration: none;
-      font-size: 11pt;
-    }
-    .s5 {
-      color: black;
-      font-family: Arial, sans-serif;
-      font-style: normal;
-      font-weight: normal;
-      text-decoration: none;
-      font-size: 11pt;
-    }
-    .s6 {
-      font-family: Arial, sans-serif;
-      font-size: 11pt;
-      text-align: center;
-    }
-    .s7 {
-      color: black;
-      font-family: "Times New Roman", serif;
-      font-style: normal;
-      font-weight: normal;
-      text-decoration: none;
-      font-size: 11pt;
-    }
-    .s8 {
-      color: black;
-      font-family: "Times New Roman", serif;
-      font-style: normal;
-      font-weight: normal;
-      text-decoration: none;
-      font-size: 11pt;
-      vertical-align: -6pt;
+      font-size: 10pt;
     }
     .s9 {
       color: black;
@@ -163,84 +160,14 @@ TemplateName:Admin Student Page
       font-style: normal;
       font-weight: bold;
       text-decoration: none;
-      font-size: 10pt;
-    }
-    .s10 {
-      color: black;
-      font-family: "Times New Roman", serif;
-      font-style: normal;
-      font-weight: normal;
-      text-decoration: none;
-      font-size: 11pt;
-    }
-    .s11 {
-      color: black;
-      font-family: Arial, sans-serif;
-      font-style: normal;
-      font-weight: bold;
-      text-decoration: none;
-      font-size: 11pt;
-    }
-    .s120 {
-      color: black;
-      font-family: "Times New Roman", serif;
-      font-style: normal;
-      font-weight: normal;
-      text-decoration: none;
-      font-size: 11pt;
-    }
-    .s13 {
-      color: black;
-      font-family: Arial, sans-serif;
-      font-style: normal;
-      font-weight: normal;
-      text-decoration: none;
-      font-size: 11pt;
-    }
-    .s14 {
-      color: black;
-      font-family: Arial, sans-serif;
-      font-style: normal;
-      font-weight: bold;
-      text-decoration: none;
-      font-size: 11pt;
-    }
-    .s15 {
-      color: black;
-      font-family: Arial, sans-serif;
-      font-style: normal;
-      font-weight: normal;
-      text-decoration: none;
-      font-size: 11pt;
-    }
-    .s16 {
-      padding-top: 3pt;
+      font-size: 8pt;
     }
     .pg-1 {
-      padding-top: 8pt;
-      text-align: left;
-    }
-    .pg-5 {
-      padding-left: 16pt;
-      text-indent: 0pt;
-      text-align: left;
-    }
-    .pg-7 {
-      padding-top: 8pt;
-      padding-left: 19pt;
-      text-align: left;
-    }
-    .pg-8 {
-      padding-top: 9pt;
-      padding-left: 16pt;
-      padding-right: 23pt;
-      line-height: 106%;
       text-align: left;
     }
     .pg-9 {
-      padding-left: 9pt;
-      padding-right: 7pt;
-      padding-top: 6pt;
+      padding: 0 !important;
+      margin: 0 !important;
       text-align: center;
     }
     .pg-15 {
@@ -256,28 +183,7 @@ TemplateName:Admin Student Page
       height: 10pt;
     }
     .td-2 {
-      border-top-style: solid;
-      border-top-width: 2pt;
-      border-left-style: solid;
-      border-left-width: 2pt;
-      border-bottom-style: solid;
-      border-bottom-width: 2pt;
-      border-right-style: solid;
-      border-right-width: 2pt;
-    }
-    .sig-input {
-      border-top: none;
-      border-right: none;
-      border-left: none;
-      border-bottom: 2px solid black;
-      margin-bottom: 5px;
-      padding-bottom: 3px;
-      text-align: center;
-      display: inline-block;
-      width: 350px;
-      font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
-      font-size: 10pt;
-      /* Adjust font size as needed */
+      border: solid 2px;
     }
     .ul-extra-long {
       display: inline-block;
@@ -307,38 +213,6 @@ TemplateName:Admin Student Page
       vertical-align: bottom;
       text-align: center;
     }
-    .flex-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .flex-item {
-      flex: 1;
-    }
-    .input-right {
-      margin-left: auto;
-    }
-    .sig-right, .sig-left {
-      width: 50%;
-      margin: auto;
-    }
-    .left-text, .right-text {
-      width: 50%;
-      text-align: center;
-    }
-    .inline-container {
-      display: flex;
-      align-items: center;
-    }
-    .inline-container img {
-      margin-left: 25px;
-    }
-    .inline-container p {
-      margin: 0;
-    }
-    .cb {
-      vertical-align: middle;
-    }
     .bgc-1 {
       background-color: #2D74B5;
     }
@@ -359,7 +233,7 @@ TemplateName:Admin Student Page
 	<div class="box-round">      
 	  <table class="hls-table" cellspacing="0">
         <tr style="height: 33pt">
-          <td colspan="9" class="td-2">
+          <td colspan="7" class="td-2">
             <div style="display: flex; justify-content: space-between; align-items: center;">
               <!-- Left-aligned content -->
               <span style="text-align: left;">
@@ -380,10 +254,10 @@ TemplateName:Admin Student Page
           </td>
         </tr>
         <tr style="
-          height: 19pt
+          height: 18pt
           "
         >
-          <td colspan="9" class="td-2 bgc-1">
+          <td colspan="7" class="td-2 bgc-1">
             <p class="s4 pg-9">
               "LESS OFTEN" NON-EL BILINGUAL QUALIFICATION FORM
             </p>
@@ -391,14 +265,14 @@ TemplateName:Admin Student Page
 
         </tr>
         <tr style="margin: 5pt;">
-          <td colspan="6">
+          <td colspan="7">
             <!-- ws-1 class applies natural whitespace pre tag to row -->
             <span class="ws-1 pg-1">        Student: <span class="ul-long">~([Students]First_Name)</span>  <span class="ul-long">~([Students]Middle_Name)</span>  <span class="ul-long">~([Students]Last_Name)</span>
                                 First Name                                  Middle Name                                 Last Name</span>
           </td>
         </tr>
         <tr>
-            <td colspan="6">
+            <td colspan="7">
               <span class="ws-1 pg-1">      Please indicate the langage code currently assigned to the student</span>    
             </td>
         </tr>
@@ -408,8 +282,8 @@ TemplateName:Admin Student Page
                 <input type="radio" name="[Students.S_OK_STU_X]Ell" value="1634" readonly /> <b>1634/Fluent English Speaker</b>
               </label>
             </td>
-            <td colspan="3">
-              <label>
+            <td colspan="4">
+              <label class="radio-label" style="margin-left: 10pt !important">
               ~[if#other1.~([Students.S_OK_STU_X]EnglishProfOther)=01]
                  <input type="radio" name="[Students.S_OK_STU_X]Ell" value="1636" readonly /><b>1636/Re-designated as Fluent English Proficient: Other Code 01(First Year Proficient)</b>
               [else#other1]
@@ -428,7 +302,7 @@ TemplateName:Admin Student Page
               [/if#other2]
               </label>
             </td>
-            <td colspan="3">
+            <td colspan="4">
               <label class="radio-label">
               ~[if#other3.~([Students.S_OK_STU_X]EnglishProfOther)=03]
                  <input type="radio" name="[Students.S_OK_STU_X]Ell" value="1636" readonly /><b>1636/Re-designated as Fluent English Proficient: Other Code 03(Three or More Years Proficient)</b>
@@ -439,21 +313,20 @@ TemplateName:Admin Student Page
             </td>
         </tr>
         <tr>
-          <td colspan="6">
+          <td colspan="7">
             <span class="ws-1 pg-1">      1.    A student assigned one of the four codes above must have successfully demonstrated English language proficiency on the PKST
             (if currently enrolled at the pre-K level) or on a WIDA assessment:</span>
           </td>
         </tr>
-        <tr style="height: 4pt">
-          <td style="width: 5pt"></td>
-          <td class="td-2 bgc-2" style="
-            width: 115pt;">
+        <tr>
+          <td colspan="2" class="td-2 bgc-2" style="
+            width: 95pt;">
             <p class="s9 pg-15">
               Current School Year
             </p>
           </td>
           <td colspan="3" class="td-2" style="
-            width: 200pt;
+            width: 220pt;
           ">
             <p class="s9 pg-15">Qualifying Assessment</p>
           </td>
@@ -468,12 +341,10 @@ TemplateName:Admin Student Page
           ">
             <p class="s9 pg-15">Score</p>
           </td>
-          <td style="width: 5pt"></td>
         </tr>
         
         <tr>
-          <td style="width: 5pt"></td>
-          <td class="td-2" style="
+          <td colspan="2" class="td-2" style="
             width: 115pt;">
             <p class="s9 pg-15">
               
@@ -513,35 +384,31 @@ TemplateName:Admin Student Page
                 
             </p>
           </td>
-          <td style="width: 5pt"></td>
         </tr>
         
-        <tr style="height: 4pt">
-          <td style="width: 5pt"></td>
+        <tr>
           <td class="td-2 bgc-2" style="
             width: 50pt;">
             <p class="s9 pg-15">
               <input type="checkbox" name="" value="" />
             </p>
           </td>
-          <td colspan="5" class="td-2" style="
+          <td colspan="6" class="td-2" style="
             width: 480pt;
           ">
             <p class="s9 pg-15"><b>Student has demonstrated English language proficiency in another state (documentation attached). For
             assistance in determining the applicability of out-of-state scores in EL identification process, please
-            contact the OSDE Office of Language Proficiency at (405) 522-5073 or by email at <a oelp@sde.ok.gov</b></p>
+            contact the OSDE Office of Language Proficiency at (405) 522-5073 or by email at <a mailto:oelp@sde.ok.gov>oelp@sde.ok.gov</a></b></p>
           </td>
-          <td style="width: 5pt"></td>
         </tr>
         <tr>
-            <td colspan="8">
+            <td colspan="7">
               <p class="s3 pg-9">AND</p>
               <span class="ws-1 pg-1">      2.  The student has achieved a previous-year OSTP ELA score of Basic orBelow Basic or a CCRA (SAT/ACT) Reading subscore at
        or below the 35th percentile.</span>
             </td>
         </tr>
-        <tr style="height: 4pt">
-          <td style="width: 5pt"></td>
+        <tr>
           <td class="td-2 bgc-2" style="
             width: 65pt;">
             <p class="s9 pg-15">
@@ -559,34 +426,88 @@ TemplateName:Admin Student Page
               Year Assessed:
             </p>
           </td>
-          <td colspan="3" class="td-2" style="
+          <td colspan="4" class="td-2" style="
             width: 278pt;
           ">
             <p class="s9 pg-15">ELA / Reading Score</p>
           </td>
-          <td style="width: 5pt"></td>
         </tr>
-        <tr style="height: 7pt">
-          <td style="width: 5pt"></td>
+        <tr>
+          <td class="td-2" style="width: 50pt">OSTP</td>
           <td class="td-2" style="width: 50pt">place</td>
-          <td class="td-2" style="width: 50pt">place</td>
-          <td class="td-2 bgc-2" style="width: 50pt">plate</td>
-          <td class="td-2 bgc-2" style="width: 50pt">plate</td>
-          <td class="td-2 bgc-2" style="width: 50pt">plate</td>
-          <td class="td-2 bgc-2" style="width: 50pt">plate</td>
-          <td class="td-2 bgc-2" style="width: 50pt">plate</td>
-          <td width="5pt"></td>
+          <td class="td-2" style="width: 50pt">plate</td>
+          <td class="td-2 bgc-2" style="width: 50pt">Below Basic</td>
+          <td class="td-2 bgc-2" style="width: 50pt">Basic</td>
+          <td class="td-2 bgc-2" style="width: 50pt">Proficient</td>
+          <td class="td-2 bgc-2" style="width: 50pt">advanced</td>
         </tr>
-        <tr style="height: 7pt">
-          <td style width=5pt></td>
-          <td class="td-2 bgc-2" style="width: 50pt">plate</td>
-          <td class="" style="width: 50pt">plate</td>
-          <td class="" style="width: 50pt">plate</td>
-          <td class="bgc-2" style="width: 50pt">plate</td>
-          <td class="bgc-2" style="width: 50pt">plate</td>
-          <td class="bgc-2" style="width: 50pt">plate</td>
-          <td style="width: 50pt">plate</td>
-          <td width=5pt></td>
+        <tr>
+          <td class="td-2 bgc-2" style="width: 50pt">CCRA</td>
+          <td class="td-2" style="width: 50pt">plate</td>
+          <td class="td-2" style="width: 50pt">plate</td>
+          <td class="td-2 bgc-2" style="width: 50pt">ACT</td>
+          <td class="td-2 bgc-2" style="width: 50pt">SAT</td>
+          <td class="td-2 bgc-2" style="width: 50pt">Subscore</td>
+          <td class="td-2" style="width: 50pt"></td>
+        </tr>
+        
+        <tr>
+            <td colspan="7">
+              <p class="s3 pg-9">OR</p>
+              <span class="ws-1 pg-1">      3.  The student has successfully demonstrated English language proficiency (score must be indicated in question #1 above), was not enrolled in an OSTP or ACT/SAT assessed grade or did not participate in the OSTP ELA or SAT/ACT assessment in the previous school year, and has scored at or below the 35th percentile (or equivalent) composite reading score on the most recently administered state approved, norm-referenced test (NRT)</span>
+            </td>
+        </tr>
+        <tr>
+          <td colspan="2" class="td-2 bgc-2" style="
+            width: 95pt;">
+            <p class="s9 pg-15">
+              Current School Year
+            </p>
+          </td>
+          <td colspan="3" class="td-2" style="
+            width: 220pt;
+          ">
+            <p class="s9 pg-15">Name of Assessment</p>
+          </td>
+          <td class="td-2 bgc-2" style="
+            width: 115pt;">
+            <p class="s9 pg-15">
+              Date administered
+            </p>
+          </td>
+          <td class="td-2" style="
+            width: 90pt;
+          ">
+            <p class="s9 pg-15">Score</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" class="td-2" style="
+            width: 95pt;">
+            <p class="s9 pg-15">
+              
+            </p>
+          </td>
+          <td colspan="3" class="td-2" style="
+            width: 220pt;
+          ">
+            <p class="s9 pg-15">
+                
+            </p>
+          </td>
+          <td class="td-2" style="
+            width: 115pt;">
+            <p class="s9 pg-15">
+             
+            </p>
+          </td>
+          <td class="td-2" style="
+            width: 90pt;
+          ">
+            <p class="s9 pg-15">
+                
+            </p>
+          </td>
         </tr>
 
       </table>
