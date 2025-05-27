@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://plugin.powerschool.pearson.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://plugin.powerschool.pearson.com plugin.xsd" name="OK State Forms" description="Oklahoma State Forms Plugin" version="0.1.0">
+  <publisher name="Tulsa Public Schools">
+    <contact phone="918-746-7500" email="devteam@tulsaschools.org"/>
+  </publisher>
+</plugin>

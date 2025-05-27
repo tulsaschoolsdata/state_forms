@@ -29,6 +29,7 @@ TemplateName:Admin Student Page
       body {
         width: 7.5in !important;
         margin: 0 !important;  
+        line-height: 12pt !important;
       }
       .box-round {
         border: none !important;
@@ -45,6 +46,7 @@ TemplateName:Admin Student Page
       }
     }
     body {
+      line-height: 16pt;
       margin: 0;
       padding: 0;
       width: 7.5in;
@@ -56,7 +58,7 @@ TemplateName:Admin Student Page
     }
 
     ul ol  li {
-      line-height: 10pt;
+      line-height: 8pt !important;
       padding-inline-start: 40pt;
       text-align: match-parent;
     }
@@ -66,7 +68,6 @@ TemplateName:Admin Student Page
     }
     
     td, th {
-      word-wrap: break-word; 
       overflow: hidden; 
       text-align: left; 
       box-sizing: border-box;
@@ -76,7 +77,6 @@ TemplateName:Admin Student Page
       width: 100%;
       border-collapse: collapse;
       margin: 0;
-      border: 2px solid black;
     }
 
     table,
@@ -103,7 +103,7 @@ TemplateName:Admin Student Page
       margin-bottom: 0 !important;
     }
     #content-main {
-      width: 8in !important;
+      width: 8.5in !important;
       height: 11in !important;
     }
     .radio-label {
@@ -122,10 +122,12 @@ TemplateName:Admin Student Page
       align-items: center;
       justify-content: flex-start;
     }
+    .box-round>:first-child {
+      margin-top: 0 !important;
+    }
     .radio-label b {
       display: inline-block;
       text-align: left;
-      line-height: 1.4;
       font-size: 8pt !important;
     }
     .ui-datepicker-trigger {
@@ -133,7 +135,8 @@ TemplateName:Admin Student Page
     }
     .ws-1 {
       display: inline-block;
-      white-space: pre;
+      white-space: pre-wrap;
+      line-height: 10pt;
     }
     .s1 {
       color: black;
@@ -185,6 +188,7 @@ TemplateName:Admin Student Page
     }
     .pg-1 {
       text-align: left;
+      
     }
     .pg-9 {
       padding: 0 !important;
@@ -254,7 +258,7 @@ TemplateName:Admin Student Page
 <!-- start of main menu and content -->
 <!-- start of content area -->
 	<div class="box-round">
-	<div style="width:100%;display:flex;flex-direction:column;align-items:center;">
+	<div style="width:100%;display:flex;flex-direction:column;align-items:center;margin-top;0 !important;">
 	  <table class="hls-table" cellspacing="0">
 	    <tbody>
         <tr style="height: 33pt">
@@ -308,7 +312,7 @@ TemplateName:Admin Student Page
               </label>
             </td>
             <td colspan="4">
-              <label class="radio-label" style="margin-left: 10pt !important">
+              <label class="radio-label">
               ~[if#other1.~([Students.S_OK_STU_X]EnglishProfOther)=01]
                  <input type="radio" name="[Students.S_OK_STU_X]Ell" value="1636" readonly /><b>1636/Re-designated as Fluent English Proficient: Other Code 01(First Year Proficient)</b>
               [else#other1]
@@ -425,9 +429,9 @@ TemplateName:Admin Student Page
           <td colspan="6" class="td-2" style="
             width: 480pt;
           ">
-            <span class="s9"><b>Student has demonstrated English language proficiency in another state (documentation attached). For
+            <span class="s9"><strong>Student has demonstrated English language proficiency in another state (documentation attached).</strong> For
             assistance in determining the applicability of out-of-state scores in EL identification process, please
-            contact the OSDE Office of Language Proficiency at (405) 522-5073 or by email at <a mailto:oelp@sde.ok.gov>oelp@sde.ok.gov</a></b>
+            contact the OSDE Office of Language Proficiency at (405) 522-5073 or by email at <a mailto:oelp@sde.ok.gov>oelp@sde.ok.gov</a>
             </span>
           </td>
         </tr>
@@ -438,8 +442,7 @@ TemplateName:Admin Student Page
         <tr>
             <td colspan="7">
               <p class="s3 pg-9">AND</p>
-              <span class="ws-1 pg-1 s1">      2.  The student has achieved a previous-year OSTP ELA score of Basic orBelow Basic or a CCRA (SAT/ACT) Reading subscore at
-       or below the 35th percentile.</span>
+              <span class="ws-1 pg-1 s1">      2.  The student has achieved a previous-year OSTP ELA score of Basic orBelow Basic or a CCRA (SAT/ACT) Reading subscore   at or below the 35th percentile.</span>
             </td>
         </tr>
       </tbody>
@@ -471,22 +474,50 @@ TemplateName:Admin Student Page
           </td>
         </tr>
         <tr>
-          <td class="td-2" style="width: 50pt">OSTP</td>
-          <td class="td-2" style="width: 50pt">place</td>
-          <td class="td-2" style="width: 50pt">plate</td>
-          <td class="td-2 bgc-2" style="width: 50pt">Below Basic</td>
-          <td class="td-2 bgc-2" style="width: 50pt">Basic</td>
-          <td class="td-2 bgc-2" style="width: 50pt">Proficient</td>
-          <td class="td-2 bgc-2" style="width: 50pt">advanced</td>
+          <td class="td-2" style="width: 50pt">
+            <span class="s9">OSTP</span>
+          </td>
+          <td class="td-2" style="width: 50pt">
+            <span class="s9">place</span>
+          </td>
+          <td class="td-2" style="width: 50pt">
+            <span class="s9">plate</span>
+          </td>
+          <td class="td-2 bgc-2" style="width: 50pt">
+            <span class="s9">Below Basic</span>
+          </td>
+          <td class="td-2 bgc-2" style="width: 50pt">
+            <span class="s9">Basic</span>
+          </td>
+          <td class="td-2 bgc-2" style="width: 50pt">
+            <span class="s9">Proficient</span>
+          </td>
+          <td class="td-2 bgc-2" style="width: 50pt">
+            <span class="s9">advanced</span>
+          </td>
         </tr>
         <tr>
-          <td class="td-2 bgc-2" style="width: 50pt">CCRA</td>
-          <td class="td-2" style="width: 50pt">plate</td>
-          <td class="td-2" style="width: 50pt">plate</td>
-          <td class="td-2 bgc-2" style="width: 50pt">ACT</td>
-          <td class="td-2 bgc-2" style="width: 50pt">SAT</td>
-          <td class="td-2 bgc-2" style="width: 50pt">Subscore</td>
-          <td class="td-2" style="width: 50pt"></td>
+          <td class="td-2 bgc-2" style="width: 50pt">
+            <span class="s9">CCRA</span>
+          </td>
+          <td class="td-2" style="width: 50pt">
+            <span class="s9">plate</span>
+          </td>
+          <td class="td-2" style="width: 50pt">
+            <span class="s9">plate</span>
+          </td>
+          <td class="td-2 bgc-2" style="width: 50pt">
+            <span class="s9">ACT</span>
+          </td>
+          <td class="td-2 bgc-2" style="width: 50pt">
+            <span class="s9">SAT</span>
+          </td>
+          <td class="td-2 bgc-2" style="width: 50pt">
+            <span class="s9">Subscore</span>
+          </td>
+          <td class="td-2" style="width: 50pt">
+            <span class="s9">Tah Dah</span>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -535,29 +566,30 @@ TemplateName:Admin Student Page
           <td colspan="2" class="td-2" style="
             width: 95pt;
           ">
-            <p class="s9">
-              
-            </p>
+            <span class="s9">
+              2020
+            </span>
           </td>
           <td colspan="3" class="td-2" style="
             width: 220pt;
           ">
-            <p class="s9">
-                
-            </p>
+            <span class="s9">
+              EL Test
+            </span>
           </td>
           <td class="td-2" style="
-            width: 115pt;">
-            <p class="s9">
-             
-            </p>
+            width: 115pt;
+          ">
+            <span class="s9">
+             Yesterday
+            </span>
           </td>
           <td class="td-2" style="
             width: 90pt;
           ">
-            <p class="s9">
-                
-            </p>
+            <span class="s9">
+                000:
+            </span>
           </td>
         </tr>
       </tbody>
