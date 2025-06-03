@@ -10,63 +10,48 @@ TemplateName:Admin Student Page
 <!-- Required style sheets: screen.css, and print.css -->
 	<link href="/images/css/screen.css" rel="stylesheet" media="screen">
 	<link href="/images/css/print.css" rel="stylesheet" media="print">
-	  <style type="text/css">
-    @media print {
+<style type="text/css">
+  @media print {
     
-      #student-detail-header,
-      #pds-header,
-      #breadcrumbs,
-      #legend {
-        display: none !important;
-      }
-       @page {
-        margin: 0 !important;  
-        width: 100% !important;
-        max-width: 7.5in;
-        max-height: 10.in !important;
-      }
-    
-      body {
-        width: 7.5in !important;
-        margin: 0 !important;  
-        line-height: 12pt !important;
-      }
-      .box-round {
-        border: none !important;
-        margin: 0 !important; 
-        padding: 0 !important;
-        height: 10.9in !important;
-        width: auto;  
-      }
-
-      table {
-        width: 100%;  
-        max-width: 100%;
-        margin: 0 !important;
-      }
-    }
-    body {
-      line-height: 16pt;
-      margin: 0;
-      padding: 0;
-      width: 7.5in;
-      height: 10.5in;
-    }
-    ol {
-      width: 508pt;
-      margin-bottom: 0;
-    }
-
-    ul ol  li {
-      line-height: 8pt !important;
-      padding-inline-start: 40pt;
-      text-align: match-parent;
-    }
-
-    ul li {
-        list-style: none;
+    #student-detail-header,
+    #pds-header,
+    #breadcrumbs,
+    #legend {
+      display: none !important;
     }
     
+    body em {
+      display: none !important;
+      visibility: hidden !important;
+      height: 0 !important;
+      width: 0 !important;
+      overflow: hidden !important;
+      position: absolute !important;
+      left: -9999px !important;
+      top: -9999px !important;
+    }    
+      table.hls-table {
+      width: 100%;
+      border: none;
+      border-collapse: collapse;
+      table-layout: fixed;
+      box-sizing: border-box;
+      padding: 0 !important;
+      margin-left: 8pt !important;
+      margin-right: 8pt !important;
+      margin-bottom: 0 !important;
+      width: calc(100% - 16pt) !important;
+      line-height: 1.7 !important;
+    }
+    .header-table tr td{
+      vertical-align: middle !important;
+    }
+    ol, ul {
+      margin-inline-start: 30pt !important;
+      line-height: 10pt;
+    }
+  }
+    /* start of main css */
     td, th {
       overflow: hidden; 
       text-align: left; 
@@ -74,37 +59,18 @@ TemplateName:Admin Student Page
     }
 
     table {
-      width: 100%;
       border-collapse: collapse;
       margin: 0;
-    }
-
-    table,
-    tbody {
-      vertical-align: top;
-      overflow: visible;
     }
     input[type="text"].psDateWidget {
       border: none !important;
     }
-
-    em {
-      display: none;
-    }
     input[type="radio"] {
       margin-left: 10pt !important;
     }
-      table.hls-table {
-      width: 99%;
-      border: none;
-      border-collapse: collapse;
-      table-layout: fixed;
-      box-sizing: border-box;
-      margin-bottom: 0 !important;
-    }
     #content-main {
-      width: 8.5in !important;
-      height: 11in !important;
+      width: 7.8in !important;
+      height: 10.2in !important;
     }
     .radio-label {
       display: flex;
@@ -112,18 +78,42 @@ TemplateName:Admin Student Page
       gap: 8px;
     }
     .box-round {
-      width: 7.5in !important;
-      height: 10.5in !important;
-      margin: 0 auto;
-      padding: 5pt;
-      box-sizing: border-box;
-      border: 2px solid black;
+      display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: flex-start;
+      width: 7.5in !important;
+      height: 10in !important;
+      margin: 0 auto;
+      padding: 0;
+      box-sizing: border-box;
+      border: 2px solid black;
     }
     .box-round>:first-child {
       margin-top: 0 !important;
+    }    
+      table.hls-table {
+      width: 100%;
+      border: none;
+      border-collapse: collapse;
+      table-layout: fixed;
+      box-sizing: border-box;
+      padding: 0 !important;
+      margin-left: 8pt !important;
+      margin-right: 8pt !important;
+      margin-bottom: 0 !important;
+      width: calc(100% - 16pt) !important;
+    }    
+    .header-table {
+      width: 100% !important;
+      padding: 0 !important;
+      margin: 0 !important;
+    }
+    .header-table td {
+      padding: 2pt 0 0 0 !important;
+      border-style: none; 
+    }
+    .header-table tr {
+      border-bottom-style: 2px solid black !important;
     }
     .radio-label b {
       display: inline-block;
@@ -212,6 +202,10 @@ TemplateName:Admin Student Page
       padding: 0 !important;
       text-align: center !important;
     }
+    .td-3 {
+      padding-left: 5pt !important;
+      padding-right: 5pt !important;
+    } 
     .ul-extra-long {
       display: inline-block;
       width: 150pt;
@@ -249,23 +243,32 @@ TemplateName:Admin Student Page
     #student_detail_header {
       display: none;
     }
+    ol {
+      width: 508pt;
+      margin-bottom: 0;
+    }
+    ol, ul {
+      margin-inline-start: 30pt !important;
+      line-height: 1.5 !important;
+    }
   </style>
 	~[wc:admin_header_frame_css]
 	<!-- breadcrumb start -->
 		<a href="/admin/home.html" target="_top">Start Page</a> &gt; <a href="/admin/students/home.html?selectstudent=nosearch" target="_top">Student Selection</a> &gt; tps_test
 	<!-- breadcrumb end -->
 ~[wc:admin_navigation_frame_css]
+<!-- start of main menu and content -->
 <!-- start of content area -->
 	<div class="box-round">
-	<div style="width:100%;display:flex;flex-direction:column;align-items:center;margin-top;0 !important;">
-	  <table class="hls-table" cellspacing="0">
+	  <table class="header-table" cellspacing="0">
 	    <tbody>
-        <tr style="height: 33pt">
+        <tr style="height: 33pt; margin: 0 !important">
           <td colspan="7" class="td-2">
             <div style="display: flex; justify-content: space-between; align-items: center;">
               <!-- Left-aligned content -->
-              <span style="text-align: left;">
-                STUDENTS CURRENT GRADE:
+              <span style="text-align: left; padding-left:5pt;">
+                STUDENT'S<br>
+                CURRENT GRADE:
                 <span class="s2">~(grade_level)</span>
               </span>
         
@@ -275,23 +278,24 @@ TemplateName:Admin Student Page
               </span>
         
               <!-- Right-aligned content -->
-              <span style="text-align: right;">
+              
                 <img width="96" height="35" alt="image" src="/images/oksde_logo.png" />
-              </span>
+              
             </div>
           </td>
         </tr>
         <tr style="
-          height: 18pt
-          "
+          height: 18pt;margin: 0 !important"
         >
-          <td colspan="7" class="td-2 bgc-1">
+          <td colspan="7" class="bgc-1">
             <p class="s4 pg-9">
               "LESS OFTEN" NON-EL BILINGUAL QUALIFICATION FORM
             </p>
           </td>
 
         </tr>
+      </table>
+	  <table class="hls-table" cellspacing="0">
         <tr style="margin: 5pt;">
           <td colspan="7">
             <!-- ws-1 class applies natural whitespace pre tag to row -->
@@ -301,7 +305,7 @@ TemplateName:Admin Student Page
         </tr>
         <tr>
             <td colspan="7">
-              <span class="ws-1 pg-1 s1">      Please indicate the langage code currently assigned to the student</span>    
+              <span class="ws-1 pg-1 s1">      Please indicate the language code currently assigned to the student</span>    
             </td>
         </tr>
         <tr>
@@ -379,7 +383,7 @@ TemplateName:Admin Student Page
           <td colspan="2" class="td-2" style="
             width: 115pt;">
             <span class="s9">
-              
+              ~(*evaluate left("~[x:termbegdateYYYYMMDD]",4))
             </span>
           </td>
           <td class="td-2 bgc-2" style="
@@ -430,7 +434,7 @@ TemplateName:Admin Student Page
           ">
             <span class="s9"><strong>Student has demonstrated English language proficiency in another state (documentation attached).</strong> For
             assistance in determining the applicability of out-of-state scores in EL identification process, please
-            contact the OSDE Office of Language Proficiency at (405) 522-5073 or by email at <a mailto:oelp@sde.ok.gov>oelp@sde.ok.gov</a>
+            contact the OSDE Office of Language Proficiency at (405) 522-5073 or by email at <a href="mailto:oelp@sde.ok.gov">oelp@sde.ok.gov</a>
             </span>
           </td>
         </tr>
@@ -441,7 +445,8 @@ TemplateName:Admin Student Page
         <tr>
             <td colspan="7">
               <p class="s3 pg-9">AND</p>
-              <span class="ws-1 pg-1 s1">      2.  The student has achieved a previous-year OSTP ELA score of Basic orBelow Basic or a CCRA (SAT/ACT) Reading subscore   at or below the 35th percentile.</span>
+              <span class="ws-1 pg-1 s1">      2.  The student has achieved a previous-year OSTP ELA score of Basic orBelow Basic or a CCRA (SAT/ACT) Reading subscore
+            at or below the 35th percentile.</span>
             </td>
         </tr>
       </tbody>
@@ -477,7 +482,9 @@ TemplateName:Admin Student Page
             <span class="s9">OSTP</span>
           </td>
           <td class="td-2" style="width: 50pt">
-            <span class="s9">place</span>
+            <span class="s9">
+              ~(*evaluate left("~[x:termbegdateYYYYMMDD]",4))
+            </span>
           </td>
           <td class="td-2" style="width: 50pt">
             <span class="s9">plate</span>
@@ -500,7 +507,9 @@ TemplateName:Admin Student Page
             <span class="s9">CCRA</span>
           </td>
           <td class="td-2" style="width: 50pt">
-            <span class="s9">plate</span>
+            <span class="s9">
+              ~(*evaluate left("~[x:termbegdateYYYYMMDD]",4))
+            </span>
           </td>
           <td class="td-2" style="width: 50pt">
             <span class="s9">plate</span>
@@ -597,20 +606,20 @@ TemplateName:Admin Student Page
       <tbody>
         <tr>
           <td colspan="7">
-            <div class="s5"> Note that a qualifiyng NRT score must not bre-date spring semester of the previous school year.</div>      
+            <div class="s5"> Note that a qualifiyng NRT score must not pre-date spring semester of the previous school year.</div>      
           </td>
         </tr>
         <tr>
           <td colspan="7">
             <div class="s1">
               <ol>
-                <li>A PKST score is valid only or a stuedt's pre-K year(s). Regardless of the PKST score earned, a student administered the PKST must be administered the WIDA K Screener at the outstet of kindergarten.  To qualify a student as Non-EL Bilingual beyond ther pre-K year, a student must either demostrate initial proficiency oon the WIDA K Sceener or subsequently no the K ACCESS or ACCESS assessment.
+                <li>A PKST score is valid only for a student's pre-K year(s). Regardless of the PKST score earned, a student administered the PKST must be administered the WIDA K Screener at the outset of kindergarten. To qualify a student as Non-EL Bilingual beyond their pre-K year, a student must either demonstrate initial proficiency on the WIDA K Screener or subsequently on the K ACCESS or ACCESS assessment.
                 </li>
                 <li>
                     Qualifiyng assessment socers:
                     <ul>
-                        <li><strong>SAT:</strong> Evidence-based Reading and Writing socer at or below the 35th percentile in the Natioonally Representative Sample</li>
-                        <li><strong>ACT:</strong> Current year qualifiying Reading scale score will be determined annually in collaboration with ACT</li>
+                        <li><strong>SAT:</strong> Evidence-based Reading and Writing score at or below the 35th percentile in the Nationally Representative Sample</li>
+                        <li><strong>ACT:</strong> Current year qualifying Reading scale score will be determined annually in collaboration with ACT</li>
                         <li>
                           <strong>Pre-kindergarten NRT:</strong>
                             <ul>
@@ -619,7 +628,7 @@ TemplateName:Admin Student Page
                               <li><strong>NWEA MAP Reading Fluency assessment:</strong> A level 0 score on the Foundational Skills component</li>
                             </ul>
                         </li>
-                        <li><strong>Grades K-12 NRT:</strong> A score at or below the 35th percentail (or equivalent) on any assessment or readin subtest noted on the <strong>Norm-Reference Tests Approved for "Less Often" Non-el Bilingual Qualification</strong> guidance document.</li>
+                        <li><strong>Grades K-12 NRT:</strong> A score at or below the 35th percentail (or equivalent) on any assessment or reading subtest noted on the <strong>Norm-Reference Tests Approved for "Less Often" Non-el Bilingual Qualification</strong> guidance document.</li>
                     </ul>
                 </li>
               </ol>
@@ -628,7 +637,6 @@ TemplateName:Admin Student Page
         </tr>
       </tbody>
     </table>
-    </div>
 	</div>
 <!-- end of content area -->
 	~[wc:admin_footer_frame_css]
