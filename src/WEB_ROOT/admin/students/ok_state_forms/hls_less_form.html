@@ -1,298 +1,311 @@
-<!--
-TemplateName:Admin Student Page
--->
 <!DOCTYPE html>
 <html>
 <head>
-	<title>tps_test</title>
+    <title>tps_test</title>
 <!-- required scripts -->
-	~[wc:commonscripts] 
+    ~[wc:commonscripts] 
 <!-- Required style sheets: screen.css, and print.css -->
-	<link href="/images/css/screen.css" rel="stylesheet" media="screen">
-	<link href="/images/css/print.css" rel="stylesheet" media="print">
-	  <style type="text/css">
-    @media print {
-    
-      #student-detail-header,
-      #pds-header,
-      #breadcrumbs,
-      #legend {
-        display: none !important;
-      }
-       @page {
-        margin: 0 !important;  
-        width: 100% !important;
-        max-width: 7.5in;
-        max-height: 10.in !important;
-      }
-    
-      body {
-        width: 7.5in !important;
-        margin: 0 !important;  
-        line-height: 12pt !important;
-      }
-      .box-round {
-        border: none !important;
-        margin: 0 !important; 
-        padding: 0 !important;
-        height: 10.9in !important;
-        width: auto;  
-      }
-
-      table {
-        width: 100%;  
-        max-width: 100%;
-        margin: 0 !important;
-      }
+    <link href="/images/css/screen.css" rel="stylesheet" media="screen">
+    <link href="/images/css/print.css" rel="stylesheet" media="print">
+<style type="text/css">
+  @media print {
+    #student-detail-header,
+    #pds-header,
+    #breadcrumbs,
+    #legend {
+      display: none !important;
     }
-    body {
-      line-height: 16pt;
-      margin: 0;
-      padding: 0;
-      width: 7.5in;
-      height: 10.5in;
+    #document em {
+      display: none !important;
+      visibility: hidden !important;
+      height: 0 !important;
+      width: 0 !important;
+      overflow: hidden !important;
+      position: absolute !important;
+      left: -9999px !important;
+      top: -9999px !important;
     }
-    ol {
-      width: 508pt;
-      margin-bottom: 0;
-    }
-
-    ul ol  li {
-      line-height: 8pt !important;
-      padding-inline-start: 40pt;
-      text-align: match-parent;
-    }
-
-    ul li {
-        list-style: none;
-    }
-    
-    td, th {
-      overflow: hidden; 
-      text-align: left; 
-      box-sizing: border-box;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 0;
-    }
-
-    table,
-    tbody {
-      vertical-align: top;
-      overflow: visible;
-    }
-    input[type="text"].psDateWidget {
-      border: none !important;
-    }
-
-    em {
-      display: none;
-    }
-    input[type="radio"] {
-      margin-left: 10pt !important;
-    }
-      table.hls-table {
-      width: 99%;
+    table.hls-table {
+      width: calc(100% - 16pt) !important;
       border: none;
       border-collapse: collapse;
       table-layout: fixed;
       box-sizing: border-box;
+      padding: 0 !important;
+      margin-left: 8pt !important;
+      margin-right: 8pt !important;
       margin-bottom: 0 !important;
+      line-height: 1.7 !important;
     }
-    #content-main {
-      width: 8.5in !important;
-      height: 11in !important;
+    .header-table tr td {
+      padding-top: 6pt !important;
+      padding-bottom: 4pt !important;
+      vertical-align: middle !important;
     }
-    .radio-label {
-      display: flex;
-      align-items: flex-start;
-      gap: 8px;
+    ol, ul {
+      margin-inline-start: 10pt !important;
+      line-height: 1.8;
     }
-    .box-round {
-      width: 7.5in !important;
-      height: 10.5in !important;
-      margin: 0 auto;
-      padding: 5pt;
-      box-sizing: border-box;
-      border: 2px solid black;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-    }
-    .box-round>:first-child {
-      margin-top: 0 !important;
-    }
-    .radio-label b {
-      display: inline-block;
-      text-align: left;
-      font-size: 8pt !important;
-    }
-    .ui-datepicker-trigger {
-      display: none !important;
-    }
-    .ws-1 {
-      display: inline-block;
-      white-space: pre-wrap;
-      line-height: 10pt;
-    }
-    .s1 {
-      color: black;
-      font-family: Arial, sans-serif;
-      font-style: normal;
-      text-decoration: none;
-      font-size: 8pt;
-    }
-    .s2 {
-      color: black;
-      font-family: "Times New Roman", serif;
-      font-style: normal;
-      font-weight: normal;
-      text-decoration: none;
-      font-size: 14pt;
-    }
-    .s3 {
-      color: black;
-      font-family: Arial, sans-serif;
-      font-style: normal;
-      font-weight: bold;
-      text-decoration: none;
-      font-size: 12pt;
-    }
-    .s4 {
-      color: #fff;
-      font-family: Arial, sans-serif;
-      font-style: normal;
-      font-weight: bold;
-      text-decoration: none;
-      font-size: 10pt;
-    }
-    .s5 {
-      color: black;
-      text-align: center;
-      font-family: Arial, sans-serif;
-      font-style: normal;
-      font-weight: bold;
-      text-decoration: none;
-      font-size: 8pt;
-    }
-    .s9 {
-      color: black;
-      font-family: Arial, sans-serif;
-      font-style: normal;
-      font-weight: bold;
-      text-decoration: none;
-      font-size: 8pt;
-    }
-    .pg-1 {
-      text-align: left;
-      
-    }
-    .pg-9 {
-      padding: 0 !important;
-      margin: 0 !important;
-      text-align: center;
-    }
-    .pg-15 {
-      padding-top: 3pt;
-      padding-left: 4pt;
-      text-align: left;
-    }
-    .tr-1 {
-      height: 8pt;
-
-    }
-    .tr-3 {
-      height: 10pt;
-    }
-    .td-2 {
-      border: solid 2px;
-      padding: 0 !important;
-      text-align: center !important;
-    }
-    .ul-extra-long {
-      display: inline-block;
-      width: 150pt;
-      border-bottom: 2px solid black;
-      vertical-align: bottom;
-      text-align: center;
-    }
-    .ul-long {
-      display: inline-block;
-      width: 125pt;
-      border-bottom: 2px solid black;
-      vertical-align: bottom;
-      text-align: center;
-    }
-    .ul-mid {
-      display: inline-block;
-      width: 60pt;
-      border-bottom: 2px solid black;
-      vertical-align: bottom;
-      text-align: center;
-    }
-    .ul-short {
-      display: inline-block;
-      width: 30px;
-      border-bottom: 2px solid black;
-      vertical-align: bottom;
-      text-align: center;
-    }
-    .bgc-1 {
-      background-color: #2D74B5;
-    }
-    .bgc-2 {
-      background-color: #BEBEBE;
-    }
-    #student_detail_header {
-      display: none;
-    }
-  </style>
-	~[wc:admin_header_frame_css]
-	<!-- breadcrumb start -->
-		<a href="/admin/home.html" target="_top">Start Page</a> &gt; <a href="/admin/students/home.html?selectstudent=nosearch" target="_top">Student Selection</a> &gt; tps_test
-	<!-- breadcrumb end -->
+  }
+  /* start of main css */
+  td, th {
+    overflow: hidden; 
+    text-align: left; 
+    box-sizing: border-box;
+  }
+  table {
+    border-collapse: collapse;
+    margin: 0;
+  }
+  input[type="text"].psDateWidget {
+    border: none !important;
+  }
+  input[type="radio"] {
+    margin-left: 10pt !important;
+  }
+  #content-main {
+    width: 7.8in !important;
+    height: 10.2in !important;
+  }
+  .radio-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .box-round {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 7.5in !important;
+    height: 10in !important;
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+    border: 2px solid black;
+  }
+  .box-round>:first-child {
+    margin-top: 0 !important;
+  }
+  table.hls-table {
+    width: calc(100% - 16pt);
+    border: none;
+    border-collapse: collapse;
+    table-layout: fixed;
+    box-sizing: border-box;
+    padding: 0 !important;
+    margin-left: 8pt !important;
+    margin-right: 8pt !important;
+    margin-bottom: 0 !important;
+  }
+  .header-table {
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .header-table td {
+    padding: 2pt 0 0 0 !important;
+    border-style: none; 
+  }
+  .header-table tr {
+    border-bottom-style: 2px solid black !important;
+  }
+  .radio-label b {
+    display: inline-block;
+    text-align: left;
+    font-size: 8pt !important;
+  }
+  .ui-datepicker-trigger {
+    display: none !important;
+  }
+  .ws-1 {
+    display: inline-block;
+    white-space: pre-wrap;
+    line-height: 10pt;
+  }
+  .s1 {
+    color: black;
+    font-family: Arial, sans-serif;
+    font-style: normal;
+    text-decoration: none;
+    font-size: 8pt;
+  }
+  .s2 {
+    color: black;
+    font-family: "Times New Roman", serif;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: none;
+    font-size: 14pt;
+  }
+  .s3 {
+    color: black;
+    font-family: Arial, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 12pt;
+  }
+  .s4 {
+    color: #fff;
+    font-family: Arial, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 10pt;
+  }
+  .s5 {
+    color: black;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 8pt;
+  }
+  .s9 {
+    color: black;
+    font-family: Arial, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 8pt;
+  }
+  .pg-1 {
+    text-align: left;
+  }
+  .pg-9 {
+    padding: 0 !important;
+    margin: 0 !important;
+    text-align: center;
+  }
+  .pg-15 {
+    padding-top: 3pt;
+    padding-left: 4pt;
+    text-align: left;
+  }
+  .tr-1 {
+    height: 8pt;
+  }
+  .tr-3 {
+    height: 10pt;
+  }
+  .td-2 {
+    border: solid 2px;
+    padding: 0 !important;
+    text-align: center !important;
+  }
+  .td-3 {
+    padding-left: 5pt !important;
+    padding-right: 5pt !important;
+  } 
+  .ul-extra-long {
+    display: inline-block;
+    width: 150pt;
+    border-bottom: 2px solid black;
+    vertical-align: bottom;
+    text-align: center;
+  }
+  .ul-long {
+    display: inline-block;
+    width: 125pt;
+    border-bottom: 2px solid black;
+    vertical-align: bottom;
+    text-align: center;
+  }
+  .ul-mid {
+    display: inline-block;
+    width: 60pt;
+    border-bottom: 2px solid black;
+    vertical-align: bottom;
+    text-align: center;
+  }
+  .ul-short {
+    display: inline-block;
+    width: 30px;
+    border-bottom: 2px solid black;
+    vertical-align: bottom;
+    text-align: center;
+  }
+  .bgc-1 {
+    background-color: #2D74B5;
+  }
+  .bgc-2 {
+    background-color: #BEBEBE;
+  }
+  #student_detail_header {
+    display: none;
+  }
+  ol {
+    width: 508pt;
+    margin-bottom: 0;
+  }
+  ol, ul {
+    margin-inline-start: 10pt !important;
+    line-height: 1.5 !important;
+  }
+  /* Consolidated cell width and height for hls-table */
+  .hls-table .td-2,
+  .hls-table .td-2.bgc-2,
+  .hls-table .td-2:not(.bgc-2) {
+    /* width and height will be set by colspans and CSS, not inline */
+  }
+  .hls-table .tr-1 {
+    height: 8pt;
+  }
+  .col-95pt { width: 95pt; }
+  .col-220pt { width: 220pt; }
+  .col-115pt { width: 115pt; }
+  .col-90pt { width: 90pt; }
+  .col-50pt { width: 50pt; }
+  .col-75pt { width: 75pt; }
+  .col-65pt { width: 65pt; }
+  .col-110pt { width: 110pt; }
+  .col-278pt { width: 278pt; }
+  .col-480pt { width: 480pt; }
+  .radio-label-indent { margin-left: 10pt !important; }
+  .header-flex { display: flex; justify-content: space-between; align-items: center; }
+  .header-left { text-align: left; padding-left: 5pt; }
+  .header-center { text-align: center; }
+</style>
+    ~[wc:admin_header_frame_css]
+    <!-- breadcrumb start -->
+        <a href="/admin/home.html" target="_top">Start Page</a> &gt; <a href="/admin/students/home.html?selectstudent=nosearch" target="_top">Student Selection</a> &gt; tps_test
+    <!-- breadcrumb end -->
 ~[wc:admin_navigation_frame_css]
 <!-- start of main menu and content -->
 <!-- start of content area -->
-	<div class="box-round">
-	<div style="width:100%;display:flex;flex-direction:column;align-items:center;margin-top;0 !important;">
-	  <table class="hls-table" cellspacing="0">
-	    <tbody>
-        <tr style="height: 33pt">
+    <div class="box-round">
+      <table class="header-table" cellspacing="0">
+        <tbody>
+        <tr class="header-row-1">
           <td colspan="7" class="td-2">
-            <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div class="header-flex">
               <!-- Left-aligned content -->
-              <span style="text-align: left;">
-                STUDENTS CURRENT GRADE:
+              <span class="header-left">
+                STUDENT'S<br>
+                CURRENT GRADE:
                 <span class="s2">~(grade_level)</span>
               </span>
-        
               <!-- Center-aligned content -->
-              <span class="s3" style="text-align: center;">
+              <span class="s3 header-center">
                 HOME LANGUAGE SURVEY SUPPLEMENT
               </span>
-        
               <!-- Right-aligned content -->
-              <span style="text-align: right;">
-                <img width="96" height="35" alt="image" src="/images/oksde_logo.png" />
-              </span>
+              <img width="96" height="35" alt="image" src="/images/oksde_logo.png" />
             </div>
           </td>
         </tr>
-        <tr style="
-          height: 18pt
-          "
-        >
-          <td colspan="7" class="td-2 bgc-1">
+        <tr class="header-row-2">
+          <td colspan="7" class="bgc-1">
             <p class="s4 pg-9">
               "LESS OFTEN" NON-EL BILINGUAL QUALIFICATION FORM
             </p>
           </td>
-
         </tr>
+      </tbody>
+      </table>
+      <table class="hls-table" cellspacing="0">
+        <tbody>
         <tr style="margin: 5pt;">
           <td colspan="7">
             <!-- ws-1 class applies natural whitespace pre tag to row -->
@@ -301,337 +314,200 @@ TemplateName:Admin Student Page
           </td>
         </tr>
         <tr>
-            <td colspan="7">
-              <span class="ws-1 pg-1 s1">      Please indicate the langage code currently assigned to the student</span>    
-            </td>
+          <td colspan="7">
+            <span class="ws-1 pg-1 s1">Please indicate the language code currently assigned to the student</span>
+          </td>
         </tr>
         <tr>
-            <td colspan="3">
-              <label class="radio-label" style="margin-left:10pt !important">
-                <input type="radio" name="[Students.S_OK_STU_X]Ell" value="1634" readonly /> <b>1634/Fluent English Speaker</b>
-              </label>
-            </td>
-            <td colspan="4">
-              <label class="radio-label">
-              ~[if#other1.~([Students.S_OK_STU_X]EnglishProfOther)=01]
-                 <input type="radio" name="[Students.S_OK_STU_X]Ell" value="1636" readonly /><b>1636/Re-designated as Fluent English Proficient: Other Code 01(First Year Proficient)</b>
-              [else#other1]
-                 <input type="radio" name="[Students.S_OK_STU_X]Ell" value="" readonly /><b>1636/Re-designated as Fluent English Proficient: Other Code 01(First Year Proficient)</b>
-              [/if#other1]
-              </label>
-            </td>
+          <td colspan="3">
+            <label class="radio-label radio-label-indent">
+              <input type="radio" name="[Students.S_OK_STU_X]Ell" value="1634" readonly /> <b>1634/Fluent English Speaker</b>
+            </label>
+          </td>
+          <td colspan="4">
+            <label class="radio-label">
+            ~[if#other1.~([Students.S_OK_STU_X]EnglishProfOther)=01]
+              <input type="radio" name="[Students.S_OK_STU_X]Ell" value="1636" readonly /><b>1636/Re-designated as Fluent English Proficient: Other Code 01(First Year Proficient)</b>
+            [else#other1]
+              <input type="radio" name="[Students.S_OK_STU_X]Ell" value="" readonly /><b>1636/Re-designated as Fluent English Proficient: Other Code 01(First Year Proficient)</b>
+            [/if#other1]
+            </label>
+          </td>
         </tr>
         <tr>
-            <td colspan="3">
-              <label class="radio-label" style="margin-left:10pt !important">
-              ~[if#other2.~([Students.S_OK_STU_X]EnglishProfOther)=02]
-                 <input type="radio" name="[Students.Students.S_OK_STU_X]Ell" value="1636" readonly /><b>1636/Re-designated as Fluent English Proficient: Other Code 02(Second Year Proficient)</b>
-              [else#other2]
-                 <input type="radio" name="[Students.S_OK_STU_X]Ell" value="" readonly /><b>1636/Re-designated as Fluent English Proficient: Other Code 02(Second Year Proficient)</b>
-              [/if#other2]
-              </label>
-            </td>
-            <td colspan="4">
-              <label class="radio-label">
-              ~[if#other3.~([Students.S_OK_STU_X]EnglishProfOther)=03]
-                 <input type="radio" name="[Students.S_OK_STU_X]Ell" value="1636" readonly /><b>1636/Re-designated as Fluent English Proficient: Other Code 03(Three or More Years Proficient)</b>
-              [else#other3]
-                 <input type="radio" name="[Students.S_OK_STU_X]Ell" value="" readonly /><b>1636/Re-designated as Fluent English Proficient: Other Code 03(Three or More Years Proficient)</b>
-              [/if#other3]
-              </label>
-            </td>
+          <td colspan="3">
+            <label class="radio-label radio-label-indent">
+            ~[if#other2.~([Students.S_OK_STU_X]EnglishProfOther)=02]
+              <input type="radio" name="[Students.Students.S_OK_STU_X]Ell" value="1636" readonly /><b>1636/Re-designated as Fluent English Proficient: Other Code 02(Second Year Proficient)</b>
+            [else#other2]
+              <input type="radio" name="[Students.S_OK_STU_X]Ell" value="" readonly /><b>1636/Re-designated as Fluent English Proficient: Other Code 02(Second Year Proficient)</b>
+            [/if#other2]
+            </label>
+          </td>
+          <td colspan="4">
+            <label class="radio-label">
+            ~[if#other3.~([Students.S_OK_STU_X]EnglishProfOther)=03]
+              <input type="radio" name="[Students.S_OK_STU_X]Ell" value="1636" readonly /><b>1636/Re-designated as Fluent English Proficient: Other Code 03(Three or More Years Proficient)</b>
+            [else#other3]
+              <input type="radio" name="[Students.S_OK_STU_X]Ell" value="" readonly /><b>1636/Re-designated as Fluent English Proficient: Other Code 03(Three or More Years Proficient)</b>
+            [/if#other3]
+            </label>
+          </td>
         </tr>
         <tr>
           <td colspan="7">
-            <span class="ws-1 pg-1 s1">      1.    A student assigned one of the four codes above must have successfully demonstrated English language proficiency on the PKST
-            (if currently enrolled at the pre-K level) or on a WIDA assessment:</span>
+            <span class="ws-1 pg-1 s1">1. A student assigned one of the four codes above must have successfully demonstrated English language proficiency on the PKST (if currently enrolled at the pre-K level) or on a WIDA assessment:</span>
           </td>
         </tr>
-      </tbody>
-    </table>
-    <table class="hls-table" cellspacing="0">
-      <tbody>
+        </tbody>
+      </table>
+      <!-- All other hls-table tables below, with inline styles removed and replaced by classes as needed -->
+      <table class="hls-table" cellspacing="0">
+        <tbody>
         <tr>
-          <td colspan="2" class="td-2 bgc-2" style="
-            width: 95pt;">
-            <span class="s9">
-              Current School Year
-            </span>
+          <td colspan="2" class="td-2 bgc-2 col-95pt">
+            <span class="s9">Current School Year</span>
           </td>
-          <td colspan="3" class="td-2" style="
-            width: 220pt;
-          ">
+          <td colspan="3" class="td-2 col-220pt">
             <span class="s9">Qualifying Assessment</span>
           </td>
-          <td class="td-2 bgc-2" style="
-            width: 115pt;">
-            <span class="s9">
-              Year Assessed
-            </span>
+          <td class="td-2 bgc-2 col-115pt">
+            <span class="s9">Year Assessed</span>
           </td>
-          <td class="td-2" style="
-            width: 90pt;
-          ">
+          <td class="td-2 col-90pt">
             <span class="s9">Score</span>
           </td>
         </tr>
-        
         <tr>
-          <td colspan="2" class="td-2" style="
-            width: 115pt;">
-            <span class="s9">
-              
-            </span>
+          <td colspan="2" class="td-2 col-115pt">
+            <span class="s9">~(*evaluate left("~[x:termbegdateYYYYMMDD]",4))</span>
           </td>
-          <td class="td-2 bgc-2" style="
-            width: 50pt;
-          ">
-            <span class="s9 radio-label">
-                <input type="radio" name="" value="" readonly /> PKST
-            </span>
+          <td class="td-2 bgc-2 col-50pt">
+            <span class="s9 radio-label"><input type="radio" name="" value="" readonly /> PKST</span>
           </td>
-          <td class="td-2 bgc-2" style="
-            width: 75pt;
-          ">
-            <span class="s9 radio-label">
-                  <input type="radio" name="" value="" readonly /> <b>K Screener /Screener</b>
-            </span>
+          <td class="td-2 bgc-2 col-75pt">
+            <span class="s9 radio-label"><input type="radio" name="" value="" readonly /> <b>K Screener /Screener</b></span>
           </td>
-          <td class="td-2 bgc-2" style="
-            width: 75pt;
-          ">
-            <span class="s9 radio-label">
-              <input type="radio" name="" value="" readonly /> ACESSS / Alt.ACCESS
-            </span>
+          <td class="td-2 bgc-2 col-75pt">
+            <span class="s9 radio-label"><input type="radio" name="" value="" readonly /> ACCESS / Alt.ACCESS</span>
           </td>
-          <td class="td-2 bgc-2" style="
-            width: 115pt;">
-            <span class="s9">
-             
-            </span>
+          <td class="td-2 bgc-2 col-115pt">
+            <span class="s9"></span>
           </td>
-          <td class="td-2" style="
-            width: 90pt;
-          ">
-            <span class="s9">
-                
-            </span>
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="td-2 bgc-2" style="
-            width: 50pt;">
-            <span class="s9">
-              <input type="checkbox" name="" value="" />
-            </span>
-          </td>
-          <td colspan="6" class="td-2" style="
-            width: 480pt;
-          ">
-            <span class="s9"><strong>Student has demonstrated English language proficiency in another state (documentation attached).</strong> For
-            assistance in determining the applicability of out-of-state scores in EL identification process, please
-            contact the OSDE Office of Language Proficiency at (405) 522-5073 or by email at <a mailto:oelp@sde.ok.gov>oelp@sde.ok.gov</a>
-            </span>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <table class="hls-table" cellspacing="0">
-      <tbody>
-        <tr>
-            <td colspan="7">
-              <p class="s3 pg-9">AND</p>
-              <span class="ws-1 pg-1 s1">      2.  The student has achieved a previous-year OSTP ELA score of Basic orBelow Basic or a CCRA (SAT/ACT) Reading subscore   at or below the 35th percentile.</span>
-            </td>
-        </tr>
-      </tbody>
-    </table>
-    <table class="hls-table" cellspacing="0">
-      <tbody>
-        <tr>
-          <td class="td-2 bgc-2" style="
-            width: 65pt;">
-            <span class="s9">
-              Assessment
-            </span>
-          </td>
-          <td class="td-2" style="
-            width: 110pt;
-          ">
-            <span class="s9">Current School Year</span>
-          </td>
-          <td class="td-2 bgc-2" style="
-            width: 75pt;">
-            <span class="s9">
-              Year Assessed:
-            </span>
-          </td>
-          <td colspan="4" class="td-2" style="
-            width: 278pt;
-          ">
-            <span class="s9">ELA / Reading Score</span>
+          <td class="td-2 col-90pt">
+            <span class="s9"></span>
           </td>
         </tr>
         <tr>
-          <td class="td-2" style="width: 50pt">
-            <span class="s9">OSTP</span>
+          <td class="td-2 bgc-2 col-50pt">
+            <span class="s9"><input type="checkbox" name="" value="" /></span>
           </td>
-          <td class="td-2" style="width: 50pt">
-            <span class="s9">place</span>
-          </td>
-          <td class="td-2" style="width: 50pt">
-            <span class="s9">plate</span>
-          </td>
-          <td class="td-2 bgc-2" style="width: 50pt">
-            <span class="s9">Below Basic</span>
-          </td>
-          <td class="td-2 bgc-2" style="width: 50pt">
-            <span class="s9">Basic</span>
-          </td>
-          <td class="td-2 bgc-2" style="width: 50pt">
-            <span class="s9">Proficient</span>
-          </td>
-          <td class="td-2 bgc-2" style="width: 50pt">
-            <span class="s9">advanced</span>
+          <td colspan="6" class="td-2 col-480pt">
+            <span class="s9"><strong>Student has demonstrated English language proficiency in another state (documentation attached).</strong> For assistance in determining the applicability of out-of-state scores in EL identification process, please contact the OSDE Office of Language Proficiency at (405) 522-5073 or by email at <a href="mailto:oelp@sde.ok.gov">oelp@sde.ok.gov</a></span>
           </td>
         </tr>
-        <tr>
-          <td class="td-2 bgc-2" style="width: 50pt">
-            <span class="s9">CCRA</span>
-          </td>
-          <td class="td-2" style="width: 50pt">
-            <span class="s9">plate</span>
-          </td>
-          <td class="td-2" style="width: 50pt">
-            <span class="s9">plate</span>
-          </td>
-          <td class="td-2 bgc-2" style="width: 50pt">
-            <span class="s9">ACT</span>
-          </td>
-          <td class="td-2 bgc-2" style="width: 50pt">
-            <span class="s9">SAT</span>
-          </td>
-          <td class="td-2 bgc-2" style="width: 50pt">
-            <span class="s9">Subscore</span>
-          </td>
-          <td class="td-2" style="width: 50pt">
-            <span class="s9">Tah Dah</span>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <table class="hls-table" cellspacing="0">
-      <tbody>
-        <tr>
-            <td colspan="7">
-              <p class="s3 pg-9">OR</p>
-              <span class="ws-1 pg-1 s1">      3.  The student has successfully demonstrated English language proficiency (score must be indicated in question #1 above), was not
-            enrolled in an OSTP or ACT/SAT assessed grade or did not participate in the OSTP ELA or SAT/ACT assessment in the previous school
-            year, and has scored at or below the 35th percentile (or equivalent) composite reading score on the most recently administered
-            state approved, norm-referenced test (NRT)</span>
-            </td>
-        </tr>
-      </tbody>
-    </table>
-    <table class="hls-table" cellspacing="0">
-      <tbody>
-        <tr class="tr-1">
-          <td colspan="2" class="td-2 bgc-2" style="
-            width: 95pt;
-          ">
-            <span class="s9">
-              Current School Year
-            </span>
-          </td>
-          <td colspan="3" class="td-2 bgc-2" style="
-            width: 220pt;
-          ">
-            <p class="s9">Name of Assessment</p>
-          </td>
-          <td class="td-2 bgc-2" style="
-            width: 115pt;
-          ">
-            <p class="s9">
-              Date administered
-            </p>
-          </td>
-          <td class="td-2 bgc-2" style="
-            width: 90pt;
-          ">
-            <p class="s9">Score</p>
-          </td>
-        </tr>
-        <tr>
-          <td colspan="2" class="td-2" style="
-            width: 95pt;
-          ">
-            <span class="s9">
-              2020
-            </span>
-          </td>
-          <td colspan="3" class="td-2" style="
-            width: 220pt;
-          ">
-            <span class="s9">
-              EL Test
-            </span>
-          </td>
-          <td class="td-2" style="
-            width: 115pt;
-          ">
-            <span class="s9">
-             Yesterday
-            </span>
-          </td>
-          <td class="td-2" style="
-            width: 90pt;
-          ">
-            <span class="s9">
-                000:
-            </span>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <table class="hls-table" cellspacing="0">
-      <tbody>
+        </tbody>
+      </table>
+      <table class="hls-table" cellspacing="0">
+        <tbody>
         <tr>
           <td colspan="7">
-            <div class="s5"> Note that a qualifiyng NRT score must not bre-date spring semester of the previous school year.</div>      
+            <p class="s3 pg-9">AND</p>
+            <span class="ws-1 pg-1 s1">2. The student has achieved a previous-year OSTP ELA score of Basic or Below Basic or a CCRA (SAT/ACT) Reading subscore at or below the 35th percentile.</span>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <table class="hls-table" cellspacing="0">
+        <tbody>
+        <tr>
+          <td class="td-2 bgc-2 col-65pt"><span class="s9">Assessment</span></td>
+          <td class="td-2 col-110pt"><span class="s9">Current School Year</span></td>
+          <td class="td-2 bgc-2 col-75pt"><span class="s9">Year Assessed:</span></td>
+          <td colspan="4" class="td-2 col-278pt"><span class="s9">ELA / Reading Score</span></td>
+        </tr>
+        <tr>
+          <td class="td-2 col-50pt"><span class="s9">OSTP</span></td>
+          <td class="td-2 col-50pt"><span class="s9">~(*evaluate left("~[x:termbegdateYYYYMMDD]",4))</span></td>
+          <td class="td-2 col-50pt"><span class="s9">plate</span></td>
+          <td class="td-2 bgc-2 col-50pt"><span class="s9">Below Basic</span></td>
+          <td class="td-2 bgc-2 col-50pt"><span class="s9">Basic</span></td>
+          <td class="td-2 bgc-2 col-50pt"><span class="s9">Proficient</span></td>
+          <td class="td-2 bgc-2 col-50pt"><span class="s9">advanced</span></td>
+        </tr>
+        <tr>
+          <td class="td-2 bgc-2 col-50pt"><span class="s9">CCRA</span></td>
+          <td class="td-2 col-50pt"><span class="s9">~(*evaluate left("~[x:termbegdateYYYYMMDD]",4))</span></td>
+          <td class="td-2 col-50pt"><span class="s9">plate</span></td>
+          <td class="td-2 bgc-2 col-50pt"><span class="s9">ACT</span></td>
+          <td class="td-2 bgc-2 col-50pt"><span class="s9">SAT</span></td>
+          <td class="td-2 bgc-2 col-50pt"><span class="s9">Subscore</span></td>
+          <td class="td-2 col-50pt"><span class="s9">Tah Dah</span></td>
+        </tr>
+        </tbody>
+      </table>
+      <table class="hls-table" cellspacing="0">
+        <tbody>
+        <tr>
+          <td colspan="7">
+            <p class="s3 pg-9">OR</p>
+            <span class="ws-1 pg-1 s1">3. The student has successfully demonstrated English language proficiency (score must be indicated in question #1 above), was not enrolled in an OSTP or ACT/SAT assessed grade or did not participate in the OSTP ELA or SAT/ACT assessment in the previous school year, and has scored at or below the 35th percentile (or equivalent) composite reading score on the most recently administered state approved, norm-referenced test (NRT)</span>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <table class="hls-table" cellspacing="0">
+        <tbody>
+        <tr class="tr-1">
+          <td colspan="2" class="td-2 bgc-2 col-95pt"><span class="s9">Current School Year</span></td>
+          <td colspan="3" class="td-2 bgc-2 col-220pt"><p class="s9">Name of Assessment</p></td>
+          <td class="td-2 bgc-2 col-115pt"><p class="s9">Date administered</p></td>
+          <td class="td-2 bgc-2 col-90pt"><p class="s9">Score</p></td>
+        </tr>
+        <tr>
+          <td colspan="2" class="td-2 col-95pt"><span class="s9">2020</span></td>
+          <td colspan="3" class="td-2 col-220pt"><span class="s9">EL Test</span></td>
+          <td class="td-2 col-115pt"><span class="s9">Yesterday</span></td>
+          <td class="td-2 col-90pt"><span class="s9">000:</span></td>
+        </tr>
+        </tbody>
+      </table>
+      <table class="hls-table" cellspacing="0">
+        <tbody>
+        <tr>
+          <td colspan="7">
+            <div class="s5">Note that a qualifying NRT score must not pre-date spring semester of the previous school year.</div>      
           </td>
         </tr>
         <tr>
           <td colspan="7">
             <div class="s1">
               <ol>
-                <li>A PKST score is valid only or a stuedt's pre-K year(s). Regardless of the PKST score earned, a student administered the PKST must be administered the WIDA K Screener at the outstet of kindergarten.  To qualify a student as Non-EL Bilingual beyond ther pre-K year, a student must either demostrate initial proficiency oon the WIDA K Sceener or subsequently no the K ACCESS or ACCESS assessment.
-                </li>
+                <li>A PKST score is valid only for a student's pre-K year(s). Regardless of the PKST score earned, a student administered the PKST must be administered the WIDA K Screener at the outset of kindergarten. To qualify a student as Non-EL Bilingual beyond their pre-K year, a student must either demonstrate initial proficiency on the WIDA K Screener or subsequently on the K ACCESS or ACCESS assessment.</li>
                 <li>
-                    Qualifiyng assessment socers:
-                    <ul>
-                        <li><strong>SAT:</strong> Evidence-based Reading and Writing socer at or below the 35th percentile in the Natioonally Representative Sample</li>
-                        <li><strong>ACT:</strong> Current year qualifiying Reading scale score will be determined annually in collaboration with ACT</li>
-                        <li>
-                          <strong>Pre-kindergarten NRT:</strong>
-                            <ul>
-                              <li><strong>Acadience Reading Pre-K CUELI):</strong> A score at or below the 115 composite level</li>
-                              <li><strong>Istation:</strong> A score in either the Tier 2 or Tier 3 level</li>
-                              <li><strong>NWEA MAP Reading Fluency assessment:</strong> A level 0 score on the Foundational Skills component</li>
-                            </ul>
-                        </li>
-                        <li><strong>Grades K-12 NRT:</strong> A score at or below the 35th percentail (or equivalent) on any assessment or readin subtest noted on the <strong>Norm-Reference Tests Approved for "Less Often" Non-el Bilingual Qualification</strong> guidance document.</li>
-                    </ul>
+                  Qualifying assessment scores:
+                  <ul>
+                    <li><strong>SAT:</strong> Evidence-based Reading and Writing score at or below the 35th percentile in the Nationally Representative Sample</li>
+                    <li><strong>ACT:</strong> Current year qualifying Reading scale score will be determined annually in collaboration with ACT</li>
+                    <li>
+                      <strong>Pre-kindergarten NRT:</strong>
+                      <ul>
+                        <li><strong>Acadience Reading Pre-K (PELI):</strong> A score at or below the 115 composite level</li>
+                        <li><strong>Istation:</strong> A score in either the Tier 2 or Tier 3 level</li>
+                        <li><strong>NWEA MAP Reading Fluency assessment:</strong> A level 0 score on the Foundational Skills component</li>
+                      </ul>
+                    </li>
+                    <li><strong>Grades K-12 NRT:</strong> A score at or below the 35th percentile (or equivalent) on any assessment or reading subtest noted on the <strong>Norm-Reference Tests Approved for "Less Often" Non-el Bilingual Qualification</strong> guidance document.</li>
+                  </ul>
                 </li>
               </ol>
             </div>
           </td>
         </tr>
-      </tbody>
-    </table>
+        </tbody>
+      </table>
     </div>
-	</div>
 <!-- end of content area -->
-	~[wc:admin_footer_frame_css]
+    ~[wc:admin_footer_frame_css]
 </body> 
 </html>
