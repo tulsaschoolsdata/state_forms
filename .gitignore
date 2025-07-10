@@ -5,3 +5,4 @@ ok_state_forms*.*
 **/*.DS_Store
 **/**.DS_Store
 port/*
+queries/*
