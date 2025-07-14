@@ -1,3 +1,6 @@
+<!--
+TemplateName:Admin Student Page
+-->
 <!DOCTYPE html>
 <html>
 <head>
@@ -258,6 +261,7 @@
 <!-- start of main menu and content -->
 <!-- start of content area -->
 	<div class="box-round">      
+    ~[DirectTable.Select:U_State_Forms.U_State_Forms_Meta;StudentsDCID:~(studenrn)]
 	  <table class="hls-table" cellspacing="0">
         <tr style="height: 33pt">
           <td colspan="6" class="td-1">
@@ -265,7 +269,7 @@
               <!-- Left-aligned content -->
               <span style="text-align: left;">
                 SCHOOL YEAR:
-                <span class="s2">~(*evaluate right("~([Students.U_OK_State_Forms]HLS_First_Identified_Date)",4))</span>
+                <span class="s2">~(*evaluate right("~([Students.U_State_Forms]HLS_First_Identified_Date)",4))</span>
               </span>
         
               <!-- Center-aligned content -->
@@ -353,15 +357,17 @@
                     <div class="flex-container">
                       <span class="s5 flex-item">interpretation services? </span><span class="input-right"> YES<input
                       type="radio"
-                      name="[Students.U_OK_State_Forms]HLS_Interpreter_Need"
-                      value="Yes"
+                      name="interpretation_services"
+                      value="[Students.U_State_Forms]HLS_Need_Interpreter"
+                      ~[if.~([Students.U_State_Forms]HLS_Need_Interpreter)=1]checked[/if] 
                     />NO<input
                       type="radio"
-                      name="[Students.U_OK_State_Forms]HLS_Interpreter_Need"
-                      value="No"
+                      name="interpretation_services"
+                      value="[Students.U_State_Forms]HLS_Need_Interpreter"
+                      ~[if.~([Students.U_State_Forms]HLS_Need_Interpreter)=0]checked[/if] 
                     /><span class="s5">If YES, in
                         what language? </span><span class="ul-long">
-                        ~([Students.U_OK_State_Forms]HLS_Interpreter_Lang)</span></span>
+                        ~([Students.U_State_Forms]HLS_Interpreter_Lang)</span></span>
                     </div>
                   </li>
                 </ul>
@@ -373,9 +379,19 @@
                 <ul style="margin-inline-end:0;">
                   <li>
                     <div class="flex-container">
-                      <span class="s5 flex-item">translation services? </span><span class="input-right"> YES<input type="radio" name="[Students.U_OK_State_Forms]HLS_Translated_Material_Need" value="Yes" />NO<input type="radio" name="[Students.U_OK_State_Forms]HLS_Translated_Material_Need" value="No" /><span class="s5">If YES, in
+                      <span class="s5 flex-item">translation services? </span><span class="input-right"> YES<input 
+                        type="radio" 
+                        name="translation_services" 
+                        value="[Students.U_State_Forms]HLS_Need_Translated_Material" 
+                        ~[if.~([Students.U_State_Forms]HLS_Need_Translated_Material)=1]checked[/if] 
+                      /> NO<input 
+                        type="radio" 
+                        name="translation_services" 
+                        value="[Students.U_State_Forms]HLS_Need_Translated_Material" 
+                        ~[if.~([Students.U_State_Forms]HLS_Need_Translated_Material)=0]checked[/if] 
+                      /><span class="s5">If YES, in
                         what language? </span><span class="ul-long">
-                        ~([Students.U_OK_State_Forms]HLS_Translated_Material_Lang)</span></span>
+                        ~([Students.U_State_Forms]HLS_Translated_Material_Lang)</span></span>
                     </div>
                   </li>
                 </ul>
@@ -385,14 +401,14 @@
                   <p class="s5 flex-item pg-1">
                     What was the date the student first enrolled in a school in the United States?
                   </p>
-                  <span class="input-right ul-long">~([Students.U_OK_State_Forms]HLS_First_Year_US_School)
+                  <span class="input-right ul-long">~([Students.U_State_Forms]HLS_First_Year_US_School)
                   </span>
                 </div>
               </li>
             </ol>
             <div class="flex-container">
-              <div class="left-text"><span class="ul-extra-long">~([Students.U_OK_State_Forms]HLS_Application_Date)</span></div>
-              <div class="right-text"><span class="ul-extra-long">~([Students.U_OK_State_Forms]HLS_Guardian_Signature)</span></div>
+              <div class="left-text"><span class="ul-extra-long">~([Students.U_State_Forms.U_State_Forms_Meta]HLS_Signature_Date)</span></div>
+              <div class="right-text"><span class="ul-extra-long">~([Students.U_State_Forms.U_State_Forms_Meta]HLS_Signature)</span></div>
             </div>
             <div class="flex-container">
               <p class="s5 left-text">Date (MM/DD/YYYY)</p>
@@ -422,7 +438,11 @@
               qualification, please indicate one of the following:
             </p>
             <div class="inline-container">
-              <span class="pg-1"><input type="checkbox" name="[Students.U_OK_STATE_FORMS]HLS_Other_lang_2_Plus_Times" /></span>
+              <span class="pg-1"><input 
+                type="checkbox" 
+                name="[Students.U_State_Forms]HLS_Other_lang_Two_Plus_Times"
+                value="1"
+                ~[if.~([Students.U_State_Forms]HLS_Other_Lang_Two_Plus_Times)=1]checked[/if] /></span>
               <p class="s13 pg-1">
                 A language other than English is indicated
                 <b>TWO OR MORE TIMES </b>in questions #1, #2, and #3 above. The
@@ -442,7 +462,17 @@
           <td class="td-2" style="
             width: 145pt;
           ">
-            <p class="s9 pg-1"><input type="text" name="[Students.U_OK_State_Forms]HLS_Assessment_Name" value="" readonly /></p>
+            <p class="s9 pg-1">
+            ~[tlist_sql;
+              SELECT COALESCE(U_State_Forms.Lo_Comp_Rdng_Assmt
+                , U_State_Forms.Lo_Prev_Year_Assmt
+                , U_State_Forms.Lo_Norm_Referenced_Assmt_Name)
+              FROM U_State_Forms
+              WHERE U_State_Forms.StudentsDCID = ~(studentrn)
+            ;]
+              ~(assessment_name)
+            [/tlist_sql]
+            </p>
           </td>
           <td class="td-2 bgc-2" style="
             width: 80pt;">
@@ -453,7 +483,17 @@
           <td class="td-2" style="
             width: 78pt;
           ">
-            <p class="s9 pg-1"><input type="text" name="[Students.U_OK_State_Forms]HLS_Assessment_Year" value="" readonly /></p>
+            <p class="s9 pg-1">
+            ~[tlist_sql;
+              SELECT EXTRACT (YEAR FROM COALESCE(U_State_Forms_Meta.Lo_Comp_Rdng_Assmt_Date
+                , U_State_Forms_Meta.Lo_Eng_Prev_Assmt_Year
+                , U_State_Forms_Meta.Lo_Norm_Referenced_Assmt_Date))
+              FROM U_State_Forms_Meta
+              WHERE U_State_Forms_Meta.StudentsDCID = ~(studentrn)
+            ;]
+              ~(assessment_date)
+            [/tlist_sql]
+            </p>
           </td>
           <td class="td-2 bgc-2" style="
             width: 40pt;">
@@ -465,14 +505,28 @@
             width: 97pt;
           ">
             <p class="s9 pg-1">
-              <input type="text" name="[Students.U_OK_STATE_FORMS]HLS_Assessment_Score" value="" readonly />
+            ~[tlist_sql;
+              SELECT COALESCE(TO_CHAR(U_State_Forms.Lo_Comp_Rdng_Assmt_Score)
+                , TO_CHAR(U_State_Forms.Lo_Eng_Prev_Year_CCRA_Score)
+                , U_State_Forms.Lo_Eng_Prev_year_OSTP_Score
+                , TO_CHAR(U_State_Forms.Lo_Norm_Referenced_Assmt_Score))
+              FROM U_State_Forms
+              WHERE U_State_Forms.StudentsDCID = ~(studentrn)
+            ;]
+              ~(assessment_score)
+            [/tlist_sql]
             </p>
           </td>
         </tr>
         <tr>
           <td colspan="6">
             <div class="inline-container">
-              <span class="pg-1"><input type="checkbox" name="[Students.U_OK_STATE_FORMS]HLS_Other_lang_1_Time" /></span>
+              <span class="pg-1"><input 
+                type="checkbox" 
+                name="[Students.U_State_Forms]HLS_Other_lang_one_Time"
+                value=""
+                ~[if.~([Students.U_State_Forms]HLS_Other_Lang_One_Time)=1]checked[/if] />
+              </span>
                 <p class="s13 pg-1">
                   A language other than English is indicated <b>ONE TIME </b>in
                   questions #1, #2, and #3 above. The student is considered “<b>less often</b>” and has demonstrated English
