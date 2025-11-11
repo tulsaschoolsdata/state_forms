@@ -1,5 +1,5 @@
-ok_state_forms.zip
-ok_state_forms.zip.bak
+ok_state_forms*.*
+*/*ok_state_forms*.*
 *.DS_STore
 */*.DS_Store
 **/*.DS_Store
