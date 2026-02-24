@@ -34,18 +34,16 @@ plugin: src/web_root/
 	@ echo "Plugin name: $(plugin_name)"
 	@ echo "Plugin name version: $(plugin_name_version)"
 	@ mkdir -p dist
-	@ rm -rf dist/ './$(plugin_name_version).zip'
-	@ cp -a src dist/
+	@ rm -rf dist/src './dist/$(plugin_name_version).zip'
+	@ cp -a src dist/src
 	@ if [ -f src/web_root/head.html ]; then \
         sed "s/version=/version=$$(git show-ref HEAD --hash)/g" \
             < src/web_root/head.html \
-            > dist/web_root/head.html; \
+            > dist/src/web_root/head.html; \
     fi
 	@ echo zip: '$(plugin_name_version).zip'
-	@ cd ./dist && zip -r '../$(plugin_name_version).zip' *
-	@ rm -rf dist
-	@ rm -f dist/$(plugin_name_version).zip
-	@ (cd src && zip -r ../$(plugin_name_version).zip web_root plugin.xml)
-	@ mv ${plugin_name_version}.zip dist/
+	@ cd ./dist/src && zip -r '$(plugin_name_version).zip' * -x '*/.DS_Store' -x '.DS_Store'
+	@ mv './dist/src/$(plugin_name_version).zip' './dist/$(plugin_name_version).zip'
+	@ rm -rf dist/src
 	@ echo "Plugin created: dist/$(plugin_name_version).zip"
 	

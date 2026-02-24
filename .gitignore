@@ -9,3 +9,4 @@ ok_state_forms-v0.1.0.zip
 **/*.DS_Store
 /port/*
 queries/*
+.docs/*
