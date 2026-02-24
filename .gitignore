@@ -6,3 +6,5 @@ ok_state_forms*.*
 **/**.DS_Store
 port/*
 queries/*
+dist
+dist/*

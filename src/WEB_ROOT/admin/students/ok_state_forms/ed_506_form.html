@@ -1,3 +1,6 @@
+<!--
+TemplateName:Admin Student Page
+-->
 <!DOCTYPE html>
 <html>
 
@@ -224,7 +227,7 @@
     }
     .ul-extra-long {
       display: inline-block;
-      width: 200pt;
+      width: 190pt;
       border-bottom: 2px solid black;
       vertical-align: bottom;
       text-align: center;
@@ -269,7 +272,20 @@
       flex: 1;
     }
   </style>
+  <script>
+      $j(function () {
+          var tribal_member = "~([Students.U_State_Forms]Ed_506_Tribal_Member)";
+          console.log("Tribal Member");
+          console.log(tribal_member);
+          
+          var tribe_status = "~([Students.U_State_Forms]Ed_506_Tribe_Status)";
+          console.log("Tribe Status");
+          console.log(tribe_status);
+      });
+  </script>
+</head>
 
+<body>
   ~[wc:admin_header_frame_css]
   <!-- breadcrumb start -->
   <a href="/admin/home.html" target="_top">Start Page</a> &gt; <a
@@ -278,6 +294,7 @@
   ~[wc:admin_navigation_frame_css]
   <!-- start of main menu and content -->
   <form action="/~[self.page]?frn=~(studentfrn)&changesSaved=true" method="POST">
+	~[DirectTable.Select:U_State_Forms.U_State_Forms_Meta;StudentsDCID:~(studenrn)]
     <!-- start of content area -->
     ~[if.~(gpv.changesSaved)=true]<div class="feedback-confirm">~[text:psx.common.changes_recorded][/if]
     <div class="box-round" style="margin-left: 75px; margin-right: 50px">
@@ -337,41 +354,41 @@
     </p>
     <p class="p2">
       The individual with Tribal membership is the (select only one):
-      <input type="radio" name="radio" value="" />child
-      <input type="radio" name="radio" value="" /> child&#39;s parent
-      <input type="radio" name="radio" value="" /> child&#39;s grandparent
-    </p>
+      <input type="radio" name="[Students.U_State_Forms]Ed_506_Tribal_Member" value="Child" ~[if.~([Students.U_State_Forms]Ed_506_Tribal_Member)="Child"]checked[/if] />Child 
+      <input type="radio" name="[Students.U_State_Forms]Ed_506_Tribal_Member" value="Child's Parent" ~[if.~([Students.U_State_Forms]Ed_506_Tribal_Member)="Child's Parent"]checked[/if] />Child's Parent 
+      <input type="radio" name="[Students.U_State_Forms]Ed_506_Tribal_Member" value="Child's Grandparent" ~[if.~([Students.U_State_Forms]Ed_506_Tribal_Member)="Child's Grandparent"]checked[/if] />Child's Grandparent
+        </p>
     <p class="p2">
       If the individual with Tribal membership is <b>not </b>the child listed
-      above, name the individual (parent/grandparent) with tribal membership: <span class="ul-extra-long"> ~([U_TPS_Indian_Education]Tribal_Member_Name)</span>
+      above, name the individual (parent/grandparent) with tribal membership: <span class="ul-extra-long"> ~([Students.U_State_Forms]Ed_506_Tribal_Member_Name)</span>
     </p>
     <p class="p3">
       Name <u>and</u> address of Tribe or Band that maintains updated and
       accurate membership data for the individual listed above:
     </p>
     <p class="p2">
-      Name <span class="ul-extra-long"></span>
-      Address <span class="s11 ul-extra-long"></span>
+      Name <span class="ul-extra-long">~([Students.U_State_Forms]Ed_506_Tribe_Name)</span>
+      Address <span class="s11 ul-extra-long">~([Students.U_State_Forms]Ed_506_Tribal_Address_Street)</span>
     </p>
     <p class="p2">
-      City <span class="ul-extra-long"></span>
-      State <span class="ul-short"></span>
-      Zip Code <span class="ul-mid"></span>
+      City <span class="ul-extra-long">~([Students.U_State_Forms]Ed_506_Tribal_Address_City)</span>
+      State <span class="ul-long">~([Students.U_State_Forms]Ed_506_Tribal_Address_State)</span>
+      Zip Code <span class="ul-mid">~([Students.U_State_Forms]Ed_506_Tribal_Address_Zip)</span>
     </p>
 
     <p class="p3">
       The Tribe or Band is (select only one):
     </p>
     <p class="p4">
-      <input type="radio" name="radio1" value="" /> Federally Recognized Tribe
+      <input type="radio" name="[Students.U_State_Forms]Ed_506_Tribe_Status" value="Federally Recognized Tribe" ~[if.~([Students.U_State_Forms]Ed_506_Tribe_Status)="Federally Recognized Tribe"]checked[/if] /> Federally Recognized Tribe
     <br>
-      <input type="radio" name="radio1" value="" /> State Recognized Tribe
+      <input type="radio" name="[Students.U_State_Forms]Ed_506_Tribe_Status" value="State Recognized Tribe" ~[if.~([Students.U_State_Forms]Ed_506_Tribe_Status)="State Recognized Tribe"]checked[/if] /> State Recognized Tribe
     <br>
-      <input type="radio" name="radio1" value="" /> Terminated Tribe
+      <input type="radio" name="[Students.U_State_Forms]Ed_506_Tribe_Status" value="Terminated Tribe" ~[if.~([Students.U_State_Forms]Ed_506_Tribe_Status)="Terminated Tribe"]checked[/if] /> Terminated Tribe
     <br>
-      <input type="radio" name="radio1" value="" /> Alaska Native
+      <input type="radio" name="[Students.U_State_Forms]Ed_506_Tribe_Status" value="Alaska Native" ~[if.~([Students.U_State_Forms]Ed_506_Tribe_Status)="Alaska Native"]checked[/if] /> Alaska Native
     <br>
-      <input type="radio" name="radio1" value="" /> Member of an organized Indian group that received a grant under the Indian
+      <input type="radio" name="[Students.U_State_Forms]Ed_506_Tribe_Status" value="IEA_1998_Member" ~[if.~([Students.U_State_Forms]Ed_506_Tribe_Status)="IEA_1998_Member"]checked[/if] /> Member of an organized Indian group that received a grant under the Indian
       Education Act of 1988 as it was in effect October 19, 1994.
     </p>
     <p class="p3">
@@ -379,16 +396,16 @@
       Band is:
     </p>
     <p class="p4">
-      <input type="radio" name="radio2" value="" /> Membership or enrollment number establishing membership (if
+      <input type="radio" name="[Students.U_State_Forms]ED_506_Membership_Proof_Type" value="membership number" ~[if.~([Students.U_State_Forms]Ed_506_Membership_Proof_Type)="membership number"]checked[/if] /> Membership or enrollment number establishing membership (if
       readily available) or
       <br>
-      <input type="radio" name="radio2" value="" /> Other evidence establishing membership in the Tribe listed above (describe
+      <input type="radio" name="[Students.U_State_Forms]ED_506_Membership_Proof_Type" value="other" ~[if.~([Students.U_State_Forms]Ed_506_Membership_Proof_Type)="other"]checked[/if] /> Other evidence establishing membership in the Tribe listed above (describe
       and attach)
     </p>
     <p class="p2">
       Membership or enrollment number establishing membership (if readily
       available) or other evidence establishing membership in the Tribe listed
-      above (describe and attach). <span class="ul-mid"></span>
+      above (describe and attach). <span class="ul-mid">~([Students.U_State_Forms]ED_506_Membership_Proof)</span>
     </p>
     <p class="p1">
       Attestation Statement
@@ -398,19 +415,19 @@
       best of my knowledge and belief.
     </p>
     <p class="p3">
-      Printed Name of Parent/Guardian<span class="ul-extra-long"></span>
-      Signature <span class="ul-extra-long"></span>
+      Printed Name of Parent/Guardian<span class="ul-extra-long">~([Students.U_State_Forms_Meta]ED_506_Attestation_Name)</span>
+      Signature <span class="ul-extra-long">~([Students.U_State_Forms_Meta]ED_506_Attestation_Signature)</span>
     </p>
     <p class="p3">
-      Address <span class="ul-mid"></span>
-      City <span class="ul-long"></span>
-      State <span class="ul-mid"></span>
-      Zip Code <span class="ul-mid"></span>
+      Address <span class="ul-mid">~([Students.U_State_Forms_Meta]ED_506_Attestation_Street)</span>
+  City <span class="ul-long">~([Students.U_State_Forms_Meta]ED_506_Attestation_City)</span>
+      State <span class="ul-mid">~([Students.U_State_Forms_Meta]ED_506_Attestation_State)</span>
+      Zip Code <span class="ul-mid">~([Students.U_State_Forms_Meta]ED_506_Attestation_Zip)</span>
     </p>
     <p class="p3">
-      Phone Number <span class="ul-mid"></span>
-      Email <span class="ul-extra-long"></span>
-      Date <span class="u-mid"></span>
+      Phone Number <span class="ul-mid">~([Students.U_State_Forms_Meta]ED_506_Attestation_Phone)</span>
+      Email <span class="ul-extra-long">~([Students.U_State_Forms_Meta]ED_506_Attestation_Street)</span>
+      Date <span class="u-mid">~([StudentsU_State_Forms_Meta]ED_506_Attestation_Date)</span>
     </p>
     <p
       class="s1"
