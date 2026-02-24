@@ -1,4 +1,3 @@
-
 SHELL = /bin/bash
 
 INSECURE = $(shell echo ${PS_HOST} | grep -q '://[0-9.]\+' && echo '--insecure')
@@ -31,14 +30,17 @@ export HELP
 default: help
 
 plugin: src/web_root/
+	@ echo "Plugin version: $(plugin_version)"
+	@ echo "Plugin name: $(plugin_name)"
+	@ echo "Plugin name version: $(plugin_name_version)"
 	@ mkdir -p dist
 	@ rm -rf dist/ './$(plugin_name_version).zip'
 	@ cp -a src dist/
-	@ sed "s/version=/version=$$(git show-ref HEAD --hash)/g" \
-		< web_root/head.html \
-		> dist/web_root/head.html
+	@ if [ -f src/web_root/head.html ]; then \
+        sed "s/version=/version=$$(git show-ref HEAD --hash)/g" \
+            < src/web_root/head.html \
+            > dist/web_root/head.html; \
+    fi
 	@ echo zip: '$(plugin_name_version).zip'
-	@ cd ./dist && zip -r '$(plugin_name_version).zip' *
-	@ mv './dist/$(plugin_name_version).zip' './dist/$(plugin_name_version).zip'
+	@ cd ./dist && zip -r '../$(plugin_name_version).zip' *
 	@ rm -rf dist
-	
