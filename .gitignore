@@ -7,8 +7,5 @@ ok_state_forms-v0.1.0.zip
 *.DS_STore
 */*.DS_Store
 **/*.DS_Store
-**/**.DS_Store
-port/*
+/port/*
 queries/*
-dist
-dist/*
