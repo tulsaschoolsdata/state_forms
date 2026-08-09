@@ -10,3 +10,5 @@ ok_state_forms-v0.1.0.zip
 /port/*
 queries/*
 .docs/*
+mise.local.toml
+.envrc
