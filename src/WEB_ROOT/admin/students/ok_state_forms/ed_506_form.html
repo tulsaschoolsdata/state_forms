@@ -274,6 +274,45 @@ TemplateName:Admin Student Page
       vertical-align: bottom;
       text-align: center;
     }
+    /* Guardian address line: street addresses were wrapping to 2-3 lines inside the
+       60pt ul-mid box, tipping some forms' total height past one page and causing
+       blank/spillover pages in mass print. Widen the address box and shrink its font
+       (still legible in the all-caps custodial-address data) so it reliably fits on one
+       line, and narrow City/State/Zip to give that width back. */
+    .ul-addr {
+      display: inline-block;
+      width: 210pt;
+      font-size: 6pt;
+      border-bottom: 2px solid black;
+      vertical-align: bottom;
+      text-align: center;
+    }
+    /* The other attestation fields (name, city/state/zip, phone, email, date) sit at the
+       10pt body size; shrunk 20% to 8pt to match scale with the resized address field. */
+    .attn-sm {
+      font-size: 8pt;
+    }
+    .ul-city-sm {
+      display: inline-block;
+      width: 70pt;
+      border-bottom: 2px solid black;
+      vertical-align: bottom;
+      text-align: center;
+    }
+    .ul-state-sm {
+      display: inline-block;
+      width: 26pt;
+      border-bottom: 2px solid black;
+      vertical-align: bottom;
+      text-align: center;
+    }
+    .ul-zip-sm {
+      display: inline-block;
+      width: 40pt;
+      border-bottom: 2px solid black;
+      vertical-align: bottom;
+      text-align: center;
+    }
     em {
       display: none;
     }
@@ -365,7 +404,7 @@ TemplateName:Admin Student Page
       Name of the Child <span class="ul-extra-long"><span class="s5">~([Students]First_Name) ~([Students]Middle_Name) ~([Students]Last_Name)</span></span> Date of Birth <span class="s5 ul-mid">~([Students]DOB) </span>Grade Level <span class="ul-short"><span class="s5">~(Grade_Level)</span></span>
     </p>
     <p class="p2">
-      Name of School <span class="s5 ul-extra-long">~(schoolname)</span>
+      Name of School <span class="s5 ul-extra-long">~(studentschoolname)</span>
       School District <span class="s5 ul-extra-long">~[displaypref:districtname]</span>
     </p>
     <p class="p1">
@@ -480,19 +519,19 @@ TemplateName:Admin Student Page
          server, so it gets its own single-column tlist_sql; it prints blank naturally when
          unset, which is enough to show the form is unsigned. -->
     <p class="p3">
-      Printed Name of Parent/Guardian <span class="ul-long">~(*contact_info;flags=custodial;max-pers=all;which-pers=1;cat=demo;val=firstname,lastname;value-delim=space;)</span>
-      Signature <span class="ul-long">~(*contact_info;flags=custodial;max-pers=all;which-pers=1;cat=demo;val=firstname,lastname;value-delim=space;)</span>
+      Printed Name of Parent/Guardian <span class="ul-long attn-sm">~(*contact_info;flags=custodial;max-pers=all;which-pers=1;cat=demo;val=firstname,lastname;value-delim=space;)</span>
+      Signature <span class="ul-long attn-sm">~(*contact_info;flags=custodial;max-pers=all;which-pers=1;cat=demo;val=firstname,lastname;value-delim=space;)</span>
     </p>
     <p class="p3">
-      Address <span class="ul-mid">~([Students]Street)</span>
-      City <span class="ul-long">~([Students]City)</span>
-      State <span class="ul-mid">~([Students]State)</span>
-      Zip Code <span class="ul-mid">~([Students]Zip)</span>
+      Address <span class="ul-addr">~([Students]Street)</span>
+      City <span class="ul-city-sm attn-sm">~([Students]City)</span>
+      State <span class="ul-state-sm attn-sm">~([Students]State)</span>
+      Zip Code <span class="ul-zip-sm attn-sm">~([Students]Zip)</span>
     </p>
     <p class="p3">
-      Phone Number <span class="ul-mid">~(*contact_info;flags=custodial;max-pers=all;which-pers=1;cat=phone;which-val=1;val=phone;)</span>
-      Email <span class="ul-extra-long">~(*contact_info;flags=custodial;max-pers=all;which-pers=1;cat=email;which-val=1;val=email;)</span>
-      Date <span class="ul-mid">~[tlist_sql;select to_char(e.ed506_date,'MM/DD/YYYY') ed_date_str from students s join u_tps_indian_education e on e.studentsdcid = s.dcid where s.id = ~(curstudid)]~(ed_date_str)[/tlist_sql]</span>
+      Phone Number <span class="ul-mid attn-sm">~(*contact_info;flags=custodial;max-pers=all;which-pers=1;cat=phone;which-val=1;val=phone;)</span>
+      Email <span class="ul-extra-long attn-sm">~(*contact_info;flags=custodial;max-pers=all;which-pers=1;cat=email;which-val=1;val=email;)</span>
+      Date <span class="ul-mid attn-sm">~[tlist_sql;select to_char(e.ed506_date,'MM/DD/YYYY') ed_date_str from students s join u_tps_indian_education e on e.studentsdcid = s.dcid where s.id = ~(curstudid)]~(ed_date_str)[/tlist_sql]</span>
     </p>
   <div class="no-print">
     <p class="p1">
