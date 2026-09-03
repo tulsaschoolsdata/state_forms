@@ -35,7 +35,9 @@ plugin: src/web_root/
 	@ echo "Plugin name version: $(plugin_name_version)"
 	@ mkdir -p dist
 	@ rm -rf dist/src './dist/$(plugin_name_version).zip'
-	@ cp -a src dist/src
+	@ mkdir -p dist/src
+	@ cp -a src/WEB_ROOT dist/src/WEB_ROOT
+	@ cp -a src/plugin.xml dist/src/plugin.xml
 	@ if [ -f src/web_root/head.html ]; then \
         sed "s/version=/version=$$(git show-ref HEAD --hash)/g" \
             < src/web_root/head.html \

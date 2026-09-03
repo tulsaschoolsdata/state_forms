@@ -11,9 +11,26 @@ TemplateName:Admin Student Page
   <!-- Required style sheets: screen.css, and print.css -->
   <link href="/images/css/screen.css" rel="stylesheet" media="screen">
   <link href="/images/css/print.css" rel="stylesheet" media="print">
+</head>
+
+<body>
+  ~[wc:admin_header_frame_css]
+  <!-- breadcrumb start -->
+  <a href="/admin/home.html" target="_top">Start Page</a> &gt; <a
+    href="/admin/students/home.html?selectstudent=nosearch" target="_top">Student Selection</a> &gt; ED 506 Form
+  <!-- breadcrumb end -->
+  ~[wc:admin_navigation_frame_css]
+  <!-- start of main menu and content -->
+  <!-- Read-only display page: data is pulled from existing U_Tps_Indian_Education /
+       U_StudentsUserFields fields (no data entry, no save). U_StudentsUserFields is a native
+       one-to-one Students extension. U_Tps_Indian_Education fields are pulled entirely
+       through the tlist_sql block below - DirectTable.Select + DAT access to that table does
+       not resolve on this server, so it is no longer joined here. -->
+  <!-- start of content area -->
   <style type="text/css">
     @media print {
     
+      .no-print,
       a,
       #student_detail_header,
       #pds-header,
@@ -22,11 +39,18 @@ TemplateName:Admin Student Page
         display: none !important;
       }
        .box-round {
-        margin: 0 !important;  
+        margin: 0 !important;
+        padding: 0 !important;
+        border: none !important;
+        box-shadow: none !important;
+        background: none !important;
         width: 100% !important;
         max-width: 7.5in;
-        max-height: 10.5in !important;
       }
+    }
+    @page {
+      size: letter portrait;
+      margin: 0.5in;
     }
       
     page .box-round {
@@ -268,33 +292,31 @@ TemplateName:Admin Student Page
     .flex-item {
       flex: 1;
     }
+    /* The browser's own disabled radio is too pale to read on paper, and a filter darkens
+       the ring and the dot together so the dot never stands out. Draw the control instead:
+       a mid-gray ring, with the checked dot painted as a background gradient. The dot is a
+       background rather than a ::before because input is a replaced element -- an absolutely
+       positioned pseudo-element on it escapes and stretches across the page. */
+    input[type="radio"] {
+      -webkit-appearance: none;
+      appearance: none;
+      display: inline-block;
+      width: 11px;
+      height: 11px;
+      margin: 0 3px 0 0;
+      border: 1px solid #555555;
+      border-radius: 50%;
+      background-color: #ffffff;
+      vertical-align: middle;
+      opacity: 1;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    input[type="radio"]:checked {
+      background-image: radial-gradient(circle at center, #000000 0 42%, rgba(0,0,0,0) 44%);
+    }
   </style>
-  <script>
-      $j(function () {
-          var tribal_member = "~([Students.U_State_Forms]Ed_506_Tribal_Member)";
-          console.log("Tribal Member");
-          console.log(tribal_member);
-          
-          var tribe_status = "~([Students.U_State_Forms]Ed_506_Tribe_Status)";
-          console.log("Tribe Status");
-          console.log(tribe_status);
-      });
-  </script>
-</head>
-
-<body>
-  ~[wc:admin_header_frame_css]
-  <!-- breadcrumb start -->
-  <a href="/admin/home.html" target="_top">Start Page</a> &gt; <a
-    href="/admin/students/home.html?selectstudent=nosearch" target="_top">Student Selection</a> &gt; ED 506 Form
-  <!-- breadcrumb end -->
-  ~[wc:admin_navigation_frame_css]
-  <!-- start of main menu and content -->
-  <form action="/~[self.page]?frn=~(studentfrn)&changesSaved=true" method="POST">
-	~[DirectTable.Select:U_State_Forms.U_State_Forms_Meta;StudentsDCID:~(studenrn)]
-    <!-- start of content area -->
-    ~[if.~(gpv.changesSaved)=true]<div class="feedback-confirm">~[text:psx.common.changes_recorded][/if]
-    <div class="box-round" style="margin-left: 75px; margin-right: 50px">
+  <div class="box-round" style="margin-left: 75px; margin-right: 50px">
         <p
       class="s1"
       style="
@@ -349,61 +371,101 @@ TemplateName:Admin Student Page
     <p class="p1">
       Tribal Membership
     </p>
+    <!-- DirectTable.Select + DAT access to U_Tps_Indian_Education does not resolve on this
+         server (confirmed empty on students with data present, regardless of the [Students.]
+         prefix). Every field from that table is now pulled through this one tlist_sql, which
+         already joins it as alias e and is proven to render. tlist_sql binds body values BY
+         POSITION, not by name, so the ~( ) references below must stay in the same order as
+         the SELECT list; the text inside them is only a label. Reserved characters (brackets,
+         carets, colons) must be passed as CHR() values or the tag silently fails to open. -->
+~[tlist_sql;select decode(e.tribal_member,'Child','checked',' ') member_child, decode(e.tribal_member,'Child' || chr(39) || 's Parent','checked',' ') member_parent, decode(e.tribal_member,'Child' || chr(39) || 's Grandparent','checked',' ') member_grandparent, e.tribal_member_name tribal_member_name, c.description tribe_name, h.street tribe_street, h.city tribe_city, h.state tribe_state, h.postal_code tribe_zip, decode(h.tribe_status,'Federal','checked',' ') fed_checked, decode(h.tribe_status,'State','checked',' ') st_checked, decode(e.tribe_membership_proof,1,'checked',' ') proof_number, decode(e.tribe_membership_proof,2,'checked',' ') proof_other, u.tps_natamer_jom_nbr jom_nbr, u.tps_natamer_cherokee_rollnbr cherokee_rollnbr, to_char(e.ed506_date,'MM/DD/YYYY') ed_date_str, nvl2(e.ed506_date,' ','style="visibility'||chr(58)||'hidden"') hide_attn from students s join u_studentsuserfields u on u.studentsdcid = s.dcid left join u_tps_indian_education e on e.studentsdcid = s.dcid left join codeset c on to_char(c.codesetid) = trim(substr(u.tps_tribal_names_codeset_id,1,decode(instr(u.tps_tribal_names_codeset_id,chr(58)),0,length(u.tps_tribal_names_codeset_id),instr(u.tps_tribal_names_codeset_id,chr(58))-1))) left join u_tribal_hq_address h on h.codesetcodesetid = c.codesetid where s.id = ~(curstudid)]
     <p class="p2">
       The individual with Tribal membership is the (select only one):
-      <input type="radio" name="[Students.U_State_Forms]Ed_506_Tribal_Member" value="Child" ~[if.~([Students.U_State_Forms]Ed_506_Tribal_Member)="Child"]checked[/if] />Child 
-      <input type="radio" name="[Students.U_State_Forms]Ed_506_Tribal_Member" value="Child's Parent" ~[if.~([Students.U_State_Forms]Ed_506_Tribal_Member)="Child's Parent"]checked[/if] />Child's Parent 
-      <input type="radio" name="[Students.U_State_Forms]Ed_506_Tribal_Member" value="Child's Grandparent" ~[if.~([Students.U_State_Forms]Ed_506_Tribal_Member)="Child's Grandparent"]checked[/if] />Child's Grandparent
+      <input type="radio" disabled
+~(member_child)
+      />Child
+      <input type="radio" disabled
+~(member_parent)
+      />Child's Parent
+      <input type="radio" disabled
+~(member_grandparent)
+      />Child's Grandparent
         </p>
     <p class="p2">
       If the individual with Tribal membership is <b>not </b>the child listed
-      above, name the individual (parent/grandparent) with tribal membership: <span class="ul-extra-long"> ~([Students.U_State_Forms]Ed_506_Tribal_Member_Name)</span>
+      above, name the individual (parent/grandparent) with tribal membership: <span class="ul-extra-long"> ~(tribal_member_name)</span>
     </p>
     <p class="p3">
       Name <u>and</u> address of Tribe or Band that maintains updated and
       accurate membership data for the individual listed above:
     </p>
     <p class="p2">
-      Name <span class="ul-extra-long">~([Students.U_State_Forms]Ed_506_Tribe_Name)</span>
-      Address <span class="s11 ul-extra-long">~([Students.U_State_Forms]Ed_506_Tribal_Address_Street)</span>
+      Name <span class="ul-extra-long">
+~(tribe_name)
+      </span>
+      Address <span class="s11 ul-extra-long">
+~(tribe_street)
+      </span>
     </p>
     <p class="p2">
-      City <span class="ul-extra-long">~([Students.U_State_Forms]Ed_506_Tribal_Address_City)</span>
-      State <span class="ul-long">~([Students.U_State_Forms]Ed_506_Tribal_Address_State)</span>
-      Zip Code <span class="ul-mid">~([Students.U_State_Forms]Ed_506_Tribal_Address_Zip)</span>
+      City <span class="ul-extra-long">
+~(tribe_city)
+      </span>
+      State <span class="ul-long">
+~(tribe_state)
+      </span>
+      Zip Code <span class="ul-mid">
+~(tribe_zip)
+      </span>
     </p>
 
     <p class="p3">
       The Tribe or Band is (select only one):
     </p>
     <p class="p4">
-      <input type="radio" name="[Students.U_State_Forms]Ed_506_Tribe_Status" value="Federally Recognized Tribe" ~[if.~([Students.U_State_Forms]Ed_506_Tribe_Status)="Federally Recognized Tribe"]checked[/if] /> Federally Recognized Tribe
+      <input type="radio" disabled
+~(fed_checked)
+      /> Federally Recognized Tribe
     <br>
-      <input type="radio" name="[Students.U_State_Forms]Ed_506_Tribe_Status" value="State Recognized Tribe" ~[if.~([Students.U_State_Forms]Ed_506_Tribe_Status)="State Recognized Tribe"]checked[/if] /> State Recognized Tribe
+      <input type="radio" disabled
+~(st_checked)
+      /> State Recognized Tribe
     <br>
-      <input type="radio" name="[Students.U_State_Forms]Ed_506_Tribe_Status" value="Terminated Tribe" ~[if.~([Students.U_State_Forms]Ed_506_Tribe_Status)="Terminated Tribe"]checked[/if] /> Terminated Tribe
+      <input type="radio" disabled /> Terminated Tribe
     <br>
-      <input type="radio" name="[Students.U_State_Forms]Ed_506_Tribe_Status" value="Alaska Native" ~[if.~([Students.U_State_Forms]Ed_506_Tribe_Status)="Alaska Native"]checked[/if] /> Alaska Native
+      <input type="radio" disabled /> Alaska Native
     <br>
-      <input type="radio" name="[Students.U_State_Forms]Ed_506_Tribe_Status" value="IEA_1998_Member" ~[if.~([Students.U_State_Forms]Ed_506_Tribe_Status)="IEA_1998_Member"]checked[/if] /> Member of an organized Indian group that received a grant under the Indian
+      <input type="radio" disabled /> Member of an organized Indian group that received a grant under the Indian
       Education Act of 1988 as it was in effect October 19, 1994.
     </p>
     <p class="p3">
       Proof of membership in Tribe or Band listed above, as defined by Tribe or
       Band is:
     </p>
+    <!-- tribe_membership_proof is a NUMBER column holding 0, 1 or 2, so an ~[if] test
+         against "1" never matches. The decode in the query above emits the checked
+         attribute instead, which is why these two radios sit inside the tlist block. A
+         stored 0 (the most common value) checks neither, which is correct. -->
     <p class="p4">
-      <input type="radio" name="[Students.U_State_Forms]ED_506_Membership_Proof_Type" value="membership number" ~[if.~([Students.U_State_Forms]Ed_506_Membership_Proof_Type)="membership number"]checked[/if] /> Membership or enrollment number establishing membership (if
+      <input type="radio" disabled
+~(proof_number)
+      /> Membership or enrollment number establishing membership (if
       readily available) or
       <br>
-      <input type="radio" name="[Students.U_State_Forms]ED_506_Membership_Proof_Type" value="other" ~[if.~([Students.U_State_Forms]Ed_506_Membership_Proof_Type)="other"]checked[/if] /> Other evidence establishing membership in the Tribe listed above (describe
+      <input type="radio" disabled
+~(proof_other)
+      /> Other evidence establishing membership in the Tribe listed above (describe
       and attach)
     </p>
     <p class="p2">
       Membership or enrollment number establishing membership (if readily
       available) or other evidence establishing membership in the Tribe listed
-      above (describe and attach). <span class="ul-mid">~([Students.U_State_Forms]ED_506_Membership_Proof)</span>
+      above (describe and attach).
+      <!-- Roll number is computed, not a stored field. PS if-tags have no AND operator, so both
+           numbers are emitted and separated by a space when the student has both. -->
+      <span class="ul-mid">~(jom_nbr) ~(cherokee_rollnbr)</span>
     </p>
+[/tlist_sql]
     <p class="p1">
       Attestation Statement
     </p>
@@ -411,33 +473,28 @@ TemplateName:Admin Student Page
       I verify that the information provided above is true and correct to the
       best of my knowledge and belief.
     </p>
+    <!-- Neither DATs (~([Students]Street), *contact_info) nor ~[if] resolve inside a
+         tlist_sql body - only ~(boundvar) from its own SELECT does. So these fields go back
+         to plain page-level DATs outside the tlist, same as the header. Date is the only
+         value that lives in U_Tps_Indian_Education, whose DAT access doesn't resolve on this
+         server, so it gets its own single-column tlist_sql; it prints blank naturally when
+         unset, which is enough to show the form is unsigned. -->
     <p class="p3">
-      Printed Name of Parent/Guardian<span class="ul-extra-long">~([Students.U_State_Forms_Meta]ED_506_Attestation_Name)</span>
-      Signature <span class="ul-extra-long">~([Students.U_State_Forms_Meta]ED_506_Attestation_Signature)</span>
+      Printed Name of Parent/Guardian <span class="ul-long">~(*contact_info;flags=custodial;max-pers=all;which-pers=1;cat=demo;val=firstname,lastname;value-delim=space;)</span>
+      Signature <span class="ul-long">~(*contact_info;flags=custodial;max-pers=all;which-pers=1;cat=demo;val=firstname,lastname;value-delim=space;)</span>
     </p>
     <p class="p3">
-      Address <span class="ul-mid">~([Students.U_State_Forms_Meta]ED_506_Attestation_Street)</span>
-  City <span class="ul-long">~([Students.U_State_Forms_Meta]ED_506_Attestation_City)</span>
-      State <span class="ul-mid">~([Students.U_State_Forms_Meta]ED_506_Attestation_State)</span>
-      Zip Code <span class="ul-mid">~([Students.U_State_Forms_Meta]ED_506_Attestation_Zip)</span>
+      Address <span class="ul-mid">~([Students]Street)</span>
+      City <span class="ul-long">~([Students]City)</span>
+      State <span class="ul-mid">~([Students]State)</span>
+      Zip Code <span class="ul-mid">~([Students]Zip)</span>
     </p>
     <p class="p3">
-      Phone Number <span class="ul-mid">~([Students.U_State_Forms_Meta]ED_506_Attestation_Phone)</span>
-      Email <span class="ul-extra-long">~([Students.U_State_Forms_Meta]ED_506_Attestation_Street)</span>
-      Date <span class="u-mid">~([StudentsU_State_Forms_Meta]ED_506_Attestation_Date)</span>
+      Phone Number <span class="ul-mid">~(*contact_info;flags=custodial;max-pers=all;which-pers=1;cat=phone;which-val=1;val=phone;)</span>
+      Email <span class="ul-extra-long">~(*contact_info;flags=custodial;max-pers=all;which-pers=1;cat=email;which-val=1;val=email;)</span>
+      Date <span class="ul-mid">~[tlist_sql;select to_char(e.ed506_date,'MM/DD/YYYY') ed_date_str from students s join u_tps_indian_education e on e.studentsdcid = s.dcid where s.id = ~(curstudid)]~(ed_date_str)[/tlist_sql]</span>
     </p>
-    <p
-      class="s1"
-      style="
-        padding-top: 2pt;
-        padding-left: 283pt;
-        margin-bottom: 50px;
-        text-indent: 0pt;
-        text-align: left;
-      "
-    >
-      OMB Control No. 1810-0021 (Exp. 06/30/2026)</p
-    >
+  <div class="no-print">
     <p class="p1">
       For Parent/Guardians:
     </p>
@@ -510,8 +567,8 @@ TemplateName:Admin Student Page
       Indian Education, U.S. Department of Education, 400 Maryland Avenue,
       S.W., LBJ/Room 3W238, Washington, D.C. 20202-6335
     </p>
-    </div>
-  </form>
+  </div>
+</div>
   <!-- end of content area -->
   ~[wc:admin_footer_frame_css]
 </body>
